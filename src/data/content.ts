@@ -7,9 +7,8 @@ import type { ErrorMessages, HeroContent, PageMeta } from '~/types'
  * aux composants, qui eux ne l'importent jamais (CONVENTIONS.md § 5 et § 10).
  */
 export const hero: HeroContent = {
-  role: 'SERVICE 1 - SERVICE 2 - SERVICE 3',
   title: { name: 'Océane', tag: 'studio' },
-  disciplines: ['Graphism', 'Identity', 'Brand'],
+  disciplines: ['Graphics', 'Identity', 'Brand'],
   // ⚠ Image de remplacement, à changer : elle vient d'un autre projet et ne
   // dit rien du travail présenté. Déposer la bonne au même chemin suffit.
   //

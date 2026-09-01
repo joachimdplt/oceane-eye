@@ -37,10 +37,12 @@ export interface HeroAside {
 
 /** L'écran d'ouverture. */
 export interface HeroContent {
-  /** Le métier, au-dessus du nom. */
-  role: string
   title: HeroTitle
-  /** Le bloc de gauche : les disciplines, une par ligne. */
+  /**
+   * Les disciplines. Elles servent deux fois — empilées à gauche, et en ligne
+   * au-dessus du titre — mais ne sont écrites qu'ici : deux listes à tenir à
+   * jour finissent toujours par diverger.
+   */
   disciplines: string[]
   /** Ce que l'arche révèle : une image, ou un film. */
   media: HeroMedia

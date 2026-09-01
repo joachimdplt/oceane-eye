@@ -9,7 +9,7 @@ const ARCH = { top: 16, side: 36, bottom: 24 }
 /** Hauteur de la piste de défilement, en écrans. */
 const TRACK = 2.6
 
-export function Hero({ role, title, disciplines, media, aside, scrollCue }: HeroContent) {
+export function Hero({ title, disciplines, media, aside, scrollCue }: HeroContent) {
   const track = useRef<HTMLElement | null>(null)
   const [progress, setProgress] = useState(0)
   const [still, setStill] = useState(false)
@@ -150,9 +150,11 @@ export function Hero({ role, title, disciplines, media, aside, scrollCue }: Hero
           </div>
         </div>
 
-        {/* Le métier et l'invitation à descendre, aux deux bords de l'écran. */}
+        {/* Les mêmes disciplines qu'à gauche, mises en ligne. Elles viennent
+            de la même liste : le point médian est une mise en forme, pas une
+            seconde version du contenu. */}
         <p className="absolute top-8 left-0 right-0 text-center font-garamond text-accent text-eyebrow-lg md:text-sm font-bold uppercase tracking-eyebrow">
-          {role}
+          {disciplines.join(' · ')}
         </p>
 
         <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-4">
