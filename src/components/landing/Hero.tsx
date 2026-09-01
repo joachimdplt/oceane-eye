@@ -113,7 +113,7 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
             Le `nowrap` est une promesse que le texte doit tenir : au-delà
             d'une vingtaine de signes, il finira par toucher les bords. */}
         <h1
-          className="absolute inset-x-0 -translate-y-1/2 display text-accent text-center whitespace-nowrap px-6"
+          className="absolute inset-x-0 -translate-y-1/2 title1 text-accent text-center whitespace-nowrap px-6"
           style={{ top: `${titleTop.toFixed(2)}%` }}
         >
           <GrowText text={title} delay={120} spread={620} />

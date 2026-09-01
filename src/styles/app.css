@@ -1,7 +1,7 @@
 /* L'import de police AVANT tout le reste : un `@import` placé après une règle
    est retiré silencieusement du CSS compilé, et la police se déclare partout
    sans jamais se charger en production. */
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import 'tailwindcss' source('../');
 
 /* Les tokens du site. Toute couleur, police, mesure ou graisse utilisée dans le
@@ -18,6 +18,9 @@
      calculée. Les alternatives système listées ensuite sont des Garaldes, pour
      que la page garde sa couleur avant le chargement. */
   --font-garamond: 'EB Garamond', 'Adobe Garamond Pro', Garamond, 'Times New Roman', serif;
+  /* La grotesque, en vis-à-vis de la Garalde : deux dessins qui ne se
+     ressemblent pas, plutôt que deux qui se ressemblent presque. */
+  --font-grotesk: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
 
   /* Le surtitre, en capitales espacées : deux tailles, une par palier. */
   --text-eyebrow: 11px;
@@ -64,14 +67,14 @@
     letter-spacing: -0.01em;
   }
 
-  /* Les titres en Garamond italique.
+  /* Titre 1 — la Garalde en italique.
      Pas de capitales : l'italique de Garamond tient tout entière dans ses bas
      de casse, et la passer en capitales revient à payer une police pour n'en
      rien voir. C'est une dérogation assumée à COPYWRITING.md § 12, notée là-bas.
      Les chiffres serrés d'une grotesque ne conviennent pas non plus : une
      Garalde veut de l'air, donc un interlignage moins écrasé et un crénage
      presque neutre. */
-  .display {
+  .title1 {
     font-family: var(--font-garamond);
     font-style: italic;
     font-weight: 500;
@@ -112,6 +115,20 @@
 }
 
 @layer components {
+  /* Titre 2 — la grotesque.
+     Le contrepoint du titre 1 : une largeur constante, une casse haute et du
+     crénage positif, là où la Garalde vit de ses bas de casse et de son
+     inclinaison. Elle se tient un cran plus bas dans l'échelle, pour que les
+     deux ne se disputent jamais la même place. */
+  .title2 {
+    font-family: var(--font-grotesk);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: min(3.4vw, 2.25rem);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+  }
+
   /* Le grain du fond.
 
      Un aplat ne tient pas à côté d'une photo argentique : il se lit comme un

@@ -15,7 +15,7 @@ export function NotFound({ messages, children }: { messages: ErrorMessages; chil
   return (
     <main className="min-h-svh flex items-center px-6 md:px-gutter py-20">
       <div className="w-full max-w-page xl:max-w-wide mx-auto">
-        <h1 className="display">404</h1>
+        <h1 className="title1">404</h1>
         <p className="font-garamond mt-8 max-w-2xl text-base md:text-lg leading-prose">
           {children ?? messages.notFound}
         </p>

@@ -48,7 +48,13 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   Son seul réglage est l'opacité — 0.32 reproduit l'écart-type mesuré sur la
   référence, 8,6 niveaux sur 255. Le texte porte la même couleur sur le
   fond et sur l'image, puisque le titre déborde de l'arche des deux côtés.
-- La police : `--font-garamond`. **Adobe Garamond Pro est sous licence Adobe** —
+- Deux polices, deux classes de titre :
+  - **`.title1`** — EB Garamond italique, bas de casse, la voix principale.
+  - **`.title2`** — Space Grotesk, capitales, un cran plus bas dans l'échelle.
+    Le contrepoint : largeur constante et crénage positif, là où la Garalde vit
+    de ses bas de casse et de son inclinaison. Deux dessins qui ne se
+    ressemblent pas, plutôt que deux qui se ressemblent presque.
+- La Garalde : `--font-garamond`. **Adobe Garamond Pro est sous licence Adobe** —
   elle ne peut être ni servie depuis Google Fonts ni auto-hébergée. La page est
   donc composée en **EB Garamond**, sa reprise libre, dont l'italique est
   réellement dessinée et non calculée. Pour la vraie Adobe Garamond Pro, il faut
