@@ -60,7 +60,7 @@ export const blockTitles = {
 export const about: AboutContent = {
   lede: 'Ocean Eye est un studio de design de marque, ancré à Nice.',
   rest:
-    'On y cherche ce qui fait qu’une marque se reconnaît : une couleur, un geste, une façon de dire les choses. L’intuition trouve la piste, la méthode la rend tenable. Puis on lui donne une forme qui vive ailleurs que dans sa charte — sur un packaging, sur une devanture, sur un écran de téléphone — et qui tienne encore dans deux ans, entre d’autres mains que les nôtres.',
+    'On y cherche ce qui fait qu’une marque se reconnaît : une couleur, un geste, une façon de dire les choses. L’intuition trouve la piste, la méthode la rend tenable. Puis on lui donne une forme qui vive ailleurs que dans sa charte, sur un packaging, sur une devanture, sur un écran de téléphone, et qui tienne encore dans deux ans, entre d’autres mains que les nôtres.',
   stats: [
     { value: '09', label: 'marques livrées', note: 'de l’identité au packaging' },
     { value: '08', label: 'années de pratique', note: 'en agence, en entreprise, en indépendant' },

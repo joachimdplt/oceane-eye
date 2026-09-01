@@ -156,6 +156,10 @@ Le sélecteur nommait la langue en toutes lettres :
 
 ## 15. Typographie française, sans exception
 
+- **Pas de tiret cadratin dans le texte.** Une incise se pose entre virgules :
+  le français les porte très bien, et deux cadratins au milieu d'une phrase la
+  coupent plus qu'ils ne l'aèrent. Les commentaires du code en gardent le droit,
+  personne ne les lit à l'écran.
 - Apostrophe courbe `’`, jamais `'` — *l'héberge*, *qu'on*, *n'avance*.
 - Guillemets `« … »` avec espaces insécables, jamais `"` ni `“ ”` en français.
 - Les espaces fines insécables des montants (`8 900 €`) étaient remplacées par
