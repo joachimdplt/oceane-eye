@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { MessageCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 /** Une entrée de la barre : une adresse, un intitulé. */
@@ -16,11 +17,24 @@ type NavLink = { to: string; label: string }
  * s'approche du haut de l'écran — une barre qu'on ne peut rappeler qu'en
  * défilant à contresens est une barre qu'on abandonne.
  *
+ * Le bouton WhatsApp est une porte de plus que le formulaire : certaines
+ * personnes veulent poser une question avant de remplir quoi que ce soit, et
+ * elles la posent là où elles écrivent déjà.
+ *
  * `quietOver` nomme une zone où elle se tait quoi qu'il arrive. Les cartes de
  * travaux se collent exactement là où elle se tient : superposées, on ne lirait
  * ni l'une ni l'autre.
  */
-export function Nav({ links, quietOver }: { links: readonly NavLink[]; quietOver?: string }) {
+export function Nav({
+  links,
+  whatsapp,
+  quietOver,
+}: {
+  links: readonly NavLink[]
+  /** Le raccourci vers une conversation, à côté des pages. */
+  whatsapp: { label: string; url: string }
+  quietOver?: string
+}) {
   const [shown, setShown] = useState(true)
   const [quiet, setQuiet] = useState(false)
 
@@ -76,7 +90,8 @@ export function Nav({ links, quietOver }: { links: readonly NavLink[]; quietOver
       aria-label="Pages du site"
       className={`site-nav ${visible ? '' : 'site-nav--hidden'} fixed top-0 left-0 right-0 z-50 px-6 md:px-gutter py-5`}
     >
-      <ul className="w-full max-w-page xl:max-w-wide mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
+      <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-wrap items-center justify-center md:justify-between gap-x-6 gap-y-3">
+      <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
         {links.map((link) => (
           <li key={link.to}>
             <Link
@@ -93,6 +108,20 @@ export function Nav({ links, quietOver }: { links: readonly NavLink[]; quietOver
           </li>
         ))}
       </ul>
+
+      {/* Une porte de plus que le formulaire : certaines personnes veulent poser
+          une question avant de remplir quoi que ce soit, et elles la posent là
+          où elles écrivent déjà. */}
+      <a
+        href={whatsapp.url}
+        target="_blank"
+        rel="noreferrer"
+        className="font-dm text-ink text-eyebrow-lg md:text-sm font-medium no-underline inline-flex items-center gap-2 hover:opacity-70 transition-opacity motion-reduce:transition-none"
+      >
+        <MessageCircle aria-hidden="true" strokeWidth={1.5} className="size-4" />
+        {whatsapp.label}
+      </a>
+      </div>
     </nav>
   )
 }

@@ -69,6 +69,14 @@ export interface Stat {
 export interface AboutContent {
   lede: string
   rest: string
+  /** Qui tient le studio, et son portrait. */
+  person: {
+    name: string
+    role: string
+    lines: string[]
+    image: string
+    alt: string
+  }
   stats: Stat[]
   cta: { label: string; href: string }
 }
@@ -234,6 +242,8 @@ export interface Contact {
   phone: string
   instagram: string
   instagramUrl: string
+  /** Le lien wa.me, et l'intitulé du bouton qui y mène. */
+  whatsapp: { label: string; url: string }
 }
 
 /** Ce que la page raconte aux moteurs et aux aperçus de partage. */

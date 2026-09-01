@@ -84,7 +84,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body>
         {/* La barre vit à la racine : elle est la même sur les cinq pages, et
             une barre recopiée dans chacune finirait par diverger. */}
-        <Nav links={navLinks} quietOver="projets" />
+        <Nav links={navLinks} whatsapp={contact.whatsapp} quietOver="projets" />
         {children}
         {/* Le pied de page vit à la racine, comme la barre : il est le même
             partout, et recopié dans chaque page il finirait par diverger. */}

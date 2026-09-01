@@ -77,6 +77,16 @@ export const about: AboutContent = {
   lede: 'Ocean Eye est un studio de design de marque, ancré à Nice.',
   rest:
     'On y cherche ce qui fait qu’une marque se reconnaît : une couleur, un geste, une façon de dire les choses. L’intuition trouve la piste, la méthode la rend tenable. Puis on lui donne une forme qui vive ailleurs que dans sa charte, sur un packaging, sur une devanture, sur un écran de téléphone, et qui tienne encore dans deux ans, entre d’autres mains que les nôtres.',
+  person: {
+    name: 'Océane',
+    role: 'Graphiste et directrice artistique',
+    lines: [
+      'Le studio, c’est elle. Huit ans passés en agence, en entreprise et à son compte, à faire la même chose sous trois casquettes : donner une forme à ce qu’une marque n’a pas encore su dire.',
+      'Formée à la direction artistique, installée à Nice, elle travaille aussi bien pour une conciergerie de luxe que pour une édition de boîtes de sardines de collection. Ce qui ne change pas d’un projet à l’autre, c’est la méthode : écouter longtemps, proposer peu, et livrer un système que quelqu’un d’autre saura tenir.',
+    ],
+    image: '/img/oceane.jpg',
+    alt: 'Océane, assise dans un fauteuil, en portrait noir et blanc.',
+  },
   stats: [
     { value: '09', label: 'marques livrées', note: 'de l’identité au packaging' },
     { value: '08', label: 'années de pratique', note: 'en agence, en entreprise, en indépendant' },
@@ -533,6 +543,12 @@ export const contact: Contact = {
   phone: '07 86 93 91 64',
   instagram: '@oceaneye.studio',
   instagramUrl: 'https://www.instagram.com/oceaneye.studio/',
+  // Le numéro en format international, sans espaces ni signe : wa.me n'accepte
+  // que des chiffres, et le 0 initial du format français doit sauter.
+  whatsapp: {
+    label: 'Discuter avec Océane',
+    url: 'https://wa.me/33786939164',
+  },
 }
 
 /** Le titre et la description de chaque page, pour les moteurs. */
