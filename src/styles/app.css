@@ -276,17 +276,21 @@
 
      La carte n'occupe pas toute la hauteur : il faut que la suivante ait de quoi
      apparaître avant que celle-ci ne soit sortie. */
-  /* Aucune réserve sous la pile.
+  /* La réserve sous la pile, et c'est elle qui fait bloquer la dernière carte.
 
-     Elle en portait une, pour laisser la dernière carte se décoller
-     tranquillement. C'était une erreur de lecture du geste : une fois la pile
-     assemblée, tout est dit. Ce vide obligeait à continuer de défiler devant
-     des cartes qui remontaient une à une avant que le bloc suivant n'arrive.
+     Un élément collant n'a de prise que sur ce qui reste de son conteneur SOUS
+     lui. La dernière carte est la dernière du flux : sans réserve, elle atteint
+     sa position d'arrêt à l'instant même où le conteneur se termine, donc elle
+     ne se colle jamais — elle passe, tout simplement.
 
-     Sans lui, le conteneur s'arrête exactement où la pile est complète : les
-     cartes tiennent leur position, et la suite prend le relais. */
+     Pendant cette réserve, les quatre cartes sont collées et RIEN ne bouge :
+     c'est là que la pile se regarde. Puis le bloc suivant, opaque, monte
+     par-dessus.
+
+     La valeur est en `svh` et non en pixels : elle doit rester une fraction de
+     l'écran, quelle que soit la hauteur des cartes. */
   .work-stack {
-    padding-bottom: 0;
+    padding-bottom: 55svh;
   }
 
   /* Le pas de l'empilement.
