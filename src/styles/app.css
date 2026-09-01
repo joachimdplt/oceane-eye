@@ -41,13 +41,18 @@
     color-scheme: light;
   }
 
-  /* Une seule valeur de fond, déclarée ici : le rebond du défilement montre le
-     fond du document et non celui de la section, et les deux doivent donc être
-     le même blanc. */
+  /* La page est sombre, et c'est l'effet qui l'exige : le titre déborde de
+     l'arche des deux côtés, donc il est posé sur le fond autant que sur
+     l'image. Clair sur sombre, il reste lisible dans les deux cas ; l'inverse
+     ne tient pas.
+
+     Une seule valeur de fond, déclarée ici : le rebond du défilement montre le
+     fond du DOCUMENT et non celui de la section, et les deux doivent donc être
+     le même noir. Repasser en clair = intervertir ces deux lignes. */
   html,
   body {
-    color: var(--color-ink);
-    background-color: var(--color-paper);
+    color: var(--color-paper);
+    background-color: var(--color-ink);
   }
 
   h1,

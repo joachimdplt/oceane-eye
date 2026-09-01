@@ -27,7 +27,7 @@ src/
   data/             → transversal : le contenu éditorial, statique
   components/
     ui/             → génériques : GrowText, NotFound, ErrorState
-    landing/        → Hero
+    landing/        → Hero (l'arche qui s'ouvre en plein écran au défilement)
   routes/           → Couche 5, assemblage seul (TanStack Router)
   utils/seo.ts      → SITE_URL : l'adresse du site, en un seul endroit
   styles/app.css    → les tokens du thème, et rien d'arbitraire ailleurs
@@ -41,7 +41,10 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
 - Tout descend du bloc `@theme` de `src/styles/app.css` : couleurs (`--color-ink`,
   `--color-paper`), police, tailles, mesures. Aucune valeur arbitraire dans le
   JSX — c'est le § 9, et la commande d'audit du § 12 le vérifie.
-- Le texte : `src/data/content.ts`.
+- Le texte, l'image et le film : `src/data/content.ts`.
+- La page est **sombre**, et l'effet l'exige : le titre déborde de l'arche des
+  deux côtés, il est donc posé sur le fond autant que sur l'image. Repasser en
+  clair = intervertir deux lignes dans `html, body` (`src/styles/app.css`).
 - Le domaine : `SITE_URL` dans `src/utils/seo.ts`, puis `public/robots.txt`,
   `public/sitemap.xml` et `APP_DOMAIN` dans `.env.deploy`.
 
@@ -61,8 +64,27 @@ bougé, et reconstruit le cas échéant.
 systemctl enable --now ocean-eye-autodeploy@ocean-eye.timer
 ```
 
+## L'arche
+
+Le fond occupe l'écran en permanence ; ce qui grandit au défilement est la
+**fenêtre découpée dedans** (`clip-path: inset(… round …)`). Rien n'est mis à
+l'échelle : l'image ne se déforme pas, et la mise en page n'est jamais
+recalculée. La géométrie au repos et la longueur de la piste sont les deux
+constantes en tête de `Hero.tsx`.
+
+Pour passer de l'image au film, dans `src/data/content.ts` :
+
+```ts
+media: { kind: 'video', src: '/video/hero.mp4', poster: '/img/hero.jpg', alt: '' }
+```
+
+Le film porte toujours une affiche : c'est elle qu'on montre à qui a demandé
+moins de mouvement, et elle qui tient l'écran le temps du chargement.
+
 ## À finir
 
+- [ ] `public/img/hero.jpg` est une image de remplacement : elle vient d'un
+      autre projet et ne dit rien du travail présenté.
 - [ ] Les favicons de `public/` sont encore ceux de l'ancienne marque.
 - [ ] Pas d'image de partage : `seo()` n'émet `og:image` que si on lui en donne
       une.

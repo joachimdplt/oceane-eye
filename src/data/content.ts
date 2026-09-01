@@ -10,7 +10,13 @@ export const hero: HeroContent = {
   role: 'SERVICE 1 - SERVICE 2 - SERVICE 3',
   title: 'Une PROMESSE UNIQUE',
   body: '+10 clients accompagnés',
-
+  // ⚠ Image de remplacement, à changer : elle vient d'un autre projet et ne
+  // dit rien du travail présenté. Déposer la bonne au même chemin suffit.
+  //
+  // Pour passer au film : déposer public/video/hero.mp4 et son affiche, puis
+  //   media: { kind: 'video', src: '/video/hero.mp4', poster: '/img/hero.jpg', alt: '' }
+  media: { kind: 'image', src: '/img/hero.jpg', alt: '' },
+  scrollCue: 'Défiler',
 }
 
 export const meta: PageMeta = {

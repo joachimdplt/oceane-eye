@@ -1,49 +1,148 @@
+import { useEffect, useRef, useState } from 'react'
 import type { HeroContent } from '~/types'
 import { GrowText } from '~/components/ui/GrowText'
 
-/**
- * L'écran d'ouverture, et le seul.
- *
- * Tout est au centre, dans les deux sens : le bloc est centré verticalement par
- * le `flex items-center`, et son texte horizontalement. Le surtitre et la prose
- * suivent le titre — un titre centré au-dessus d'un texte ferré à gauche laisse
- * une composition bancale plutôt qu'une composition centrée.
- *
- * Présentationnel : il reçoit son texte en props et n'en va chercher aucun
- * (CONVENTIONS.md § 5). Aucune valeur arbitraire non plus, tout descend du
- * thème (§ 9).
- *
- * Le titre arrive lettre par lettre, chacune poussant hors de sa propre ligne
- * de base. Aucun fondu, ni sur l'arrivée ni sur la prose : un noir à moitié
- * fondu reste un noir plus clair, et la page n'en a qu'un. Ce qui met le texte
- * en retrait est donc sa taille, jamais son opacité.
- *
- * `GrowText` part au montage, ce qui est juste tant que la page tient sur un
- * écran. Le jour où un bloc passera sous la ligne de flottaison, il aura fini
- * de pousser sans avoir été vu : il faudra alors le retenir jusqu'à ce qu'il
- * entre dans le champ.
- */
-export function Hero({ role, title, body }: HeroContent) {
+/** La géométrie de l'arche au repos, en pourcentage de l'écran. */
+const ARCH = { top: 16, side: 36, bottom: 24 }
+
+/** Hauteur de la piste de défilement, en écrans. */
+const TRACK = 2.6
+
+export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent) {
+  const track = useRef<HTMLElement | null>(null)
+  const [progress, setProgress] = useState(0)
+  const [still, setStill] = useState(false)
+
+  /**
+   * La position dans la piste, de 0 à 1.
+   *
+   * Mesure du DOM et rien d'autre : ni store, ni service, ni donnée métier. Ce
+   * n'est donc pas de l'orchestration au sens de la Couche 3, et ça reste dans
+   * le composant plutôt que de devenir un hook de feature (CONVENTIONS.md § 8).
+   */
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Une fenêtre qui grandit sous les yeux est exactement le mouvement qu'on
+      // nous demande d'éviter : l'arche reste à sa taille, la page défile.
+      setStill(true)
+      return
+    }
+
+    const node = track.current
+    if (!node) return
+    let frame = 0
+    const read = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const { top, height } = node.getBoundingClientRect()
+        const travelled = -top / Math.max(1, height - window.innerHeight)
+        setProgress(Math.min(1, Math.max(0, travelled)))
+      })
+    }
+    read()
+    window.addEventListener('scroll', read, { passive: true })
+    window.addEventListener('resize', read)
+    return () => {
+      window.removeEventListener('scroll', read)
+      window.removeEventListener('resize', read)
+      cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  // L'image occupe tout l'écran en permanence ; ce qui grandit est la fenêtre
+  // découpée dedans. Rien n'est mis à l'échelle, donc rien ne se déforme et
+  // rien ne repasse par la mise en page — seul le `clip-path` change.
+  const p = still ? 0 : progress
+  const ease = p * p * (3 - 2 * p)
+  const inset = (from: number) => (from * (1 - ease)).toFixed(2)
+  // Le rayon est écrêté par le navigateur à la moitié de la largeur découpée :
+  // une valeur volontairement énorme donne donc un demi-cercle parfait, quelle
+  // que soit la taille de la fenêtre au moment où on la regarde.
+  const radius = (999 * (1 - ease)).toFixed(0)
+  const clip = `inset(${inset(ARCH.top)}% ${inset(ARCH.side)}% ${inset(ARCH.bottom)}% ${inset(ARCH.side)}% round ${radius}px ${radius}px 0 0)`
+
+  // Les textes de flanc s'effacent pendant le premier tiers : passé là, l'image
+  // occupe leur place et un texte posé dessus deviendrait illisible.
+  const asidesOpacity = Math.max(0, 1 - ease * 3)
+
   return (
-    <main className="min-h-svh flex items-center px-6 md:px-gutter py-20">
-      <div className="w-full max-w-page xl:max-w-wide mx-auto text-center">
-        <p className="font-plex text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow">
+    <section ref={track} className="relative bg-ink" style={{ height: `${TRACK * 100}svh` }}>
+      <div className="sticky top-0 h-svh overflow-hidden">
+        {/* Le film ne démarre pas pour qui a demandé moins de mouvement : son
+            affiche tient l'écran, ce qui est aussi ce qu'on voit le temps du
+            chargement. */}
+        {media.kind === 'video' && !still ? (
+          <video
+            src={media.src}
+            poster={media.poster}
+            aria-label={media.alt || undefined}
+            aria-hidden={media.alt ? undefined : true}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ clipPath: clip, WebkitClipPath: clip }}
+          />
+        ) : (
+          <img
+            src={media.kind === 'video' ? media.poster : media.src}
+            alt={media.alt}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ clipPath: clip, WebkitClipPath: clip }}
+          />
+        )}
+
+        <div className="relative h-full flex items-center px-6 md:px-gutter py-20">
+          {/* Sous `md`, une simple pile : les trois colonnes se superposeraient
+              dans la même cellule et le titre passerait sur le texte. */}
+          <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col items-center gap-8 md:grid md:grid-cols-3 md:items-center">
+            <p
+              className="font-plex text-paper text-sm leading-prose max-w-xs text-center md:text-left md:justify-self-start transition-opacity duration-300 motion-reduce:transition-none"
+              style={{ opacity: asidesOpacity }}
+            >
+              {body}
+            </p>
+
+            {/* Le titre déborde de l'arche des deux côtés, comme la référence :
+                il est donc toujours clair, sur le fond comme sur l'image. */}
+            <h1 className="display text-paper text-center md:col-start-2 md:row-start-1">
+              <GrowText text={title} delay={120} spread={620} />
+            </h1>
+
+            {aside ? (
+              <p
+                className="font-plex text-paper text-sm leading-prose max-w-xs text-center md:text-right md:justify-self-end transition-opacity duration-300 motion-reduce:transition-none"
+                style={{ opacity: asidesOpacity }}
+              >
+                {aside}
+              </p>
+            ) : (
+              // La troisième colonne reste réservée même vide : sans elle, la
+              // grille se resserre et le titre cesse d'être au centre de l'écran.
+              <span aria-hidden="true" className="hidden md:block" />
+            )}
+          </div>
+        </div>
+
+        {/* Le métier et l'invitation à descendre, aux deux bords de l'écran. */}
+        <p
+          className="absolute top-8 left-0 right-0 text-center font-plex text-paper text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow transition-opacity duration-300 motion-reduce:transition-none"
+          style={{ opacity: asidesOpacity }}
+        >
           {role}
         </p>
 
-        <h1 className="display mt-6 md:mt-8">
-          <GrowText text={title} delay={120} spread={620} />
-        </h1>
-
-        {/* Le corps est la seule chose ici destinée à se lire comme de la
-            prose : c'est donc la seule qui ne crie pas (COPYWRITING.md § 12).
-            `mx-auto` en plus de `text-center` : sans lui, la colonne resterait
-            collée au bord gauche et le texte serait centré dans une boîte qui
-            ne l'est pas. */}
-        <p className="font-plex mt-8 md:mt-10 max-w-2xl mx-auto text-base md:text-lg leading-prose">
-          {body}
-        </p>
+        <div
+          className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-4 transition-opacity duration-300 motion-reduce:transition-none"
+          style={{ opacity: asidesOpacity }}
+        >
+          <span className="block w-px h-16 bg-paper" aria-hidden="true" />
+          <span className="font-plex text-paper text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow">
+            {scrollCue}
+          </span>
+        </div>
       </div>
-    </main>
+    </section>
   )
 }
