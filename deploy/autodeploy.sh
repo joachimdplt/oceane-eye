@@ -6,9 +6,9 @@
 # aucune clé privée à confier à un service tiers : le VPS a déjà un accès en
 # lecture au dépôt, il suffit.
 #
-# Lancé par le timer systemd ocean-eye-autodeploy@<stack>.timer, jamais à la
-# main — mais inoffensif si on l'appelle directement : sans nouveau commit, il
-# ne fait rien.
+# À recopier dans le deploy/ de l'application. Lancé par le timer systemd
+# <app>-autodeploy@<stack>.timer, jamais à la main — mais inoffensif si on
+# l'appelle directement : sans nouveau commit, il ne fait rien.
 set -eu
 
 cd "$(dirname "$0")/.."

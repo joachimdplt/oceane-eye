@@ -1,3 +1,6 @@
+# Gabarit de timer d'autodeploy. Renommer comme le .service correspondant
+# (<app>-autodeploy@.timer) : les deux noms doivent concorder, sinon le timer ne
+# trouve pas son unité.
 [Unit]
 Description=Surveille le dépôt de %i et déploie les nouveaux commits
 
@@ -6,7 +9,8 @@ Description=Surveille le dépôt de %i et déploie les nouveaux commits
 # assez espacé pour que la vérification (un git fetch) reste négligeable.
 OnBootSec=2min
 OnUnitActiveSec=2min
-Unit=ocean-eye-autodeploy@%i.service
+# À adapter au nom de l'unité de service : <app>-oceaneye-autodeploy@%i.service
+Unit=CHANGEZ-MOI-oceaneye-autodeploy@%i.service
 
 [Install]
 WantedBy=timers.target

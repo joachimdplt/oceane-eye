@@ -1,12 +1,18 @@
-# Déploiement du site sur le VPS.
+# Déploiement d'un FRONT SSR SEUL : un site public rendu côté serveur.
 #
 #   docker compose -f docker-compose.prod.yml --env-file .env.deploy up -d --build
 #
-# Aucun port n'est publié : le proxy partagé (/opt/infra/proxy) termine le TLS et
-# route vers ce conteneur par le réseau `web`.
+# Contrat d'hébergement : github.com/joachimdplt/VPS-INFRA → docs/conventions.md
 #
-# Pas de base de données : le site ne stocke rien.
-name: ${STACK:?renseignez STACK (ex. ocean-eye)}
+# Écart assumé au gabarit `templates/ssr-seul/` : celui-ci exige PUBLIC_API_URL
+# et SERVER_API_URL parce qu'il suppose un front consommant l'API de simpleseo.
+# Ce site-ci ne consomme AUCUNE API — tout son contenu est statique, dans
+# src/data/. Les deux variables sont donc retirées plutôt que renseignées avec
+# une valeur qui ne servirait jamais.
+#
+# Aucun port publié, aucune base : un seul service, joint par le proxy partagé
+# via son alias sur le réseau externe `web`.
+name: ${STACK:?renseignez STACK dans .env.deploy}
 
 services:
   web:
@@ -14,11 +20,13 @@ services:
       context: .
     restart: unless-stopped
     environment:
+      NODE_ENV: production
       PORT: 3000
     networks:
       web:
-        # Alias explicite : plusieurs applications du VPS déclarent un service
-        # nommé `web`, l'alias seul les distingue pour le proxy.
+        # Alias explicite et préfixé par le stack : plusieurs applications de la
+        # machine déclarent un service `web`, et un alias ambigu ferait tomber le
+        # trafic sur le site d'une autre (conventions § 2).
         aliases:
           - ${STACK}-web
 

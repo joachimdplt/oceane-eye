@@ -92,19 +92,35 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
 
 ## Déployer
 
+Le site est un **front SSR seul** au sens du socle
+([VPS-INFRA](https://github.com/joachimdplt/VPS-INFRA), `docs/conventions.md`
+§ 11). Les scripts de `deploy/`, le gabarit de route et les unités systemd sont
+repris **tels quels** des gabarits du socle — vérifié à l'octet près. Les trois
+écarts assumés (domaine de test emprunté, `noindex`, Dockerfile) sont expliqués
+dans `apps/oceaneye.md` du dépôt d'infra.
+
+
+**Prérequis DNS** : un enregistrement `A` pour `oceaneye.somekind.fr` vers
+`72.61.101.96`, actif **avant** le premier démarrage — sinon Caddy échoue en
+boucle sur le challenge et brûle le quota hebdomadaire Let's Encrypt.
+
 ```bash
-cp .env.deploy.example .env.deploy   # sur le VPS, puis renseigner APP_DOMAIN
+# sur le VPS
+git clone https://github.com/joachimdplt/oceane-eye.git /opt/oceaneye-dev
+cd /opt/oceaneye-dev
+cp .env.deploy.example .env.deploy          # STACK et APP_DOMAIN y sont déjà bons
 docker compose -f docker-compose.prod.yml --env-file .env.deploy up -d --build
-./deploy/install-site.sh             # publie la route dans le proxy partagé
+./deploy/install-site.sh                     # publie la route dans le proxy partagé
+
+# puis le déploiement continu
+cp deploy/systemd/oceaneye-autodeploy@.* /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable --now oceaneye-autodeploy@oceaneye-dev.timer
 ```
 
-Ensuite le déploiement se fait tout seul, par **surveillance** et non par
-webhook : un timer systemd regarde toutes les deux minutes si la branche a
-bougé, et reconstruit le cas échéant.
-
-```bash
-systemctl enable --now ocean-eye-autodeploy@ocean-eye.timer
-```
+Ensuite tout se fait seul, par **surveillance** et non par webhook : le timer
+regarde toutes les deux minutes si la branche a bougé, et reconstruit le cas
+échéant. Rien n'est ouvert vers l'extérieur, aucune clé n'est confiée à un tiers.
 
 ## La nav
 

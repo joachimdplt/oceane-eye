@@ -1,4 +1,8 @@
+# Le site est en TEST sur oceaneye.somekind.fr : rien ne doit être indexé.
+# Un site de démonstration référencé se retrouve en double dans les résultats,
+# et la cliente découvre un brouillon en cherchant son propre nom.
+#
+# À LA MISE EN LIGNE : remplacer par `Allow: /`, remettre la ligne Sitemap,
+# et passer INDEXABLE à true dans src/utils/seo.ts.
 User-agent: *
-Allow: /
-
-Sitemap: https://ocean-eye.fr/sitemap.xml
+Disallow: /

@@ -11,7 +11,7 @@ import { ErrorState } from '~/components/ui/ErrorState'
 import { NotFound } from '~/components/ui/NotFound'
 import { errors } from '~/data/content'
 import appCss from '~/styles/app.css?url'
-import { SITE_NAME, seo } from '~/utils/seo'
+import { SITE_NAME, robotsMeta, seo } from '~/utils/seo'
 
 const ReactQueryDevtools = import.meta.env.PROD
   ? () => null
@@ -37,6 +37,7 @@ export const Route = createRootRouteWithContext<{
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       ...seo({ title: SITE_NAME }),
+      ...robotsMeta(),
     ],
     links: [
       { rel: 'preload', href: appCss, as: 'style' },

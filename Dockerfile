@@ -1,3 +1,15 @@
+# Front SSR TanStack Start.
+#
+# ÉCART ASSUMÉ au gabarit `templates/ssr-seul/Dockerfile` du socle : celui-ci
+# lance `node .output/server/index.mjs`, la sortie de Nitro. La version de
+# TanStack Start utilisée ici ne produit pas `.output/` mais `dist/`, servi par
+# `srvx` — vérifié à chaque build. Le gabarit donnerait un conteneur qui ne
+# démarre pas.
+#
+# S'y ajoutent trois choses que le gabarit n'a pas : tini pour que les signaux
+# atteignent Node, un utilisateur non privilégié, et un contrôle de santé qui
+# interroge aussi une feuille de style.
+#
 # ── Étape 1 : build ──────────────────────────────────────────────────────────
 FROM node:20-alpine AS build
 WORKDIR /app

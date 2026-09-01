@@ -4,8 +4,21 @@
  * Tout ce qui est absolu — canonical, og:url, images de partage, sitemap — en
  * descend. Changer de domaine est donc une ligne, pas une chasse.
  */
-export const SITE_URL = 'https://ocean-eye.fr'
-export const SITE_NAME = 'Ocean Eye'
+export const SITE_URL = 'https://oceaneye.somekind.fr'
+export const SITE_NAME = 'Ocean Eye Studio'
+
+/**
+ * Le site est-il ouvert aux moteurs ?
+ *
+ * `false` tant qu'on est sur l'adresse de test : un site de démonstration
+ * indexé se retrouve en double dans les résultats, et la cliente finit par
+ * découvrir un brouillon en cherchant son propre nom.
+ *
+ * À passer à `true` LE JOUR DE LA MISE EN LIGNE, en même temps que `SITE_URL`
+ * et `public/robots.txt`. C'est le seul interrupteur : le `noindex` de la page
+ * en descend.
+ */
+export const INDEXABLE = false
 
 /**
  * Les balises de tête d'une page.
@@ -56,3 +69,14 @@ export const seo = ({
  * porterait deux, la sienne et celle de l'accueil.
  */
 export const canonical = (url: string) => ({ rel: 'canonical' as const, href: url })
+
+/**
+ * L'interdiction faite aux moteurs, tant que le site est en test.
+ *
+ * Une balise dans la page plutôt qu'un en-tête posé par le proxy : celui-ci
+ * suivrait la configuration si elle servait un jour la production, et personne
+ * ne s'en souviendrait. Ici, elle est dans le dépôt, elle se cherche, et un
+ * seul booléen la commande.
+ */
+export const robotsMeta = () =>
+  INDEXABLE ? [] : [{ name: 'robots', content: 'noindex, nofollow' }]

@@ -1,0 +1,25 @@
+# Gabarit d'unité d'autodeploy. À recopier dans le deploy/systemd/ de
+# l'application EN LA RENOMMANT avec le nom de l'app, pour que deux applications
+# n'entrent pas en collision dans /etc/systemd/system/ :
+#
+#   seo-factory-autodeploy@.service
+#   stockcrm-autodeploy@.service
+#
+# L'instance (%i) est le NOM DU DOSSIER sous /opt, donc le STACK :
+#
+#   systemctl enable --now seo-factory-autodeploy@seo-factory-dev.timer
+#   systemctl enable --now seo-factory-autodeploy@seo-factory-prod.timer
+[Unit]
+Description=Déploiement automatique de %i
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/%i
+ExecStart=/opt/%i/deploy/autodeploy.sh
+# Un déploiement (build des images) dure plus longtemps que l'intervalle du
+# timer. systemd ne relance pas une unité déjà en cours d'exécution : le
+# déclenchement suivant est simplement ignoré, sans chevauchement possible.
+# Le délai couvre donc un build complet plutôt que de le tuer en cours de route.
+TimeoutStartSec=1800
