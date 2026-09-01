@@ -53,6 +53,14 @@ précédentes — donc leur titre, qui est pour cette raison en haut de la carte
 retrait latéral se calcule à l'envers du rang, si bien que la dernière est la
 plus large et que la pile paraît s'ouvrir.
 
+⚠ **La réserve sous la pile est un élément, jamais un `padding-bottom`.** La
+zone dans laquelle une carte collante peut se déplacer s'arrête à la **boîte de
+contenu** de son conteneur : une marge intérieure n'y ajoute rien. Mesuré au
+navigateur, avec 495 px de padding, les quatre cartes se décollaient ensemble
+avant que la dernière ait atteint sa place. Un bloc vide (`.work-stack-tail`)
+occupe le flux, allonge la boîte de contenu, et donne enfin sa course à la
+dernière carte.
+
 `--i` et `--n` sont posés par la page : la CSS ne sait pas compter les frères
 d'un élément, et une carte qui les compterait irait lire son propre parent. Il a existé en deux exemplaires le temps d'un commit, et les deux
 avaient déjà divergé sur la couleur du texte : un bloc dupliqué ne reste jamais

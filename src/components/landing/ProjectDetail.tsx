@@ -93,6 +93,8 @@ export function ProjectDetail({
                 heading="h3"
               />
             ))}
+            {/* La course de la dernière carte. Voir `.work-stack-tail`. */}
+            <div aria-hidden="true" className="work-stack-tail" />
           </div>
         </>
       )}

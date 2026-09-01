@@ -68,6 +68,8 @@ export function ServiceDetail({
           {projects.map((project, i) => (
             <WorkBlock key={project.id} project={project} index={i} total={projects.length} />
           ))}
+          {/* La course de la dernière carte. Voir `.work-stack-tail`. */}
+          <div aria-hidden="true" className="work-stack-tail" />
         </div>
       )}
     </main>

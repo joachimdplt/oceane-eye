@@ -38,6 +38,8 @@ export function Work({ title, projects }: { title: string; projects: Project[] }
             heading="h3"
           />
         ))}
+        {/* La course de la dernière carte. Voir `.work-stack-tail`. */}
+        <div aria-hidden="true" className="work-stack-tail" />
       </div>
     </>
   )

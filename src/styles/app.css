@@ -276,21 +276,24 @@
 
      La carte n'occupe pas toute la hauteur : il faut que la suivante ait de quoi
      apparaître avant que celle-ci ne soit sortie. */
-  /* La réserve sous la pile, et c'est elle qui fait bloquer la dernière carte.
+  /* La réserve sous la pile est un ÉLÉMENT, pas une marge intérieure.
 
-     Un élément collant n'a de prise que sur ce qui reste de son conteneur SOUS
-     lui. La dernière carte est la dernière du flux : sans réserve, elle atteint
-     sa position d'arrêt à l'instant même où le conteneur se termine, donc elle
-     ne se colle jamais — elle passe, tout simplement.
+     C'est le piège de tout cet empilement, et il coûte cher à trouver : la zone
+     dans laquelle une carte collante peut se déplacer s'arrête à la BOÎTE DE
+     CONTENU de son conteneur. Un `padding-bottom` n'y ajoute rien. Mesuré au
+     navigateur : avec 495 px de padding, l'écart entre le bas de la pile et les
+     cartes restait figé à 1067 px, soit exactement la hauteur d'une carte plus
+     ce padding — la contrainte l'ignorait purement et simplement, et les quatre
+     cartes se décollaient ensemble avant que la dernière ait atteint sa place.
 
-     Pendant cette réserve, les quatre cartes sont collées et RIEN ne bouge :
-     c'est là que la pile se regarde. Puis le bloc suivant, opaque, monte
-     par-dessus.
-
-     La valeur est en `svh` et non en pixels : elle doit rester une fraction de
-     l'écran, quelle que soit la hauteur des cartes. */
+     Un bloc vide, lui, occupe le flux : il allonge la boîte de contenu, donc la
+     course. C'est ce qui donne enfin sa prise à la dernière carte. */
   .work-stack {
-    padding-bottom: 55svh;
+    padding-bottom: 0;
+  }
+
+  .work-stack-tail {
+    height: 55svh;
   }
 
   /* Le pas de l'empilement.
