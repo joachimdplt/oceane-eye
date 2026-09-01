@@ -163,7 +163,7 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
 
         <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-4">
           <span className="block w-px h-16 bg-ink" aria-hidden="true" />
-          <span className="font-garamond text-ink text-eyebrow-lg md:text-sm font-bold uppercase tracking-eyebrow">
+          <span className="label text-ink">
             {scrollCue}
           </span>
         </div>

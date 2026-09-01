@@ -237,6 +237,40 @@
     height: 160svh;
   }
 
+  /* Les micro-libellés : « Défiler », un délai, une action.
+     Même famille que le texte courant, en plus petit et sans capitales : la
+     page n'a plus qu'un registre en bas de casse, et la hiérarchie se fait par
+     la taille plutôt que par la casse. */
+  .label {
+    font-family: var(--font-dm);
+    font-weight: 500;
+    font-size: 0.8125rem;
+    letter-spacing: 0.01em;
+  }
+
+  /* Le texte courant.
+
+     DM Sans en 500, en bas de casse : c'est le seul endroit de la page destiné
+     à se lire comme de la prose, donc le seul qui ne crie pas. Aucune casse ne
+     lui est imposée, ce qui laisse une capitale au milieu d'une phrase vouloir
+     dire quelque chose (COPYWRITING.md § 12).
+
+     Le crénage est très légèrement resserré : DM Sans est dessinée un peu large
+     pour du texte de labeur. */
+  .body-text {
+    font-family: var(--font-dm);
+    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+  }
+
+  @media (min-width: 48rem) {
+    .body-text {
+      font-size: 1.25rem;
+    }
+  }
+
   /* Les textes de bordure — les deux blocs posés aux bords de l'écran.
 
      Ils empruntent la grotesque du titre 2 : la Garalde donne le nom, la

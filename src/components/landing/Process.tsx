@@ -23,7 +23,7 @@ export function Process({ title, steps }: { title: string; steps: Step[] }) {
             </p>
             <div className="flex flex-col gap-3">
               <h3 className="border-text-xl text-ink">{step.name}</h3>
-              <p className="font-garamond text-ink text-lg md:text-xl leading-prose max-w-3xl">
+              <p className="body-text text-ink max-w-3xl">
                 {step.detail}
               </p>
             </div>

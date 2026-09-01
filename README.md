@@ -57,8 +57,14 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   formule de l'overlay est neutre** et le grain disparaît ; et un bruit recentré
   près du blanc plutôt que près du gris moyen. Mesuré au rendu : moyenne 247,
   écart-type 8,3 sur 255. `slope` dans le filtre est le bouton.
-- Quatre polices, chacune pour un emploi : EB Garamond (`.title1`), Space
-  Grotesk (`.title2`, `.border-text-xl`), DM Sans 500 (la nav, et elle seule). Le texte porte la même couleur sur le
+- Trois familles, chacune pour un emploi :
+  - **EB Garamond italique** — `.title1`, les titres.
+  - **Space Grotesk** — `.title2` (les noms de projets), `.border-text-xl`.
+  - **DM Sans 500** — tout ce qui se lit : `.body-text` (la prose), `.label`
+    (les micro-libellés), la nav.
+- **Plus une seule capitale forcée sur la page.** La hiérarchie se fait par la
+  taille, jamais par la casse — ce qui laisse une capitale au milieu d'une
+  phrase vouloir dire quelque chose (COPYWRITING.md § 12). Le texte porte la même couleur sur le
   fond et sur l'image, puisque le titre déborde de l'arche des deux côtés.
 - Deux classes de titre, qui disent une **voix** et non une taille : elles se
   composent au même corps et ne diffèrent que par le dessin, ce qui permet de

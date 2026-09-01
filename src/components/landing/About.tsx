@@ -7,7 +7,7 @@ export function About({ title, lines }: { title: string; lines: string[] }) {
     <Block id="studio" title={<BlockTitle>{title}</BlockTitle>}>
       <div className="flex flex-col gap-6 max-w-3xl">
         {lines.map((line) => (
-          <p key={line} className="border-text-xl text-ink">
+          <p key={line} className="body-text text-ink">
             {line}
           </p>
         ))}

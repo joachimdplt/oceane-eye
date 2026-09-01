@@ -20,7 +20,7 @@ export function ErrorState({ messages, ...props }: ErrorComponentProps & { messa
   console.error(props.error)
 
   const actionClass =
-    'font-garamond text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow underline underline-offset-4'
+    'label text-ink underline underline-offset-4'
 
   return (
     <main className="min-h-svh flex items-center px-6 md:px-gutter py-20">

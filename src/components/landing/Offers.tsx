@@ -35,7 +35,7 @@ export function Offers({ title, offers }: { title: string; offers: Offer[] }) {
               </p>
             </div>
 
-            <p className="font-garamond text-ink text-lg md:text-xl leading-prose max-w-prose">
+            <p className="body-text text-ink max-w-prose">
               {offer.pitch}
             </p>
 
@@ -43,14 +43,14 @@ export function Offers({ title, offers }: { title: string; offers: Offer[] }) {
               {offer.deliverables.map((item) => (
                 <li
                   key={item}
-                  className="font-garamond text-ink text-base md:text-lg leading-prose"
+                  className="body-text text-ink"
                 >
                   {item}
                 </li>
               ))}
             </ul>
 
-            <p className="font-garamond text-ink text-eyebrow-lg font-bold uppercase tracking-eyebrow mt-auto">
+            <p className="label text-ink mt-auto">
               {offer.duration}
             </p>
           </li>
