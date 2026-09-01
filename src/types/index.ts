@@ -17,6 +17,16 @@ export type HeroMedia =
   | { kind: 'image'; src: string; alt: string }
   | { kind: 'video'; src: string; poster: string; alt: string }
 
+/**
+ * Le titre est un bloc-marque, pas une phrase : le nom porté par le titre 1, et
+ * le mot qui dit le métier posé à côté en titre 2. Les deux vivent séparément
+ * parce qu'ils ne sont pas composés dans la même police.
+ */
+export interface HeroTitle {
+  name: string
+  tag: string
+}
+
 /** Le bloc de droite : d'où l'on travaille, à quelle heure, et depuis quand. */
 export interface HeroAside {
   place: string
@@ -29,7 +39,7 @@ export interface HeroAside {
 export interface HeroContent {
   /** Le métier, au-dessus du nom. */
   role: string
-  title: string
+  title: HeroTitle
   body: string
   /** Ce que l'arche révèle : une image, ou un film. */
   media: HeroMedia

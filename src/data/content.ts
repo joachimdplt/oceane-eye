@@ -8,7 +8,7 @@ import type { ErrorMessages, HeroContent, PageMeta } from '~/types'
  */
 export const hero: HeroContent = {
   role: 'SERVICE 1 - SERVICE 2 - SERVICE 3',
-  title: 'L’œil d’Océane',
+  title: { name: 'Océane', tag: 'studio' },
   body: '+10 clients accompagnés',
   // ⚠ Image de remplacement, à changer : elle vient d'un autre projet et ne
   // dit rien du travail présenté. Déposer la bonne au même chemin suffit.
@@ -21,7 +21,7 @@ export const hero: HeroContent = {
 }
 
 export const meta: PageMeta = {
-  title: 'L’œil d’Océane',
+  title: 'Océane studio · Graphiste',
   description:
     'Identité visuelle, branding et direction artistique. Huit ans d’expérience au service de votre image de marque.',
 }

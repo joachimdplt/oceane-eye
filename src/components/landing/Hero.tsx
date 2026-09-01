@@ -116,7 +116,13 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
           className="absolute inset-x-0 -translate-y-1/2 title1 text-accent text-center whitespace-nowrap px-6"
           style={{ top: `${titleTop.toFixed(2)}%` }}
         >
-          <GrowText text={title} delay={120} spread={620} />
+          <GrowText text={title.name} delay={120} spread={620} />
+          {/* Le mot du métier, en titre 2, aligné sur la même ligne de base que
+              le nom : c'est ce qui en fait un bloc-marque plutôt que deux
+              titres empilés. Il arrive après, une fois le nom posé. */}
+          <span className="title2 ml-3 md:ml-5">
+            <GrowText text={title.tag} delay={760} spread={240} />
+          </span>
         </h1>
 
         {/* Les textes de flanc, en miroir de part et d'autre du titre. */}

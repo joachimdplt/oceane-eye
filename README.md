@@ -48,12 +48,15 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   Son seul réglage est l'opacité — 0.32 reproduit l'écart-type mesuré sur la
   référence, 8,6 niveaux sur 255. Le texte porte la même couleur sur le
   fond et sur l'image, puisque le titre déborde de l'arche des deux côtés.
-- Deux polices, deux classes de titre :
-  - **`.title1`** — EB Garamond italique, bas de casse, la voix principale.
-  - **`.title2`** — Space Grotesk, capitales, un cran plus bas dans l'échelle.
-    Le contrepoint : largeur constante et crénage positif, là où la Garalde vit
-    de ses bas de casse et de son inclinaison. Deux dessins qui ne se
-    ressemblent pas, plutôt que deux qui se ressemblent presque.
+- Deux classes de titre, qui disent une **voix** et non une taille : elles se
+  composent au même corps et ne diffèrent que par le dessin, ce qui permet de
+  poser les deux dans un même titre sans qu'il se lise comme deux niveaux.
+  - **`.title1`** — EB Garamond italique.
+  - **`.title2`** — Space Grotesk romain.
+
+  `.title2` déclare `font-style: normal` et ce n'est pas redondant : la
+  propriété s'hérite, donc imbriquée dans un `.title1` elle prenait son
+  italique sans que rien ne le demande.
 - La Garalde : `--font-garamond`. **Adobe Garamond Pro est sous licence Adobe** —
   elle ne peut être ni servie depuis Google Fonts ni auto-hébergée. La page est
   donc composée en **EB Garamond**, sa reprise libre, dont l'italique est
