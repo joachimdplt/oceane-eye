@@ -300,12 +300,12 @@
     }
   }
 
-  /* Le voile d'une carte : aux deux bords, puisque le nom est en haut et le
-     reste en bas. Le milieu reste clair, l'image doit se voir. */
+  /* Le voile d'une carte : en haut seulement, là où se tient toute la ligne de
+     texte. Il descend assez pour couvrir la ligne sur deux niveaux, et s'arrête
+     là — l'image doit se voir. */
   .card-scrim {
-    background:
-      linear-gradient(to bottom, rgb(0 0 0 / 0.45) 0%, rgb(0 0 0 / 0) 30%),
-      linear-gradient(to top, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0) 40%);
+    height: 40%;
+    background: linear-gradient(to bottom, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 100%);
   }
 
   /* Le voile posé sous le texte des projets.

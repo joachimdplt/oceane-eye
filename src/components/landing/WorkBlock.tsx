@@ -12,10 +12,12 @@ import type { Project } from '~/types'
  * très longtemps.
  *
  * Les cartes se collent à des hauteurs croissantes : la première se cale, la
- * deuxième glisse par-dessus et se cale un cran plus bas, et ainsi de suite. Ce
- * décalage est ce qui laisse voir le bord haut de chaque carte déjà passée,
- * donc son titre — c'est pour ça que le nom est en HAUT de la carte et non en
- * bas comme avant.
+ * deuxième glisse par-dessus et se cale un cran plus bas, et ainsi de suite.
+ *
+ * Seul le BORD HAUT d'une carte déjà passée reste visible. Tout ce qu'elle a à
+ * dire tient donc sur cette bande : le nom, ce qui a été livré et la
+ * discipline, sur une seule ligne. Ce qui serait posé plus bas ne se lirait que
+ * sur la dernière carte de la pile.
  *
  * Elles s'élargissent aussi en descendant. C'est la dernière qui est la plus
  * large : la pile paraît s'ouvrir au lieu de se refermer.
@@ -57,13 +59,12 @@ export function WorkBlock({
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Un voile aux deux bords : le nom est en haut, le reste en bas, et la
-          photo change à chaque carte. Sans lui, la lisibilité dépendrait de
-          l'image. */}
-      <span aria-hidden="true" className="card-scrim absolute inset-0" />
+      {/* Le voile ne couvre plus que le haut : c'est la seule bande où il y a
+          du texte, et l'assombrir en bas ne ferait que manger l'image. */}
+      <span aria-hidden="true" className="card-scrim absolute inset-x-0 top-0" />
 
-      <div className="relative h-full flex flex-col justify-between p-6 md:p-10">
-        <Heading className="title2 title-panel text-ground">
+      <div className="relative flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 p-6 md:p-10">
+        <Heading className="title2 title-panel text-ground shrink-0">
           <Link
             to="/travaux/$projectId"
             params={{ projectId: project.id }}
@@ -73,20 +74,18 @@ export function WorkBlock({
           </Link>
         </Heading>
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 max-w-page">
-          <p className="body-text text-ground max-w-2xl">{project.summary}</p>
+        <p className="body-text text-ground md:flex-1">{project.summary}</p>
 
-          {/* La discipline mène à sa prestation, qui porte tous ses travaux.
-              C'est le seul chemin vers ceux que l'accueil ne montre pas : il
-              n'en garde qu'un par discipline. */}
-          <Link
-            to="/services/$serviceId"
-            params={{ serviceId: project.offer }}
-            className="label text-ground shrink-0 no-underline underline-offset-4 hover:underline"
-          >
-            {project.discipline}
-          </Link>
-        </div>
+        {/* La discipline mène à sa prestation, qui porte tous ses travaux.
+            C'est le seul chemin vers ceux que l'accueil ne montre pas : il
+            n'en garde qu'un par discipline. */}
+        <Link
+          to="/services/$serviceId"
+          params={{ serviceId: project.offer }}
+          className="label text-ground shrink-0 no-underline underline-offset-4 hover:underline"
+        >
+          {project.discipline}
+        </Link>
       </div>
     </article>
   )
