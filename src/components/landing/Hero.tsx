@@ -73,7 +73,13 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
 
   return (
     <section ref={track} className="relative bg-ground" style={{ height: `${TRACK * 100}svh` }}>
-      <div className="sticky top-0 h-svh overflow-hidden">
+      <div className="sticky top-0 h-svh overflow-hidden bg-ground">
+        {/* Le grain se pose sur le fond, derrière l'image : la photo a déjà le
+            sien. Le fond est porté par ce conteneur et non par la section
+            parente, car `position: sticky` ouvre un contexte d'empilement — un
+            `mix-blend-mode` ne voit que ce qui est peint dans le sien. */}
+        <span aria-hidden="true" className="grain absolute inset-0" />
+
         {/* Le film ne démarre pas pour qui a demandé moins de mouvement : son
             affiche tient l'écran, ce qui est aussi ce qu'on voit le temps du
             chargement. */}

@@ -43,7 +43,10 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   JSX — c'est le § 9, et la commande d'audit du § 12 le vérifie.
 - Le texte, l'image et le film : `src/data/content.ts`.
 - Deux couleurs dans `@theme`, pas trois : `--color-ground` (#647179, le fond)
-  et `--color-accent` (#FFDE59, le texte). Le texte porte la même couleur sur le
+  et `--color-accent` (#FFDE59, le texte). Le fond porte un **grain** (classe
+  `.grain`) : un aplat se lirait comme un trou à côté d'une photo argentique.
+  Son seul réglage est l'opacité — 0.32 reproduit l'écart-type mesuré sur la
+  référence, 8,6 niveaux sur 255. Le texte porte la même couleur sur le
   fond et sur l'image, puisque le titre déborde de l'arche des deux côtés.
 - La police : `--font-garamond`. **Adobe Garamond Pro est sous licence Adobe** —
   elle ne peut être ni servie depuis Google Fonts ni auto-hébergée. La page est
