@@ -53,15 +53,47 @@ export interface HeroContent {
 }
 
 /**
- * Un bloc de la page, sous l'écran d'ouverture.
+ * Une prestation vendue.
  *
- * `id` sert d'ancre : il vit dans les données parce qu'un lien qui pointe une
- * section doit pouvoir être écrit à côté d'elle, pas déduit de son titre — un
- * titre se réécrit, une adresse non.
+ * `from` est un prix plancher, pas un tarif : il filtre les demandes sans
+ * engager sur un périmètre qu'on n'a pas encore lu. `deliverables` dit ce que
+ * le client emporte, parce qu'un prix sans périmètre ne se compare à rien.
  */
-export interface LandingSection {
+export interface Offer {
   id: string
-  title: string
+  name: string
+  pitch: string
+  deliverables: string[]
+  /** Plancher en euros, hors taxes. */
+  from: number
+  /** Délai indicatif, en clair. */
+  duration: string
+}
+
+/** Un projet livré. */
+export interface Project {
+  id: string
+  name: string
+  /** La discipline, telle qu'elle se vend. */
+  discipline: string
+  /** Ce qui a été livré, en une phrase. */
+  summary: string
+  image: string
+}
+
+/** Une étape de la méthode. */
+export interface Step {
+  id: string
+  name: string
+  detail: string
+}
+
+/** Où l'on écrit, et à qui. */
+export interface Contact {
+  email: string
+  phone: string
+  instagram: string
+  instagramUrl: string
 }
 
 /** Ce que la page raconte aux moteurs et aux aperçus de partage. */

@@ -172,6 +172,31 @@
      L'opacité est le seul bouton : 0.32 donne un écart-type de 8,6 niveaux sur
      255, la valeur mesurée sur la référence. Monter pour plus de grain,
      descendre pour moins. */
+  /* Le dépliage des images.
+
+     La fenêtre s'écarte, l'image ne bouge pas : `clip-path` et rien d'autre,
+     donc aucune déformation et aucun recalcul de mise en page.
+
+     Le rayon est écrêté par le navigateur à la moitié de la largeur découpée :
+     une valeur volontairement énorme donne donc l'arche à toutes les tailles,
+     sans avoir à la calculer. */
+  .unfold {
+    clip-path: inset(0 28% 0 28% round 999px 999px 0 0);
+    transition: clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .unfold-open {
+    clip-path: inset(0 0 0 0 round 0 0 0 0);
+  }
+
+  /* Moins de mouvement demandé : l'image est simplement là, ouverte. */
+  @media (prefers-reduced-motion: reduce) {
+    .unfold {
+      transition: none;
+      clip-path: inset(0 0 0 0 round 0 0 0 0);
+    }
+  }
+
   /* La piste sur laquelle l'arche s'ouvre.
      Une hauteur et rien d'autre : elle ne porte aucun contenu, elle donne la
      distance de défilement pendant laquelle l'écran épinglé au-dessus d'elle

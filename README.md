@@ -3,9 +3,14 @@
 Site public en [TanStack Start](https://tanstack.com/start) (React 19, rendu
 serveur), Tailwind v4, déployé en Docker derrière un Caddy partagé.
 
-Le portfolio d'Océane, graphiste — identité visuelle, branding et direction
-artistique. Une page, en blocs plein écran : l'ouverture avec son arche, puis
-cinq sections qui ne portent pour l'instant que leur titre.
+Le site d'Ocean Eye Studio — identité visuelle, direction artistique,
+packaging. Une page, en blocs plein écran : l'ouverture avec son arche, le
+studio, les services **avec leurs prix**, les neuf projets, la méthode, le
+contact.
+
+Le contenu vient de l'ancien site Framer (`oceaneye-portfolio.com`), avec un
+changement de discours assumé : l'ancien disait ce qu'Océane aime faire, celui-ci
+dit ce que le studio livre et ce que ça coûte.
 
 ## Démarrer
 
@@ -27,7 +32,8 @@ src/
   types/            → types du domaine, en barrel
   data/             → transversal : le contenu éditorial, statique
   components/
-    ui/             → génériques : GrowText, Reveal, LiveTime, NotFound, ErrorState
+    ui/             → génériques : GrowText, Reveal, Unfold, LiveTime,
+                       NotFound, ErrorState
     landing/        → Hero (l'arche qui s'ouvre en plein écran au défilement)
   routes/           → Couche 5, assemblage seul (TanStack Router)
   utils/seo.ts      → SITE_URL : l'adresse du site, en un seul endroit
@@ -119,6 +125,19 @@ media: { kind: 'video', src: '/video/hero.mp4', poster: '/img/hero.jpg', alt: ''
 
 Le film porte toujours une affiche : c'est elle qu'on montre à qui a demandé
 moins de mouvement, et elle qui tient l'écran le temps du chargement.
+
+## ⚠ Les prix ne sont pas validés
+
+`offers` dans `src/data/content.ts` porte quatre planchers — 2 400, 3 200,
+1 800 et 900 € — **calés sur le marché français d'un studio indépendant de ce
+niveau d'expérience, pas sur une grille existante**. Personne d'autre qu'Océane
+ne peut les arrêter. Ils sont là pour que la page tienne debout, pas pour être
+publiés tels quels.
+
+Le choix du plancher (« dès ») plutôt que du tarif est délibéré : il écarte les
+demandes hors budget sans engager sur un périmètre qu'on n'a pas encore lu. Et
+chaque prix est posé à côté de ce qu'il achète — un montant seul ne se compare
+à rien, ce qui est exactement pourquoi tout le monde écrit « sur devis ».
 
 ## À finir
 
