@@ -26,7 +26,7 @@ src/
   types/            → types du domaine, en barrel
   data/             → transversal : le contenu éditorial, statique
   components/
-    ui/             → génériques : GrowText, NotFound, ErrorState
+    ui/             → génériques : GrowText, LiveTime, NotFound, ErrorState
     landing/        → Hero (l'arche qui s'ouvre en plein écran au défilement)
   routes/           → Couche 5, assemblage seul (TanStack Router)
   utils/seo.ts      → SITE_URL : l'adresse du site, en un seul endroit

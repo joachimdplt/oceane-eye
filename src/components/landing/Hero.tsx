@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { HeroContent } from '~/types'
 import { GrowText } from '~/components/ui/GrowText'
+import { LiveTime } from '~/components/ui/LiveTime'
 
 /** La géométrie de l'arche au repos, en pourcentage de l'écran. */
 const ARCH = { top: 16, side: 36, bottom: 24 }
@@ -122,22 +123,29 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
           <GrowText text={title} delay={120} spread={620} />
         </h1>
 
-        {/* Les textes de flanc. Sous `md` ils descendent au-dessus de
-            l'invitation à défiler : à mi-hauteur ils passeraient sous le titre. */}
+        {/* Les textes de flanc, en miroir de part et d'autre du titre. */}
         <div
-          className="absolute inset-x-0 bottom-36 px-6 md:inset-y-0 md:bottom-auto md:px-gutter md:flex md:items-center transition-opacity duration-300 motion-reduce:transition-none"
-          style={{ opacity: asidesOpacity }}
+          className="hero-asides absolute inset-x-0 px-6 md:px-gutter transition-opacity duration-300 motion-reduce:transition-none"
+          style={
+            {
+              opacity: asidesOpacity,
+              '--aside-top': `${titleTop.toFixed(2)}%`,
+            } as React.CSSProperties
+          }
         >
-          <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col md:flex-row md:justify-between items-center gap-8">
+          <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-8">
+            {/* À gauche, ferré à gauche. */}
             <p className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-left">
               {body}
             </p>
 
-            {aside ? (
-              <p className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-right">
-                {aside}
-              </p>
-            ) : null}
+            {/* À droite, ferré à droite : les deux blocs se regardent en
+                miroir, comme la référence. */}
+            <p className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-right">
+              {aside.place} · <LiveTime timeZone={aside.timeZone} />
+              <br />
+              {aside.since}
+            </p>
           </div>
         </div>
 

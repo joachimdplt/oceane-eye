@@ -16,6 +16,7 @@ export const hero: HeroContent = {
   // Pour passer au film : déposer public/video/hero.mp4 et son affiche, puis
   //   media: { kind: 'video', src: '/video/hero.mp4', poster: '/img/hero.jpg', alt: '' }
   media: { kind: 'image', src: '/img/hero.jpg', alt: '' },
+  aside: { place: 'Nice', timeZone: 'Europe/Paris', since: 'since 2018' },
   scrollCue: 'Défiler',
 }
 
