@@ -81,7 +81,7 @@ export const about: AboutContent = {
  */
 export const offersIntro: OffersIntro = {
   lede:
-    'Une marque a un univers avant d’avoir une forme. Le travail commence là : aller chercher ce qui vous ressemble déjà sans avoir été nommé, puis lui donner de quoi se voir. Voici ce qu’on en fait, en combien de temps, et à partir de combien.',
+    'Une marque a un univers avant d’avoir une forme. Le travail commence là : aller chercher ce qui vous ressemble déjà sans avoir été nommé, puis lui donner de quoi se voir.',
 }
 
 export const offers: Offer[] = [
