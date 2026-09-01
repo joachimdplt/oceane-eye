@@ -59,7 +59,7 @@ export function Offers({
   return (
     <section
       id="services"
-      className="relative isolate min-h-svh flex flex-col justify-center gap-12 md:gap-16 px-6 md:px-gutter py-24 bg-ground overflow-hidden"
+      className="relative isolate min-h-svh flex flex-col justify-center gap-12 md:gap-16 px-6 md:px-gutter pt-24 pb-16 bg-ground overflow-hidden"
     >
       <span aria-hidden="true" className="grain absolute inset-0" />
 
