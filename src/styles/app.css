@@ -360,6 +360,27 @@
     }
   }
 
+  /* Le titre d'un bloc.
+
+     Il annonce une section, il ne lui vole pas l'écran : les classes `title1`
+     et `title2` sont calées pour un nom qui occupe une page entière — le nom du
+     studio, celui d'un projet posé sur sa photo — et à cette taille, un
+     intertitre écrase ce qu'il annonce.
+
+     Seule la taille change ; la voix reste celle de la classe qu'on lui
+     associe. */
+  .title-block {
+    font-size: min(5vw, 3.25rem);
+    line-height: 1.02;
+  }
+
+  /* Le nom d'un panneau de prestation : plus petit encore, il doit tenir
+     couché dans une bande étroite. */
+  .title-panel {
+    font-size: min(3.4vw, 1.75rem);
+    line-height: 1.05;
+  }
+
   /* Les textes de bordure — les deux blocs posés aux bords de l'écran.
 
      Ils empruntent la grotesque du titre 2 : la Garalde donne le nom, la

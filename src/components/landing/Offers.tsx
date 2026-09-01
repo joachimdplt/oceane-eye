@@ -53,7 +53,7 @@ export function Offers({
       <span aria-hidden="true" className="grain absolute inset-0" />
 
       <div className="relative w-full max-w-page xl:max-w-wide mx-auto flex flex-col gap-5">
-        <h2 className="title2 text-ink">
+        <h2 className="title2 title-block text-ink">
           <Reveal>
             <GrowText text={title} delay={0} spread={520} />
           </Reveal>
@@ -93,10 +93,10 @@ export function Offers({
 
                   {/* Fermé, le nom se redresse : couché, il serait tronqué. */}
                   <span
-                    className={`absolute z-10 title2 text-ground whitespace-nowrap ${
+                    className={`absolute z-10 title2 title-panel text-ground whitespace-nowrap ${
                       active
                         ? 'top-6 left-6 md:top-8 md:left-8'
-                        : 'bottom-6 left-6 md:bottom-8 md:left-1/2 md:-translate-x-1/2 md:origin-center md:-rotate-90'
+                        : 'top-6 left-6 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-rotate-90'
                     }`}
                   >
                     {offer.name}
@@ -105,18 +105,32 @@ export function Offers({
                   {/* Toujours rendu, seulement rogné quand le panneau est
                       fermé : un prix retiré du document est un prix que
                       personne ne trouve. */}
+                  {/* Le prix est HORS du bloc qui s'efface : c'est la première
+                      chose qu'on vient chercher ici, et trois prix sur quatre
+                      cachés derrière un survol sont trois prix qu'on ne lit
+                      pas. Fermé, il se réduit et se centre au pied de la bande. */}
                   <span
-                    className={`absolute inset-x-0 bottom-0 z-10 flex flex-col gap-4 p-6 md:p-8 transition-opacity duration-300 motion-reduce:transition-none ${
+                    className={`absolute inset-x-0 bottom-0 z-20 flex flex-wrap items-baseline gap-x-4 gap-y-1 px-6 md:px-8 pb-6 md:pb-8 ${
+                      active ? 'justify-between' : 'justify-center text-center'
+                    }`}
+                  >
+                    <span className={active ? 'border-text-xl text-ground' : 'label text-ground'}>
+                      dès {euros(offer.from)}
+                    </span>
+                    <span
+                      className={`label text-ground transition-opacity duration-300 motion-reduce:transition-none ${
+                        active ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      {offer.duration}
+                    </span>
+                  </span>
+
+                  <span
+                    className={`absolute inset-x-0 bottom-0 z-10 flex flex-col gap-4 p-6 md:p-8 pb-20 md:pb-24 transition-opacity duration-300 motion-reduce:transition-none ${
                       active ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
                   >
-                    <span className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                      <span className="border-text-xl text-ground">
-                        dès {euros(offer.from)}
-                      </span>
-                      <span className="label text-ground">{offer.duration}</span>
-                    </span>
-
                     <span className="body-text text-ground max-w-xl">{offer.pitch}</span>
 
                     <span className="flex flex-col">
