@@ -61,6 +61,12 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
   const radius = (999 * (1 - ease)).toFixed(0)
   const clip = `inset(${inset(ARCH.top)}% ${inset(ARCH.side)}% ${inset(ARCH.bottom)}% ${inset(ARCH.side)}% round ${radius}px ${radius}px 0 0)`
 
+  // Le centre optique de l'arche : à mi-hauteur de sa propre boîte, pas de
+  // l'écran. Au repos elle va de 16 % à 76 %, donc son milieu est à 46 % ; une
+  // fois ouverte elle occupe tout, et les deux centres se confondent à 50 %.
+  const archCentre = (ARCH.top + (100 - ARCH.bottom)) / 2
+  const titleTop = archCentre + (50 - archCentre) * ease
+
   // Les textes de flanc s'effacent pendant le premier tiers : passé là, l'image
   // occupe leur place et un texte posé dessus deviendrait illisible.
   const asidesOpacity = Math.max(0, 1 - ease * 3)
@@ -93,43 +99,39 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
           />
         )}
 
-        <div className="relative h-full flex items-center px-6 md:px-gutter py-20">
-          {/* Sous `md`, une simple pile : les trois colonnes se superposeraient
-              dans la même cellule et le titre passerait sur le texte. */}
-          <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col items-center gap-8 md:grid md:grid-cols-3 md:items-center">
-            <p
-              className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-left md:justify-self-start transition-opacity duration-300 motion-reduce:transition-none"
-              style={{ opacity: asidesOpacity }}
-            >
+        {/* Le titre, plein centre de l'arche.
+
+            Posé en absolu plutôt que dans la grille : au centre d'une colonne,
+            il dépendait de ce que pesaient les textes de flanc. Ici il ne
+            dépend plus que de l'arche, et il déborde des deux côtés comme la
+            référence — donc il est sur le fond autant que sur l'image, et
+            porte la même couleur dans les deux cas.
+
+            Le `nowrap` est une promesse que le texte doit tenir : au-delà
+            d'une vingtaine de signes, il finira par toucher les bords. */}
+        <h1
+          className="absolute inset-x-0 -translate-y-1/2 display text-accent text-center whitespace-nowrap px-6"
+          style={{ top: `${titleTop.toFixed(2)}%` }}
+        >
+          <GrowText text={title} delay={120} spread={620} />
+        </h1>
+
+        {/* Les textes de flanc. Sous `md` ils descendent au-dessus de
+            l'invitation à défiler : à mi-hauteur ils passeraient sous le titre. */}
+        <div
+          className="absolute inset-x-0 bottom-36 px-6 md:inset-y-0 md:bottom-auto md:px-gutter md:flex md:items-center transition-opacity duration-300 motion-reduce:transition-none"
+          style={{ opacity: asidesOpacity }}
+        >
+          <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col md:flex-row md:justify-between items-center gap-8">
+            <p className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-left">
               {body}
             </p>
 
-            {/* Le titre déborde de l'arche des deux côtés, comme la référence :
-                il est donc posé sur le fond autant que sur l'image, et porte la
-                même couleur dans les deux cas. */}
-            {/* Sur une seule ligne, et il déborde de sa colonne : les pistes
-                de la grille sont en `minmax(0, 1fr)`, donc le débordement est
-                visuel et ne déplace rien. C'est ce qui fait passer le titre
-                par-dessus l'arche, comme la référence.
-
-                Le `nowrap` est une promesse que le texte doit tenir : au-delà
-                d'une vingtaine de signes, il finira par toucher les bords. */}
-            <h1 className="display text-accent text-center whitespace-nowrap md:col-start-2 md:row-start-1">
-              <GrowText text={title} delay={120} spread={620} />
-            </h1>
-
             {aside ? (
-              <p
-                className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-right md:justify-self-end transition-opacity duration-300 motion-reduce:transition-none"
-                style={{ opacity: asidesOpacity }}
-              >
+              <p className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-right">
                 {aside}
               </p>
-            ) : (
-              // La troisième colonne reste réservée même vide : sans elle, la
-              // grille se resserre et le titre cesse d'être au centre de l'écran.
-              <span aria-hidden="true" className="hidden md:block" />
-            )}
+            ) : null}
           </div>
         </div>
 
