@@ -58,9 +58,9 @@ export const blockTitles = {
  * un chiffre invente vaut moins qu'une case vide.
  */
 export const about: AboutContent = {
-  lede: 'Ocean Eye est un studio de design de marque, installé à Nice.',
+  lede: 'Ocean Eye est un studio de design de marque, ancré à Nice.',
   rest:
-    'On construit des identités qui tiennent hors de leur charte : sur un packaging, sur une devanture, sur un écran de téléphone. Le logo n’est pas le livrable, c’est la première pièce d’un système qui doit encore fonctionner dans deux ans, entre les mains de quelqu’un d’autre.',
+    'On y cherche ce qui fait qu’une marque se reconnaît : une couleur, un geste, une façon de dire les choses. L’intuition trouve la piste, la méthode la rend tenable. Puis on lui donne une forme qui vive ailleurs que dans sa charte — sur un packaging, sur une devanture, sur un écran de téléphone — et qui tienne encore dans deux ans, entre d’autres mains que les nôtres.',
   stats: [
     { value: '09', label: 'marques livrées', note: 'de l’identité au packaging' },
     { value: '08', label: 'années de pratique', note: 'en agence, en entreprise, en indépendant' },
@@ -81,7 +81,7 @@ export const about: AboutContent = {
  */
 export const offersIntro: OffersIntro = {
   lede:
-    'Quatre prestations, chacune avec son plancher et son délai. Le prix est posé à côté de ce qu’il achète : un montant seul ne se compare à rien.',
+    'Une marque a un univers avant d’avoir une forme. Le travail commence là : aller chercher ce qui vous ressemble déjà sans avoir été nommé, puis lui donner de quoi se voir. Voici ce qu’on en fait, en combien de temps, et à partir de combien.',
 }
 
 export const offers: Offer[] = [
