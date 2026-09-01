@@ -90,6 +90,19 @@ bougé, et reconstruit le cas échéant.
 systemctl enable --now ocean-eye-autodeploy@ocean-eye.timer
 ```
 
+## Les blocs empilés
+
+L'écran d'ouverture et sa piste de défilement sont **frères**, pas imbriqués :
+un élément collant se décroche au bout de son conteneur, donc enfermé dans sa
+propre piste le hero remontait de lui-même et le bloc suivant arrivait à sa
+suite. Côte à côte, ils ont `<main>` pour conteneur — le hero reste épinglé
+aussi longtemps qu'il est recouvert, et les blocs suivants lui glissent dessus.
+
+C'est aussi pour cela que la mesure du défilement lit la piste et non le hero :
+la piste suit immédiatement un écran d'exactement une hauteur d'écran, donc son
+haut est à `innerHeight` au repos. La position ne dépend ni de la hauteur de la
+page ni de l'endroit où le hero se trouve dedans.
+
 ## L'arche
 
 Le fond occupe l'écran en permanence ; ce qui grandit au défilement est la

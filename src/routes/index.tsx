@@ -19,12 +19,15 @@ export const Route = createFileRoute('/')({
 })
 
 function Landing() {
+  /* `<main>` est le conteneur de l'écran épinglé du hero : c'est lui qui
+     décide combien de temps il le reste. Il court sur toute la page, donc le
+     hero tient jusqu'à ce que les blocs suivants l'aient entièrement couvert. */
   return (
-    <>
+    <main>
       <Hero {...hero} />
       {sections.map((section) => (
         <Section key={section.id} {...section} />
       ))}
-    </>
+    </main>
   )
 }

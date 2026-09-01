@@ -6,11 +6,9 @@ import { LiveTime } from '~/components/ui/LiveTime'
 /** La géométrie de l'arche au repos, en pourcentage de l'écran. */
 const ARCH = { top: 16, side: 36, bottom: 24 }
 
-/** Hauteur de la piste de défilement, en écrans. */
-const TRACK = 2.6
 
 export function Hero({ title, disciplines, media, aside, scrollCue }: HeroContent) {
-  const track = useRef<HTMLElement | null>(null)
+  const track = useRef<HTMLDivElement | null>(null)
   const [progress, setProgress] = useState(0)
   const [still, setStill] = useState(false)
 
@@ -35,8 +33,13 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
     const read = () => {
       cancelAnimationFrame(frame)
       frame = requestAnimationFrame(() => {
+        // La piste suit immédiatement l'écran épinglé, qui fait exactement une
+        // hauteur d'écran. Son haut est donc à `innerHeight` quand on n'a pas
+        // encore bougé, et remonte d'autant qu'on défile — d'où une position
+        // qui ne dépend ni de la hauteur de la page ni de l'endroit où le hero
+        // se trouve dedans.
         const { top, height } = node.getBoundingClientRect()
-        const travelled = -top / Math.max(1, height - window.innerHeight)
+        const travelled = (window.innerHeight - top) / Math.max(1, height)
         setProgress(Math.min(1, Math.max(0, travelled)))
       })
     }
@@ -69,8 +72,15 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
   const titleTop = archCentre + (50 - archCentre) * ease
 
   return (
-    <section ref={track} className="relative bg-ground" style={{ height: `${TRACK * 100}svh` }}>
-      <div className="sticky top-0 h-svh overflow-hidden bg-ground">
+    /* L'écran épinglé et sa piste sont FRÈRES, et non l'un dans l'autre.
+
+       Enfermé dans sa piste, le collant s'en décrochait au bout — le hero
+       remontait donc de lui-même, et le bloc suivant arrivait à sa suite au
+       lieu de passer par-dessus. Sortis côte à côte, ils ont la page pour
+       conteneur : l'écran reste épinglé aussi longtemps qu'il est recouvert,
+       et les blocs qui suivent lui glissent dessus. */
+    <>
+      <div className="sticky top-0 h-svh overflow-hidden bg-ground isolate">
         {/* Le grain se pose sur le fond, derrière l'image : la photo a déjà le
             sien. Le fond est porté par ce conteneur et non par la section
             parente, car `position: sticky` ouvre un contexte d'empilement — un
@@ -164,6 +174,10 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
           </span>
         </div>
       </div>
-    </section>
+
+      {/* La distance sur laquelle l'arche s'ouvre. Elle ne porte rien : c'est
+          du défilement, pas du contenu. */}
+      <div ref={track} className="hero-track" aria-hidden="true" />
+    </>
   )
 }
