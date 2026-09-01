@@ -6,11 +6,9 @@ import { WorkBlock } from './WorkBlock'
 /**
  * La page d'un projet.
  *
- * Elle ne montre que ce dont on dispose : l'image, le nom, la discipline, la
- * phrase qui dit ce qui a été livré, et la prestation dont il relève. Une vraie
- * étude de cas demanderait le contexte, plusieurs vues et le résultat obtenu —
- * rien de tout cela n'existe encore, et meubler ferait plus de mal que la page
- * courte.
+ * Elle porte le contenu repris du portfolio d'Océane : la demande telle qu'elle
+ * s'est posée, la fiche du projet, et le récit de ce qui a été fait. C'est le
+ * récit qui fait la page — le reste le situe.
  *
  * Les projets voisins réutilisent le même bloc que partout ailleurs : c'est ce
  * qui garantit qu'ils se lisent exactement comme sur l'accueil.
@@ -24,7 +22,15 @@ export function ProjectDetail({
   project: Project
   offer?: Offer
   siblings: Project[]
-  ui: { back: string; offer: string; siblings: string }
+  ui: {
+    back: string
+    client: string
+    role: string
+    year: string
+    deliverables: string
+    offer: string
+    siblings: string
+  }
 }) {
   return (
     <main>
@@ -50,10 +56,30 @@ export function ProjectDetail({
             />
           </Unfold>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
-            <p className="body-text text-ink">{project.summary}</p>
+          <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-start">
+            <div className="flex flex-col gap-6 max-w-2xl">
+              <p className="body-text text-ink">{project.summary}</p>
+              <p className="body-text text-muted">{project.context}</p>
+            </div>
 
-            <dl className="flex flex-col gap-4">
+            {/* La fiche du projet : à qui, dans quel rôle, quand, et ce qui a
+                été remis. Une liste de définitions et non un tableau — ce sont
+                des paires, pas des lignes et des colonnes. */}
+            <dl className="flex flex-col md:min-w-64">
+              {(
+                [
+                  [ui.client, project.client],
+                  [ui.role, project.role],
+                  [ui.year, project.year],
+                  [ui.deliverables, project.deliverables],
+                ] as const
+              ).map(([terme, valeur]) => (
+                <div key={terme} className="flex flex-col gap-1 py-3 border-t border-rule">
+                  <dt className="label text-muted">{terme}</dt>
+                  <dd className="body-text text-ink">{valeur}</dd>
+                </div>
+              ))}
+
               <div className="flex flex-col gap-1 py-3 border-t border-rule">
                 <dt className="label text-muted">{ui.offer}</dt>
                 <dd className="body-text text-ink">
@@ -71,6 +97,16 @@ export function ProjectDetail({
                 </dd>
               </div>
             </dl>
+          </div>
+
+          {/* Le récit, en pleine largeur de colonne : c'est le cœur de la page,
+              pas une légende. */}
+          <div className="flex flex-col gap-6 max-w-3xl">
+            {project.narrative.map((para) => (
+              <p key={para} className="body-text text-ink">
+                {para}
+              </p>
+            ))}
           </div>
         </div>
       </section>

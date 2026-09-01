@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Work } from '~/components/landing/Work'
+import { BlockTitle } from '~/components/landing/BlockTitle'
+import { WorkMosaic } from '~/components/landing/WorkMosaic'
 import {
   blockTitles,
   pageMeta,
@@ -8,11 +9,11 @@ import {
 import { SITE_URL, canonical, seo } from '~/utils/seo'
 
 /**
- * La page des projets : les neuf, et non la sélection de l'accueil.
+ * La page des projets : les neuf, en mosaïque.
  *
- * C'est la seule différence avec le bloc de la page d'accueil, qui n'en garde
- * qu'un par prestation — d'où le même composant, nourri d'une liste plus
- * longue.
+ * Une mosaïque et non la pile de l'accueil : celle-ci montre un projet à la
+ * fois, ce qui est juste pour une sélection de quatre et intenable pour neuf.
+ * Ici on veut pouvoir les embrasser d'un regard et choisir.
  */
 export const Route = createFileRoute('/projets/')({
   head: () => {
@@ -28,7 +29,17 @@ export const Route = createFileRoute('/projets/')({
 function ProjetsPage() {
   return (
     <main>
-      <Work title={blockTitles.projets} projects={projects} />
+      <section className="relative isolate min-h-svh flex flex-col justify-center gap-10 md:gap-14 px-6 md:px-gutter pt-32 pb-24 bg-ground overflow-hidden">
+        <span aria-hidden="true" className="grain absolute inset-0" />
+
+        <div className="relative w-full max-w-page xl:max-w-wide mx-auto">
+          <BlockTitle>{blockTitles.projets}</BlockTitle>
+        </div>
+
+        <div className="relative w-full max-w-page xl:max-w-wide mx-auto">
+          <WorkMosaic projects={projects} />
+        </div>
+      </section>
     </main>
   )
 }

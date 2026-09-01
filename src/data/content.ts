@@ -74,15 +74,16 @@ export const blockTitles = {
  * un chiffre invente vaut moins qu'une case vide.
  */
 export const about: AboutContent = {
-  lede: 'Ocean Eye est un studio de design de marque, ancré à Nice.',
+  lede: 'Ocean Eye, c’est mon studio de design de marque. Ou plutôt : c’est moi, Océane, ancrée à Nice.',
   rest:
-    'On y cherche ce qui fait qu’une marque se reconnaît : une couleur, un geste, une façon de dire les choses. L’intuition trouve la piste, la méthode la rend tenable. Puis on lui donne une forme qui vive ailleurs que dans sa charte, sur un packaging, sur une devanture, sur un écran de téléphone, et qui tienne encore dans deux ans, entre d’autres mains que les nôtres.',
+    'Je cherche ce qui fait qu’une marque se reconnaît : une couleur, un geste, une façon de dire les choses. L’intuition trouve la piste, la méthode la rend tenable. Puis je lui donne une forme qui vive ailleurs que dans sa charte, sur un packaging, sur une devanture, sur un écran de téléphone, et qui tienne encore dans deux ans, entre d’autres mains que les miennes.',
   person: {
     name: 'Océane',
     role: 'Graphiste et directrice artistique',
     lines: [
-      'Le studio, c’est elle. Huit ans passés en agence, en entreprise et à son compte, à faire la même chose sous trois casquettes : donner une forme à ce qu’une marque n’a pas encore su dire.',
-      'Formée à la direction artistique, installée à Nice, elle travaille aussi bien pour une conciergerie de luxe que pour une édition de boîtes de sardines de collection. Ce qui ne change pas d’un projet à l’autre, c’est la méthode : écouter longtemps, proposer peu, et livrer un système que quelqu’un d’autre saura tenir.',
+      'Ce qui ne change pas d’un projet à l’autre, c’est ma méthode : écouter longtemps, proposer peu, et livrer un système que quelqu’un d’autre saura tenir.',
+      'J’ai passé huit ans en agence, en entreprise et à mon compte, à faire la même chose sous trois casquettes : donner une forme à ce qu’une marque n’a pas encore su dire.',
+      'Formée à la direction artistique et installée à Nice, je travaille aussi bien pour une conciergerie de luxe que pour une édition de boîtes de sardines de collection. Je puise dans la Méditerranée une matière sensible qui nourrit ma façon de créer.',
     ],
     image: '/img/oceane.jpg',
     alt: 'Océane, assise dans un fauteuil, en portrait noir et blanc.',
@@ -107,14 +108,14 @@ export const about: AboutContent = {
  */
 export const offersIntro: OffersIntro = {
   lede:
-    'Une marque a un univers avant d’avoir une forme. Le travail commence ici : aller chercher ce qui vous ressemble déjà sans avoir été nommé, puis lui donner de quoi se voir.',
+    'Une marque a un univers avant d’avoir une forme. Mon travail commence là : aller chercher ce qui vous ressemble déjà sans avoir été nommé, puis lui donner de quoi se voir.',
 }
 
 export const offers: Offer[] = [
   {
     id: 'identite',
     name: 'Identité visuelle',
-    pitch: 'Le système complet, livré prêt à être tenu par quelqu’un d’autre.',
+    pitch: 'Je construis le système complet, et je vous le livre prêt à être tenu sans moi.',
     deliverables: [
       'Logo et ses déclinaisons',
       'Palette et système typographique',
@@ -129,7 +130,7 @@ export const offers: Offer[] = [
   {
     id: 'direction-artistique',
     name: 'Direction artistique',
-    pitch: 'Le territoire visuel avant les visuels : ce qu’on montre, et ce qu’on ne montre pas.',
+    pitch: 'Je pose le territoire visuel avant les visuels : ce que votre marque montre, et ce qu’elle ne montre pas.',
     deliverables: [
       'Moodboards et pistes créatives',
       'Territoire visuel et règles de cadrage',
@@ -144,7 +145,7 @@ export const offers: Offer[] = [
   {
     id: 'packaging',
     name: 'Packaging',
-    pitch: 'L’objet qu’on tient en main, du volume au fichier d’impression.',
+    pitch: 'L’objet qu’on tient en main, du volume au fichier prêt pour l’imprimeur.',
     deliverables: [
       'Structure et calage sur le gabarit',
       'Illustration et mise en page',
@@ -159,7 +160,7 @@ export const offers: Offer[] = [
   {
     id: 'supports',
     name: 'Supports de communication',
-    pitch: 'Une campagne qui se tient, du format d’affichage au post.',
+    pitch: 'Je tiens la campagne d’un bout à l’autre, du format d’affichage au post.',
     deliverables: [
       'Affiches, dépliants, éditions',
       'Déclinaisons réseaux sociaux',
@@ -189,7 +190,7 @@ export const offers: Offer[] = [
 export const plans: PlansContent = {
   eyebrow: 'Ocean Eye Studio',
   lede: 'Deux façons de travailler ensemble, selon que votre marque se lance ou qu’elle avance déjà.',
-  rest: 'Le périmètre et le prix sont posés avant de commencer, et rien ne s’ajoute en chemin sans que vous l’ayez demandé.',
+  rest: 'Je pose le périmètre et le prix avant de commencer, et rien ne s’ajoute en chemin sans que vous l’ayez demandé.',
   // Une image neutre, et non un projet : entre deux formules, une réalisation
   // ferait croire qu'elle en illustre une des deux.
   image: '/img/hero.jpg',
@@ -205,7 +206,7 @@ export const plans: PlansContent = {
       ],
       from: 1800,
       unit: 'au projet',
-      note: 'Une identité livrée en une fois, avec ses fichiers et son guide d’usage.',
+      note: 'Je livre l’identité en une fois, avec ses fichiers et son guide d’usage.',
     },
     {
       id: 'mois',
@@ -217,7 +218,7 @@ export const plans: PlansContent = {
       ],
       from: 900,
       unit: 'par mois',
-      note: 'Vos supports tenus dans la durée, mois après mois.',
+      note: 'Je tiens vos supports dans la durée, mois après mois.',
     },
   ],
 }
@@ -309,38 +310,38 @@ export const socialProof: SocialProofContent = {
  */
 export const faq: FaqContent = {
   eyebrow: 'Réponses rapides',
-  lede: 'Ce qu’on nous demande avant de commencer, et ce qu’on répond.',
+  lede: 'Ce qu’on me demande avant de commencer, et ce que je réponds.',
   cta: { label: 'Poser la vôtre', href: '#contact' },
   items: [
     {
       question: 'Combien de temps prend une identité visuelle ?',
       answer:
-        'Quatre à six semaines pour une identité complète, deux à trois pour une campagne. Le délai est écrit dans le devis, avec les étapes qui le composent.',
+        'Quatre à six semaines pour une identité complète, deux à trois pour une campagne. J’écris le délai dans le devis, avec les étapes qui le composent.',
     },
     {
       question: 'Qu’est-ce que je reçois à la fin ?',
       answer:
-        'Tous les fichiers finaux, sources comprises, et le guide qui dit comment s’en servir. Une identité qu’on ne peut pas appliquer sans son auteur n’est pas livrée.',
+        'Tous les fichiers finaux, sources comprises, et le guide qui dit comment vous en servir. Une identité qu’on ne peut pas appliquer sans moi n’est pas livrée.',
     },
     {
       question: 'Et si le projet change en cours de route ?',
       answer:
-        'Le périmètre est écrit au cadrage. Ce qui s’y ajoute est chiffré à part et validé avant d’être fait, jamais découvert sur la facture.',
+        'Le périmètre est écrit au cadrage. Ce qui s’y ajoute, je le chiffre à part et vous le validez avant que je le fasse : jamais découvert sur la facture.',
     },
     {
       question: 'Combien de pistes créatives ?',
       answer:
-        'Au projet, le nombre est fixé au départ, avec les retouches qui vont avec. Au mois, il ne l’est pas.',
+        'Au projet, je fixe le nombre au départ, avec les retouches qui vont avec. Au mois, il ne l’est pas.',
     },
     {
       question: 'Travaillez-vous à distance ?',
       answer:
-        'Le studio est à Nice et travaille avec des marques ailleurs. Les rendez-vous se font sur place ou à distance, comme vous préférez.',
+        'Je suis à Nice et je travaille avec des marques ailleurs. On se voit sur place ou à distance, comme vous préférez.',
     },
     {
       question: 'Comment est-ce qu’on commence ?',
       answer:
-        'Par un échange d’une demi-heure sur ce que vous avez en tête. Il n’engage à rien et donne déjà une fourchette.',
+        'Par un échange d’une demi-heure sur ce que vous avez en tête. Il n’engage à rien, et je vous donne déjà une fourchette.',
     },
   ],
 }
@@ -356,25 +357,25 @@ export const steps: Step[] = [
     id: 'cadrage',
     name: 'Cadrage du projet',
     detail:
-      'On écrit ce qu’il faut obtenir avant de dessiner quoi que ce soit : à qui la marque parle, contre qui elle se tient, et ce qui devra encore fonctionner dans deux ans.',
+      'On écrit ensemble ce qu’il faut obtenir avant que je dessine quoi que ce soit : à qui la marque parle, contre qui elle se tient, et ce qui devra encore fonctionner dans deux ans.',
   },
   {
     id: 'direction',
     name: 'Réflexion de la direction artistique',
     detail:
-      'Votre univers devient des intentions visuelles : moodboards et pistes créatives. C’est ici que se décide l’esthétique, et c’est ici qu’on change d’avis sans que ça coûte cher.',
+      'Je traduis votre univers en intentions visuelles : moodboards et pistes créatives. C’est ici que se décide l’esthétique, et ici qu’on change d’avis sans que ça coûte cher.',
   },
   {
     id: 'conception',
     name: 'Conception de l’identité',
     detail:
-      'Logo, couleurs, typographies, éléments graphiques. Le système prend sa forme définitive, et chaque pièce est dessinée pour tenir à côté des autres.',
+      'Logo, couleurs, typographies, éléments graphiques. Le système prend sa forme définitive, et je dessine chaque pièce pour qu’elle tienne à côté des autres.',
   },
   {
     id: 'livraison',
     name: 'Livraison',
     detail:
-      'Tous les fichiers finaux, plus le guide qui dit comment s’en servir. Une identité qu’on ne peut pas appliquer sans son auteur n’est pas livrée.',
+      'Vous recevez tous les fichiers finaux, et le guide qui dit comment vous en servir. Une identité qu’on ne peut pas appliquer sans moi n’est pas livrée.',
   },
 ]
 
@@ -384,73 +385,170 @@ export const projects: Project[] = [
     id: 'thelma-rose',
     name: 'Thelma & Rose',
     offer: 'direction-artistique',
-    discipline: 'Direction artistique',
-    summary: 'Appel d’offres remporté pour une marque française engagée de prêt-à-porter féminin.',
+    discipline: 'Direction Artistique',
+    summary:
+      'Gagnante de l\'appel d\'offre au profit d\'une marque française engagée de prêt à porter féminin',
     image: '/img/projets/thelma-rose.jpg',
+    context:
+      'Thelma Rose n’a jamais vraiment travaillé sur son identité graphique. Elle a “hérité” d’un logo issu d’une première intention de lancement en 2015. À l’époque, le positionnement adopté n’était pas le même. L’idée est de mettre au goût du jour le nouveau nom de marque ainsi qu’affirmer son positionnement et ses valeurs par sa nouvelle identité visuelle et supports graphiques digitaux.',
+    client: 'Thelma & Rose',
+    role: 'DA',
+    year: '2025',
+    deliverables: 'Conception d\'Identité Visuelle & DA',
+    narrative: [
+      'Thelma Rose est une aventure écrite entre sœurs. C’est une histoire de femmes, d’envies, de passions et d’exigences. La marque s’inspire de l’univers sensible et complice de ses deux fondatrices pour créer une identité à la fois féminine, solaire et contemporaine.',
+      'Pour résumer, Thelma Rose, c’est une communauté, où chaque femme s’affirme et se retrouve, entre bien-être, féminité et élégance naturelle. Un mélange de modernité et d’intemporalité, où le luxe se veut sincère et responsable. Un univers doux, pensé pour sublimer sans artifice.',
+    ],
   },
   {
     id: 'satine-by-fany',
     name: 'Satiné by Fany',
     offer: 'identite',
-    discipline: 'Identité visuelle',
-    summary: 'L’identité d’une experte en soins et lissages capillaires.',
+    discipline: 'Identité Visuelle',
+    summary:
+      'L\'identité brillante d\'éclat pour une experte en Soins & Lissages Capillaires',
     image: '/img/projets/satine-by-fany.jpg',
+    context:
+      'Dans le cadre de son activité indépendante d\'experte en lissage et soin du cuir chevelu, Fany a fait appel à mes compétences en design graphique afin de redonner un nouveau souffle à son logo du nom de SATINÉ. Aussi, j\'ai pu effectuer auprès d\'elle une approche esthétique en tant que Community Manager afin de relancer son activité dans la zone niçoise, tout en construisant une identité propre à son univers.',
+    client: 'Satiné by Fany',
+    role: 'Graphiste & CM',
+    year: '2024',
+    deliverables: 'Logo & CM et Consulting',
+    narrative: [
+      'Graphiquement, l’univers repose sur une cohérence visuelle douce et raffinée, portée par des matières sensorielles comme le sable, la soie, les bulles d’eau ou les cheveux. La palette, naturelle et élégante, associe beige, crème et brun pour renforcer le positionnement haut de gamme. Les typographies fines et modernes apportent une lecture fluide et sophistiquée, tandis que le moodboard développe une véritable sensualité visuelle, à la fois texturée, lisse et rassurante.',
+      'Côté community management, les contenus sont structurés selon des rôles précis : présenter la marque, valoriser les produits, informer sur les prix ou développer le storytelling. Des call-to-action discrets accompagnent les publications sans rompre avec l’esthétique premium. L’objectif est de construire une expérience visuelle cohérente, mêlant contenus pédagogiques et images organiques et esthétiques, propres à l’identité de SATINÉ.',
+    ],
   },
   {
     id: 'conciergerie-riviera',
     name: 'Conciergerie Riviera',
     offer: 'identite',
-    discipline: 'Identité visuelle',
-    summary: 'La Côte d’Azur sur mesure, pour une conciergerie niçoise de luxe.',
+    discipline: 'Identité Visuelle',
+    summary:
+      'La Côte d\'Azur sur-mesure pour cette conciergerie niçoise de luxe',
     image: '/img/projets/conciergerie-riviera.jpg',
+    context:
+      'Suite à un entretien dans le cadre de ma recherche d\'alternance comme Graphiste et Créatrice de contenu, s\'offre à moi le projet Conciergerie Riviera — All Services, un concept de service à la personne haut de gamme, aux services privés et locatifs sur-mesure, basé sur la Côte d\'Azur.',
+    client: 'Conciergerie Riviera (fictif)',
+    role: 'Designer & DA',
+    year: '2024',
+    deliverables: 'Graphiste & DA',
+    narrative: [
+      'Entre luxe discret et esprit méditerranéen, cette identité a été imaginée comme une respiration. Un souffle chaud et élégant, porté par les courbes du Sud, la lumière du bord de mer, et l’art de vivre sur mesure.',
+      'Chaque élément visuel — logo, palette, typographie, textures — traduit une promesse : celle d’un service haut de gamme, incarné avec douceur, exigence et simplicité. Le résultat ? Une conciergerie d’exception, à l’image de ses clients : exigeants, sensibles à la beauté, et attachés à une certaine idée du slow living.',
+    ],
   },
   {
     id: 'bobines-etrange',
     name: 'Les Bobines de l’Étrange',
     offer: 'packaging',
-    discipline: 'Packaging et identité visuelle',
-    summary: 'Une édition limitée de boîtes de sardines de collection.',
+    discipline: 'Packaging & Identité Visuelle',
+    summary:
+      'Création d\'une édition limitée de boîtes de sardines de collection',
     image: '/img/projets/bobines-etrange.jpg',
+    context:
+      'Création d\'une édition limitée de boîtes de sardines de collection, fusionnant le patrimoine breton avec les codes iconiques de la pop culture fantastique et horrifique (niche du festival).',
+    client: 'Les Sardines Font Leur Cinéma - Festival Breton',
+    role: 'Graphisme & DA',
+    year: '2025',
+    deliverables: 'Product Design, Art Direction',
+    narrative: [
+      'Mon souhait fut de créer un pont visuel entre le folklore breton (dont je suis moi-même originaire), et l\'angoisse du cinéma de genre. Le projet repose sur un décalage humoristique : la sardine est modulée à chaque édition par l’univers qu’elle illustre. Le trait naïf sert une narration précise, transformant un objet quotidien en une pièce de collection hybride, nostalgique et résolument culte.',
+    ],
   },
   {
     id: 'zoenka',
     name: 'ZOËNKA',
     offer: 'identite',
-    discipline: 'Identité visuelle et community management',
-    summary: 'Une identité pensée pour une psychologue et thérapeute en médiation animale.',
+    discipline: 'Identité Visuelle & CM',
+    summary:
+      'Une identité pensée pour une psychologue et thérapeute en médiation animale.',
     image: '/img/projets/zoenka.jpg',
+    context:
+      'Une identité pensée pour une psychologue et thérapeute en médiation animale.',
+    client: 'ZOËNKA',
+    role: 'Graphisme & DA',
+    year: '2026',
+    deliverables: 'Web Design, Framer Development',
+    narrative: [
+      'Le nom et l’univers visuel traduisent une approche douce, rassurante et profondément humaine, loin des codes médicaux traditionnels. L’identité cherche à créer un sentiment de confiance, d’écoute et de connexion, essentiel dans la relation thérapeutique. Le langage graphique associe ainsi sobriété, sensibilité et organicité pour évoquer le vivant et le lien qui se crée au cours de l’accompagnement. ZOENKA devient une identité chaleureuse et contemporaine, qui place la relation, l’humain et l’animal au cœur du soin.',
+    ],
   },
   {
     id: 'lavender-rose',
     name: 'Lavender & Rose',
     offer: 'identite',
-    discipline: 'Identité visuelle',
-    summary: 'Un logo pour une collection de vaisselle haut de gamme.',
+    discipline: 'Identité Visuelle',
+    summary:
+      'Création d\'un logo célébrant la poésie des instants partagés à travers une collection de vaisselle haut-de-gamme',
     image: '/img/projets/lavender-rose.jpg',
+    context:
+      'Proposition d’un univers visuel pour la gamme d’assiettes en porcelaine de la société d’événementiel de luxe LAVENDER & ROSE, à Cannes. Une gamme qui chercher à évoquer le savoir-faire artisanal français, la délicatesse et une esthétique européenne classique revisitée.',
+    client: 'Lavender & Rose Event',
+    role: 'Graphiste',
+    year: '2024',
+    deliverables: 'Graphisme',
+    narrative: [
+      'Ma proposition révèle un univers visuel qui évoque le savoir-faire artisanal, la délicatesse et une esthétique européenne classique revisitée. Le nom Lavender & Rose suggère la Provence et la sophistication florale, tandis que L’Art de la Table renforce l’idée de tradition française et de raffinement dans le détail. En somme, un logo proposant une fusion entre l’élégance française et la sensibilité romantique anglaise.',
+    ],
   },
   {
     id: 'amare',
     name: 'Amare',
     offer: 'direction-artistique',
-    discipline: 'Conception produit et direction artistique',
-    summary: 'Un concept produit qui transforme la pollution en ressource, pour reconnecter à l’océan.',
+    discipline: 'Conception Produit & DA',
+    summary:
+      'Réflexion autour d\'un concept produit transformant la pollution en ressources pour reconnecter l’Homme à l’océan, entre émotion, innovation et transmission.',
     image: '/img/projets/amare.jpg',
+    context:
+      'Amare est une marque sociale qui, en transformant la pollution marine en ressources grâce au design circulaire, répare le lien entre l’Homme et l’océan en suscitant l’émotion et la fierté d’agir pour le bien commun.',
+    client: 'École de Condé Nice',
+    role: 'Designer & DA',
+    year: '2026',
+    deliverables: 'Conception produit & DA',
+    narrative: [
+      'AMARE puise son nom dans amare, « aimer » en latin et en italien, et dans mare, « la mer ». Le concept associe ainsi l’amour que l’on porte à la Méditerranée à la volonté de la préserver. Il évoque aussi l’idée de s’ancrer, de créer un lien durable avec la mer et son territoire. Celle-ci transforme les déchets marins en ressources grâce au design circulaire et à l’éco-conception, donnant une nouvelle vie à ce qui pollue nos océans. AMARE devient ainsi un objet porteur de sens, de fierté et de transmission, pensé pour protéger la mer dont dépend notre avenir.',
+    ],
   },
   {
     id: 'bauhaus-109',
     name: 'BAUHAUS by Le 109',
     offer: 'supports',
-    discipline: 'Supports de communication',
-    summary: 'La campagne visuelle des 109 ans du 109, à Nice.',
+    discipline: 'Supports de Communication Visuelle',
+    summary:
+      'Conception d\'une campagne de communication visuelle à l’occasion des 109 ans du 109, à Nice',
     image: '/img/projets/bauhaus-109.jpg',
+    context:
+      'À l’occasion des 109 ans du Le 109, une campagne de communication visuelle est à concevoir en lien avec l’héritage du Bauhaus. Le projet vise à proposer une réponse graphique contemporaine, conceptuelle et expérimentale, inspirée des principes du Bauhaus (rigueur, abstraction, typographie), tout en restant accessible à un public large.',
+    client: 'École du Bauhaus x Le 109 La Station',
+    role: 'Graphiste & DA',
+    year: '2026',
+    deliverables: 'Affichage & Goodies',
+    narrative: [
+      'Ma proposition envisage la fête du Bauhaus comme un moment de rassemblement festif, tout en restant fidèle à ses principes fondateurs : rigueur, fonctionnalité et langage formel.',
+      'Une approche qui repose sur un décalage maîtrisé entre l’univers de la fête (gâteau, cocktail, célébration) et une traduction graphique minimaliste et structurée, inspirée des codes modernistes. L’humour s’exprime à travers des jeux de mots et des métaphores visuelles, traités de manière sobre et conceptuelle.',
+    ],
   },
   {
     id: 'la-doyenne',
     name: 'La Doyenne',
     offer: 'supports',
     discipline: 'Print',
-    summary: 'Un dépliant-affiche illustré sur l’expérience d’alternance à Condé Nice.',
+    summary:
+      'Conception d\'un dépliant-affiche illustré portant sur l\'expérience d\'alternant à Condé Nice.',
     image: '/img/projets/la-doyenne.jpg',
+    context:
+      'Dans le cadre de sa stratégie de communication interne, l’École CONDÉ souhaite mieux accompagner les étudiants en Bachelor qui s’apprêtent à entrer en alternance. Afin de rendre ce sujet plus accessible, attractif et rassurant, l’école de Condé a souhaité produire un support illustré, vivant et ludique, basé sur l’expérience réelle des étudiants de Master 2, déjà passés par une année complète d’alternance.',
+    client: 'École de Condé Nice',
+    role: 'Graphiste',
+    year: '2026',
+    deliverables: 'Graphiste & DA',
+    narrative: [
+      'Pour porter ce concept j’ai crée “La Doyenne”.',
+      'Un personnage féminin, une muse, dessinée de manière faussement naïve. Toujours reconnaissable grâce à ses traits reprennant légèrement les miens, afin d’injecter une part de moi dans ce travail qui m’est très personnel grâce à : de longs cheveux ondulés, un grain de beauté au nez, des piercings à l’oreille.',
+      'Selon les scènes, La Doyenne est… trop vieille (dans sa tête), perdue, doute, progresse, ou trouve sa place.',
+      'Un guide du survie illustré aux couleurs méditerranéennes, entre illustrations à la Picasso, Matisse et Persepolis pour un côté plus éditorial et contemporain. Le recours au faux naïf vise ici à évoquer avec honnêteté un parcours atypique avec légèreté, humour et clarté.',
+    ],
   },
 ]
 
@@ -463,6 +561,10 @@ export const serviceUi = {
 /** Le peu de texte propre aux pages de projet. */
 export const projectUi = {
   back: 'Retour',
+  client: 'Client',
+  role: 'Rôle',
+  year: 'Année',
+  deliverables: 'Livrables',
   offer: 'Prestation',
   siblings: 'Dans la même prestation',
 }
@@ -513,8 +615,8 @@ export function offerById(offerId: string): Offer | undefined {
 export const footer: FooterContent = {
   eyebrow: 'Ocean Eye Studio',
   title: 'Contact',
-  lede: 'Dites-nous ce que vous avez en tête : votre marque, ce qu’elle doit devenir, et ce qui vous en empêche aujourd’hui.',
-  reachTitle: 'Nous joindre',
+  lede: 'Dites-moi ce que vous avez en tête : votre marque, ce qu’elle doit devenir, et ce qui vous en empêche aujourd’hui.',
+  reachTitle: 'Me joindre',
   availability: 'Du lundi au vendredi, à Nice',
   wordmark: 'OCEANEYE',
   legal: '© Ocean Eye Studio',
@@ -527,13 +629,13 @@ export const footer: FooterContent = {
     submit: 'Envoyer',
     sending: 'Envoi en cours…',
     sentTitle: 'Message envoyé',
-    sentBody: 'On revient vers vous sous 48 heures ouvrées.',
+    sentBody: 'Je reviens vers vous sous 48 heures ouvrées.',
     notDelivered:
-      'L’envoi n’est pas encore activé de notre côté. Sans nouvelles, écrivez directement à oceaneye.studio@gmail.com.',
+      'L’envoi n’est pas encore activé de mon côté. Sans nouvelles, écrivez-moi directement à oceaneye.studio@gmail.com.',
     errorRequired: 'Votre nom et votre adresse sont nécessaires pour vous répondre.',
     errorEmail: 'Cette adresse ne semble pas valide.',
     errorSend:
-      'Le message n’a pas pu partir. Écrivez à oceaneye.studio@gmail.com, on prend le relais.',
+      'Le message n’a pas pu partir. Écrivez-moi à oceaneye.studio@gmail.com, je prends le relais.',
   },
 }
 
@@ -561,17 +663,17 @@ export const pageMeta: Record<string, PageMeta> = {
   projets: {
     title: 'Projets · Ocean Eye Studio',
     description:
-      'Neuf marques accompagnées, de l’identité visuelle au packaging : Satiné, Conciergerie Riviera, Les Bobines de l’Étrange, Thelma & Rose et les autres.',
+      'Neuf marques que j’ai accompagnées, de l’identité visuelle au packaging : Satiné, Conciergerie Riviera, Les Bobines de l’Étrange, Thelma & Rose et les autres.',
   },
   about: {
     title: 'Le studio · Ocean Eye Studio',
     description:
-      'Ocean Eye est un studio de design de marque ancré à Nice. Huit ans de pratique, neuf marques livrées, et ce que leurs fondateurs en disent.',
+      'Océane, graphiste et directrice artistique à Nice. Huit ans de pratique, neuf marques livrées, et ce que leurs fondateurs en disent.',
   },
   contact: {
     title: 'Contact · Ocean Eye Studio',
     description:
-      'Écrire au studio, et les réponses aux questions qu’on nous pose avant de commencer.',
+      'M’écrire, et les réponses aux questions qu’on me pose avant de commencer.',
   },
 }
 

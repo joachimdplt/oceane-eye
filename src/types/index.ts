@@ -128,6 +128,16 @@ export interface Project {
   /** Ce qui a été livré, en une phrase. */
   summary: string
   image: string
+  /** La demande, telle qu'elle s'est posée. */
+  context: string
+  client: string
+  /** La casquette portée sur ce projet. */
+  role: string
+  year: string
+  /** Ce qui a été remis, en une ligne. */
+  deliverables: string
+  /** Le récit du projet, un paragraphe par entrée. */
+  narrative: string[]
 }
 
 /** Le chapô du bloc des prestations. */

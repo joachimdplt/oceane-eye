@@ -59,31 +59,12 @@ export function About({ title, about }: { title: string; about: AboutContent }) 
       {/* Qui tient le studio.
           Le portrait vient APRÈS ce que fait la maison, et non avant : on
           présente d'abord un travail, ensuite la personne qui le fait. */}
-      <div className="relative w-full max-w-page xl:max-w-wide mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-        <img
-          src={about.person.image}
-          alt={about.person.alt}
-          loading="lazy"
-          decoding="async"
-          className="rounded-card w-full max-w-sm aspect-[3/4] object-cover"
-        />
-
-        <div className="flex flex-col gap-5 items-start">
-          <div className="flex flex-col gap-1">
-            <p className="title2 title-panel text-ink">{about.person.name}</p>
-            <p className="label text-muted">{about.person.role}</p>
-          </div>
-
-          {about.person.lines.map((line) => (
-            <p key={line} className="body-text text-muted max-w-prose">
-              {line}
-            </p>
-          ))}
-
-          <a href={about.cta.href} className="pill label text-ink mt-2">
-            {about.cta.label}
-          </a>
-        </div>
+      {/* La porte de sortie du bloc : on a lu ce que fait le studio, la suite
+          logique est de regarder ce qu'il a fait. */}
+      <div className="relative w-full max-w-page xl:max-w-wide mx-auto">
+        <a href={about.cta.href} className="pill label text-ink">
+          {about.cta.label}
+        </a>
       </div>
     </section>
   )
