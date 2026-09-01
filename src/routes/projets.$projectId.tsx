@@ -1,9 +1,7 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import { CallToAction } from '~/components/landing/CallToAction'
 import { NotFound } from '~/components/ui/NotFound'
 import { ProjectDetail } from '~/components/landing/ProjectDetail'
 import {
-  callToAction,
   errors,
   offerById,
   projectById,
@@ -46,10 +44,5 @@ export const Route = createFileRoute('/projets/$projectId')({
 
 function ProjectPage() {
   const { project, offer, siblings } = Route.useLoaderData()
-  return (
-    <>
-      <ProjectDetail project={project} offer={offer} siblings={siblings} ui={projectUi} />
-      <CallToAction cta={callToAction} />
-    </>
-  )
+  return <ProjectDetail project={project} offer={offer} siblings={siblings} ui={projectUi} />
 }

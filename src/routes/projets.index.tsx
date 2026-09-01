@@ -1,9 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { CallToAction } from '~/components/landing/CallToAction'
 import { Work } from '~/components/landing/Work'
 import {
   blockTitles,
-  callToAction,
   pageMeta,
   projects,
 } from '~/data/content'
@@ -31,7 +29,6 @@ function ProjetsPage() {
   return (
     <main>
       <Work title={blockTitles.projets} projects={projects} />
-      <CallToAction cta={callToAction} />
     </main>
   )
 }

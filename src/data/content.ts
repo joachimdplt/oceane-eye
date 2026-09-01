@@ -1,6 +1,6 @@
 import type {
   AboutContent,
-  CallToActionContent,
+  FooterContent,
   Contact,
   ErrorMessages,
   HeroContent,
@@ -494,21 +494,37 @@ export function offerById(offerId: string): Offer | undefined {
 }
 
 /**
- * L'appel au rendez-vous, posé au bas de chaque page.
+ * Le pied de page, sur toutes les pages.
  *
- * Il mène à un courriel et non à un agenda : Océane n'a pas d'outil de prise de
- * rendez-vous, et en inventer un lien mènerait dans le vide. Le sujet est
- * prérempli, ce qui épargne à la personne d'avoir à trouver quoi écrire en
- * première ligne — c'est souvent là qu'on renonce.
- *
- * Le jour où un agenda existe, c'est `href` qu'on remplace, ici et nulle part
- * ailleurs.
+ * Il porte le contact, les pages du site et le nom en très grand. C'est lui qui
+ * fait l'appel au rendez-vous partout : un bandeau séparé aurait dit deux fois
+ * la même chose sur la même page.
  */
-export const callToAction: CallToActionContent = {
-  title: 'Parlons de votre marque',
-  note: 'Une demi-heure pour dire ce que vous avez en tête. Sans engagement, et déjà une fourchette.',
-  label: 'Prendre rendez-vous',
-  href: 'mailto:oceaneye.studio@gmail.com?subject=Rendez-vous%20%E2%80%94%20Ocean%20Eye%20Studio',
+export const footer: FooterContent = {
+  eyebrow: 'Ocean Eye Studio',
+  title: 'Contact',
+  lede: 'Dites-nous ce que vous avez en tête : votre marque, ce qu’elle doit devenir, et ce qui vous en empêche aujourd’hui.',
+  reachTitle: 'Nous joindre',
+  availability: 'Du lundi au vendredi, à Nice',
+  wordmark: 'OCEANEYE',
+  legal: '© Ocean Eye Studio',
+  form: {
+    name: 'Votre nom',
+    email: 'Votre adresse',
+    phone: 'Votre téléphone',
+    message: 'Votre message',
+    optional: 'facultatif',
+    submit: 'Envoyer',
+    sending: 'Envoi en cours…',
+    sentTitle: 'Message envoyé',
+    sentBody: 'On revient vers vous sous 48 heures ouvrées.',
+    notDelivered:
+      'L’envoi n’est pas encore activé de notre côté. Sans nouvelles, écrivez directement à oceaneye.studio@gmail.com.',
+    errorRequired: 'Votre nom et votre adresse sont nécessaires pour vous répondre.',
+    errorEmail: 'Cette adresse ne semble pas valide.',
+    errorSend:
+      'Le message n’a pas pu partir. Écrivez à oceaneye.studio@gmail.com, on prend le relais.',
+  },
 }
 
 /** Repris tels quels du site actuel : ce sont ses vraies coordonnées. */

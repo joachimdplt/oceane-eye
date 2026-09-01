@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Contact } from '~/components/landing/Contact'
 import { Questions } from '~/components/landing/Questions'
 import { blockTitles, contact, faq, pageMeta } from '~/data/content'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
@@ -25,7 +24,6 @@ export const Route = createFileRoute('/contact')({
 function ContactPage() {
   return (
     <main>
-      <Contact title={blockTitles.contact} contact={contact} />
       <Questions title={blockTitles.questions} faq={faq} />
     </main>
   )

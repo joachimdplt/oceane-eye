@@ -7,10 +7,11 @@ import {
   createRootRouteWithContext,
 } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
+import { Footer } from '~/components/landing/Footer'
 import { Nav } from '~/components/landing/Nav'
 import { ErrorState } from '~/components/ui/ErrorState'
 import { NotFound } from '~/components/ui/NotFound'
-import { errors, navLinks } from '~/data/content'
+import { contact, errors, footer, navLinks } from '~/data/content'
 import appCss from '~/styles/app.css?url'
 import { SITE_NAME, robotsMeta, seo } from '~/utils/seo'
 
@@ -85,6 +86,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             une barre recopiée dans chacune finirait par diverger. */}
         <Nav links={navLinks} quietOver="projets" />
         {children}
+        {/* Le pied de page vit à la racine, comme la barre : il est le même
+            partout, et recopié dans chaque page il finirait par diverger. */}
+        <Footer content={footer} contact={contact} links={navLinks} />
         <TanStackRouterDevtools position="bottom-right" />
         <ReactQueryDevtools buttonPosition="bottom-left" />
         <Scripts />

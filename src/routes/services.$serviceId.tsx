@@ -1,8 +1,7 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
-import { CallToAction } from '~/components/landing/CallToAction'
 import { NotFound } from '~/components/ui/NotFound'
 import { ServiceDetail } from '~/components/landing/ServiceDetail'
-import { callToAction, errors, offerById, projectsOf, serviceUi } from '~/data/content'
+import { errors, offerById, projectsOf, serviceUi } from '~/data/content'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
 
 /**
@@ -33,14 +32,11 @@ export const Route = createFileRoute('/services/$serviceId')({
 function ServicePage() {
   const { offer, projects } = Route.useLoaderData()
   return (
-    <>
-      <ServiceDetail
+    <ServiceDetail
         offer={offer}
         projects={projects}
         backLabel={serviceUi.back}
         emptyLabel={serviceUi.empty}
       />
-      <CallToAction cta={callToAction} />
-    </>
   )
 }

@@ -1,11 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { CallToAction } from '~/components/landing/CallToAction'
 import { About } from '~/components/landing/About'
 import { SocialProof } from '~/components/landing/SocialProof'
 import {
   about,
   blockTitles,
-  callToAction,
   pageMeta,
   socialProof,
 } from '~/data/content'
@@ -33,7 +31,6 @@ function AboutPage() {
     <main>
       <About title={blockTitles.studio} about={about} />
       <SocialProof title={blockTitles.confiance} proof={socialProof} />
-      <CallToAction cta={callToAction} />
     </main>
   )
 }

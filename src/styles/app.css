@@ -571,6 +571,24 @@
     .faq-mark { transition: none; }
   }
 
+  /* Le nom en très grand qui ferme le document.
+
+     Il déborde volontairement par le bas : c'est ce qui le fait lire comme un
+     motif et non comme un titre. Le dégradé le fait disparaître plutôt que de
+     le couper net, sinon on croit à un défaut d'affichage. */
+  .footer-mark {
+    font-family: var(--font-grotesk);
+    font-weight: 500;
+    font-size: 19vw;
+    line-height: 0.78;
+    letter-spacing: -0.04em;
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: -0.16em;
+    -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 45%, transparent 92%);
+  }
+
   /* Les textes de bordure — les deux blocs posés aux bords de l'écran.
 
      Ils empruntent la grotesque du titre 2 : la Garalde donne le nom, la

@@ -195,17 +195,37 @@ export interface Step {
 }
 
 /**
- * L'appel posé au bas de chaque page.
+ * Le pied de page, présent sur toutes les pages.
  *
- * `href` est une adresse et non un identifiant de route : ce sera un `mailto:`
- * tant qu'il n'y a pas d'outil de prise de rendez-vous, et l'URL de cet outil le
- * jour où il existe. Les deux se mettent au même endroit.
+ * Il porte le contact, les pages du site et le nom en très grand. C'est lui qui
+ * fait l'appel au rendez-vous partout : un bandeau séparé aurait dit deux fois
+ * la même chose sur la même page.
  */
-export interface CallToActionContent {
+export interface FooterContent {
+  eyebrow: string
   title: string
-  note: string
-  label: string
-  href: string
+  lede: string
+  /** Le titre de la colonne de coordonnées. */
+  reachTitle: string
+  availability: string
+  /** Le nom en très grand, tout en bas. */
+  wordmark: string
+  legal: string
+  form: {
+    name: string
+    email: string
+    phone: string
+    message: string
+    optional: string
+    submit: string
+    sending: string
+    sentTitle: string
+    sentBody: string
+    notDelivered: string
+    errorRequired: string
+    errorEmail: string
+    errorSend: string
+  }
 }
 
 /** Où l'on écrit, et à qui. */

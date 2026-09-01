@@ -1,7 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { CallToAction } from '~/components/landing/CallToAction'
 import { About } from '~/components/landing/About'
-import { Contact } from '~/components/landing/Contact'
 import { Hero } from '~/components/landing/Hero'
 import { Offers } from '~/components/landing/Offers'
 import { Plans } from '~/components/landing/Plans'
@@ -14,8 +12,6 @@ import {
   about,
   bandWords,
   blockTitles,
-  callToAction,
-  contact,
   faq,
   featuredProjects,
   hero,
@@ -55,8 +51,6 @@ function Landing() {
       <Process title={blockTitles.methode} steps={steps} />
       <SocialProof title={blockTitles.confiance} proof={socialProof} />
       <Questions title={blockTitles.questions} faq={faq} />
-      <Contact title={blockTitles.contact} contact={contact} />
-      <CallToAction cta={callToAction} />
     </main>
   )
 }

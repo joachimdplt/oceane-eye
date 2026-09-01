@@ -1,11 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { CallToAction } from '~/components/landing/CallToAction'
 import { Offers } from '~/components/landing/Offers'
 import { Plans } from '~/components/landing/Plans'
 import { Process } from '~/components/landing/Process'
 import {
   blockTitles,
-  callToAction,
   offers,
   offersIntro,
   pageMeta,
@@ -39,7 +37,6 @@ function ServicesPage() {
       <Offers title={blockTitles.services} lede={offersIntro.lede} offers={offers} />
       <Process title={blockTitles.methode} steps={steps} />
       <Plans title={blockTitles.tarifs} plans={plans} />
-      <CallToAction cta={callToAction} />
     </main>
   )
 }
