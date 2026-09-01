@@ -43,11 +43,11 @@ function ProjectBlock({ project }: { project: Project }) {
       <div className="relative h-full flex flex-col justify-end px-6 md:px-gutter pb-14 md:pb-20">
         <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div className="flex flex-col gap-4">
-            <h3 className="title2 text-accent">{project.name}</h3>
-            <p className="border-text-xl text-accent max-w-2xl">{project.summary}</p>
+            <h3 className="title2 text-ink">{project.name}</h3>
+            <p className="border-text-xl text-ink max-w-2xl">{project.summary}</p>
           </div>
 
-          <p className="border-text-xl text-accent md:text-right shrink-0">
+          <p className="border-text-xl text-ink md:text-right shrink-0">
             {project.discipline}
           </p>
         </div>

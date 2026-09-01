@@ -25,17 +25,17 @@ function euros(amount: number) {
 export function Offers({ title, offers }: { title: string; offers: Offer[] }) {
   return (
     <Block id="services" title={<BlockTitle>{title}</BlockTitle>}>
-      <ul className="grid gap-px bg-accent/30 md:grid-cols-2">
+      <ul className="grid gap-px bg-ink/15 md:grid-cols-2">
         {offers.map((offer) => (
           <li key={offer.id} className="bg-ground p-8 md:p-10 flex flex-col gap-6">
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-              <h3 className="title2 text-accent">{offer.name}</h3>
-              <p className="border-text-xl text-accent whitespace-nowrap">
+              <h3 className="title2 text-ink">{offer.name}</h3>
+              <p className="border-text-xl text-ink whitespace-nowrap">
                 dès {euros(offer.from)}
               </p>
             </div>
 
-            <p className="font-garamond text-accent text-lg md:text-xl leading-prose max-w-prose">
+            <p className="font-garamond text-ink text-lg md:text-xl leading-prose max-w-prose">
               {offer.pitch}
             </p>
 
@@ -43,14 +43,14 @@ export function Offers({ title, offers }: { title: string; offers: Offer[] }) {
               {offer.deliverables.map((item) => (
                 <li
                   key={item}
-                  className="font-garamond text-accent text-base md:text-lg leading-prose"
+                  className="font-garamond text-ink text-base md:text-lg leading-prose"
                 >
                   {item}
                 </li>
               ))}
             </ul>
 
-            <p className="font-garamond text-accent text-eyebrow-lg font-bold uppercase tracking-eyebrow mt-auto">
+            <p className="font-garamond text-ink text-eyebrow-lg font-bold uppercase tracking-eyebrow mt-auto">
               {offer.duration}
             </p>
           </li>

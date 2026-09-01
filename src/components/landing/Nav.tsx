@@ -19,7 +19,7 @@ export function Nav({ items }: { items: Record<string, string> }) {
           <li key={id}>
             <a
               href={`#${id}`}
-              className="font-garamond text-accent text-eyebrow-lg md:text-sm font-bold uppercase tracking-eyebrow no-underline hover:opacity-70 transition-opacity motion-reduce:transition-none"
+              className="font-dm text-ink text-eyebrow-lg md:text-sm font-medium uppercase tracking-eyebrow no-underline hover:opacity-70 transition-opacity motion-reduce:transition-none"
             >
               {title}
             </a>

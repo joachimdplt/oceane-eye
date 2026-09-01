@@ -123,7 +123,7 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
             Le `nowrap` est une promesse que le texte doit tenir : au-delà
             d'une vingtaine de signes, il finira par toucher les bords. */}
         <h1
-          className="absolute inset-x-0 -translate-y-1/2 title1 text-accent text-center whitespace-nowrap px-6"
+          className="absolute inset-x-0 -translate-y-1/2 title1 text-ink text-center whitespace-nowrap px-6"
           style={{ top: `${titleTop.toFixed(2)}%` }}
         >
           <GrowText text={title.name} delay={120} spread={620} />
@@ -144,7 +144,7 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
             {/* À gauche, ferré à gauche. Une vraie liste : ce sont des
                 éléments de même rang, et un lecteur d'écran les annonce alors
                 comme tels au lieu d'en faire une phrase. */}
-            <ul className="border-text-xl text-accent max-w-xs text-center md:text-left">
+            <ul className="border-text-xl text-ink max-w-xs text-center md:text-left">
               {disciplines.map((discipline) => (
                 <li key={discipline}>{discipline}</li>
               ))}
@@ -152,7 +152,7 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
 
             {/* À droite, ferré à droite : les deux blocs se regardent en
                 miroir, comme la référence. */}
-            <p className="border-text-xl text-accent max-w-xs text-center md:text-right">
+            <p className="border-text-xl text-ink max-w-xs text-center md:text-right">
               {aside.place} · <LiveTime timeZone={aside.timeZone} />
               <br />
               {aside.since}
@@ -162,8 +162,8 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
 
 
         <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-4">
-          <span className="block w-px h-16 bg-accent" aria-hidden="true" />
-          <span className="font-garamond text-accent text-eyebrow-lg md:text-sm font-bold uppercase tracking-eyebrow">
+          <span className="block w-px h-16 bg-ink" aria-hidden="true" />
+          <span className="font-garamond text-ink text-eyebrow-lg md:text-sm font-bold uppercase tracking-eyebrow">
             {scrollCue}
           </span>
         </div>

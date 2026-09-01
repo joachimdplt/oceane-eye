@@ -11,7 +11,7 @@ import { BlockTitle } from './BlockTitle'
  */
 export function Contact({ title, contact }: { title: string; contact: ContactDetails }) {
   const linkClass =
-    'title2 text-accent no-underline hover:opacity-70 transition-opacity motion-reduce:transition-none'
+    'title2 text-ink no-underline hover:opacity-70 transition-opacity motion-reduce:transition-none'
 
   return (
     <Block id="contact" title={<BlockTitle>{title}</BlockTitle>}>

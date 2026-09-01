@@ -16,14 +16,14 @@ export function Process({ title, steps }: { title: string; steps: Step[] }) {
         {steps.map((step, i) => (
           <li
             key={step.id}
-            className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-3 py-8 border-t border-accent/30"
+            className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-3 py-8 border-t border-ink/15"
           >
-            <p className="title2 text-accent" aria-hidden="true">
+            <p className="title2 text-ink" aria-hidden="true">
               {String(i + 1).padStart(2, '0')}
             </p>
             <div className="flex flex-col gap-3">
-              <h3 className="border-text-xl text-accent">{step.name}</h3>
-              <p className="font-garamond text-accent text-lg md:text-xl leading-prose max-w-3xl">
+              <h3 className="border-text-xl text-ink">{step.name}</h3>
+              <p className="font-garamond text-ink text-lg md:text-xl leading-prose max-w-3xl">
                 {step.detail}
               </p>
             </div>

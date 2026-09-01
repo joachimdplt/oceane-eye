@@ -49,11 +49,16 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   `--color-paper`), police, tailles, mesures. Aucune valeur arbitraire dans le
   JSX — c'est le § 9, et la commande d'audit du § 12 le vérifie.
 - Le texte, l'image et le film : `src/data/content.ts`.
-- Deux couleurs dans `@theme`, pas trois : `--color-ground` (#647179, le fond)
-  et `--color-accent` (#FFDE59, le texte). Le fond porte un **grain** (classe
-  `.grain`) : un aplat se lirait comme un trou à côté d'une photo argentique.
-  Son seul réglage est l'opacité — 0.32 reproduit l'écart-type mesuré sur la
-  référence, 8,6 niveaux sur 255. Le texte porte la même couleur sur le
+- `--color-ground` (#ffffff), `--color-ink` (#0a0a0a, le texte),
+  `--color-accent` (#FFDE59, gardé pour ce qui n'a pas à être lu).
+- Le fond porte un **grain** (classe `.grain`) : un aplat se lirait comme un
+  trou à côté d'une photo argentique. Deux réglages qui ne se devinent pas —
+  `mix-blend-mode: multiply` et non `overlay`, car **sur du blanc pur la
+  formule de l'overlay est neutre** et le grain disparaît ; et un bruit recentré
+  près du blanc plutôt que près du gris moyen. Mesuré au rendu : moyenne 247,
+  écart-type 8,3 sur 255. `slope` dans le filtre est le bouton.
+- Quatre polices, chacune pour un emploi : EB Garamond (`.title1`), Space
+  Grotesk (`.title2`, `.border-text-xl`), DM Sans 500 (la nav, et elle seule). Le texte porte la même couleur sur le
   fond et sur l'image, puisque le titre déborde de l'arche des deux côtés.
 - Deux classes de titre, qui disent une **voix** et non une taille : elles se
   composent au même corps et ne diffèrent que par le dessin, ce qui permet de
@@ -73,12 +78,9 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   donc composée en **EB Garamond**, sa reprise libre, dont l'italique est
   réellement dessinée et non calculée. Pour la vraie Adobe Garamond Pro, il faut
   un projet web Adobe Fonts et remplacer l'`@import` par leur balise.
-- ⚠ **Contraste** : `#FFDE59` sur le gris du fond donne **3,79:1** — bon pour un
-  grand texte (seuil 3:1), juste pour un corps de texte (seuil 4,5:1). Les blocs
-  de projets sont réglés : leur texte repose sur un voile qui descend jusqu'au
-  gris de la page, donc il y retrouve ces 3,79:1 quelle que soit la photo. Reste
-  l'ouverture, où les flancs sont posés à même l'image une fois l'arche ouverte
-  (1,45:1 et 1,69:1). Voir « À finir ».
+- ⚠ **Le jaune ne porte plus le texte.** Sur ce blanc il donne **1,25:1** là
+  où il en faut 4,5 : il était purement invisible. Le texte est passé à l'encre,
+  qui donne 18,6:1. Le jaune reste déclaré comme accent.
 - Le domaine : `SITE_URL` dans `src/utils/seo.ts`, puis `public/robots.txt`,
   `public/sitemap.xml` et `APP_DOMAIN` dans `.env.deploy`.
 
