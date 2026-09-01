@@ -216,8 +216,23 @@ export const plans: PlansContent = {
  * poser l'image d'un projet derrière une citation laisserait croire que
  * l'auteur y figure.
  */
+/**
+ * Les mots du bandeau défilant.
+ *
+ * Ils vivent à part du bloc de preuve depuis que le bandeau s'en est détaché :
+ * une donnée rangée dans un bloc auquel elle ne sert plus finit par déménager
+ * une seconde fois, en moins bon état.
+ */
+export const bandWords = [
+  'Identité',
+  'Marque',
+  'Packaging',
+  'Direction artistique',
+  'Édition',
+  'Nice',
+]
+
 export const socialProof: SocialProofContent = {
-  words: ['Identité', 'Marque', 'Packaging', 'Direction artistique', 'Édition', 'Nice'],
   voices: [
     {
       id: 'guillaume',

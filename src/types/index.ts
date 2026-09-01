@@ -168,10 +168,8 @@ export interface Voice {
   role: string
 }
 
-/** Le bloc de preuve : un bandeau de mots, puis les voix. */
+/** Le bloc de preuve. */
 export interface SocialProofContent {
-  /** Les mots du bandeau défilant. */
-  words: string[]
   voices: Voice[]
 }
 

@@ -1,11 +1,7 @@
 import type { SocialProofContent } from '~/types'
 
 /**
- * La preuve par les clients : un bandeau de mots, puis leurs avis.
- *
- * Le bandeau est rendu DEUX FOIS et glisse de la moitié de sa largeur : c'est
- * ce qui rend la boucle sans couture. Une seule copie laisserait un blanc à
- * chaque tour.
+ * La preuve par les clients.
  *
  * Des citations et non des étoiles. Aucun de ces clients n'a donné de note, et
  * une étoile inventée sous une phrase authentique jetterait le doute sur la
@@ -23,29 +19,11 @@ export function SocialProof({ title, proof }: { title: string; proof: SocialProo
   return (
     <section
       id="confiance"
-      className="relative isolate min-h-svh flex flex-col justify-center gap-12 md:gap-16 py-24 bg-ground overflow-hidden"
+      className="relative isolate min-h-svh flex items-center px-6 md:px-gutter py-24 bg-ground overflow-hidden"
     >
       <span aria-hidden="true" className="grain absolute inset-0" />
 
-      {/* Le bandeau sort de la colonne : il doit toucher les deux bords. */}
-      <div className="relative marquee" aria-hidden="true">
-        <div className="marquee-track flex items-baseline">
-          {[0, 1].map((copie) => (
-            <div key={copie} className="flex items-baseline shrink-0">
-              {proof.words.map((word) => (
-                <span
-                  key={word}
-                  className="title2 title-block text-ink px-6 md:px-10 whitespace-nowrap"
-                >
-                  {word}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="relative w-full max-w-page xl:max-w-wide mx-auto px-6 md:px-gutter flex flex-col gap-10">
+      <div className="relative w-full max-w-page xl:max-w-wide mx-auto flex flex-col gap-10">
         <h2 className="title2 title-block text-ink">{title}</h2>
 
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

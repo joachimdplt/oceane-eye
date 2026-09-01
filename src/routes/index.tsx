@@ -7,6 +7,7 @@ import { Offers } from '~/components/landing/Offers'
 import { Plans } from '~/components/landing/Plans'
 import { Questions } from '~/components/landing/Questions'
 import { SocialProof } from '~/components/landing/SocialProof'
+import { WordBand } from '~/components/landing/WordBand'
 import { Process } from '~/components/landing/Process'
 import { Work } from '~/components/landing/Work'
 import {
@@ -18,6 +19,7 @@ import {
   offers,
   featuredProjects,
   offersIntro,
+  bandWords,
   faq,
   plans,
   socialProof,
@@ -49,6 +51,7 @@ function Landing() {
       <About title={blockTitles.studio} about={about} />
       <Offers title={blockTitles.services} lede={offersIntro.lede} offers={offers} />
       <Work title={blockTitles.travaux} projects={featuredProjects()} />
+      <WordBand words={bandWords} />
       <Plans title={blockTitles.tarifs} plans={plans} />
       <Process title={blockTitles.methode} steps={steps} />
       <SocialProof title={blockTitles.confiance} proof={socialProof} />
