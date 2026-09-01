@@ -1,23 +1,26 @@
+import { Link } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
+/** Une entrée de la barre : une adresse, un intitulé. */
+type NavLink = { to: string; label: string }
+
 /**
- * La barre fixe, faite des noms de blocs.
+ * La barre fixe, faite des pages du site.
  *
- * Elle se fabrique à partir de `blockTitles`, dont les clés sont les ancres : il
- * n'y a donc pas de seconde liste de liens à tenir à jour, et réordonner les
- * blocs réordonne la barre. Ce sont de vraies ancres et non des gestionnaires de
- * clic : un lien se copie, s'ouvre dans un onglet, et fonctionne avant que le
- * JavaScript ait chargé.
+ * De vraies adresses et non des ancres : chaque entrée mène à une page qui
+ * existe, se copie, s'ouvre dans un onglet, et se trouve par un moteur. La barre
+ * se fabrique à partir de `navLinks`, il n'y a donc pas de seconde liste à tenir
+ * à jour.
  *
  * Elle s'efface quand on descend et revient quand on remonte, ou quand la souris
  * s'approche du haut de l'écran — une barre qu'on ne peut rappeler qu'en
  * défilant à contresens est une barre qu'on abandonne.
  *
  * `quietOver` nomme une zone où elle se tait quoi qu'il arrive. Les cartes de
- * travaux se collent exactement là où elle se tient : superposées, on ne
- * lirait ni l'une ni l'autre.
+ * travaux se collent exactement là où elle se tient : superposées, on ne lirait
+ * ni l'une ni l'autre.
  */
-export function Nav({ items, quietOver }: { items: Record<string, string>; quietOver?: string }) {
+export function Nav({ links, quietOver }: { links: readonly NavLink[]; quietOver?: string }) {
   const [shown, setShown] = useState(true)
   const [quiet, setQuiet] = useState(false)
 
@@ -70,18 +73,23 @@ export function Nav({ items, quietOver }: { items: Record<string, string>; quiet
 
   return (
     <nav
-      aria-label="Sections de la page"
+      aria-label="Pages du site"
       className={`site-nav ${visible ? '' : 'site-nav--hidden'} fixed top-0 left-0 right-0 z-50 px-6 md:px-gutter py-5`}
     >
       <ul className="w-full max-w-page xl:max-w-wide mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
-        {Object.entries(items).map(([id, title]) => (
-          <li key={id}>
-            <a
-              href={`#${id}`}
+        {links.map((link) => (
+          <li key={link.to}>
+            <Link
+              to={link.to}
+              // La page courante est signalée par le soulignement et par
+              // `aria-current`, que le routeur pose seul : la couleur seule ne
+              // se voit pas de tout le monde.
+              activeProps={{ className: 'underline underline-offset-4' }}
+              activeOptions={{ exact: link.to === '/' }}
               className="font-dm text-ink text-eyebrow-lg md:text-sm font-medium no-underline hover:opacity-70 transition-opacity motion-reduce:transition-none"
             >
-              {title}
-            </a>
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>

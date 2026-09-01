@@ -20,7 +20,7 @@ export function Work({ title, projects }: { title: string; projects: Project[] }
     /* Le bandeau et la pile sous un même toit : c'est cette zone que la barre de
        navigation surveille pour se taire, les cartes se collant exactement là
        où elle se tient. */
-    <section id="travaux">
+    <section id="projets">
       <section
         className="relative isolate flex items-end px-6 md:px-gutter pt-8 pb-10 md:pt-12 md:pb-14 bg-ground overflow-hidden"
       >

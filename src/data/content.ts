@@ -1,5 +1,6 @@
 import type {
   AboutContent,
+  CallToActionContent,
   Contact,
   ErrorMessages,
   HeroContent,
@@ -33,16 +34,25 @@ export const hero: HeroContent = {
 }
 
 /**
- * Les blocs de la page, dans leur ordre.
+ * Les pages du site, dans l'ordre de la barre.
  *
- * Les CLÉS sont les ancres : c'est ce qui permet à la nav de se fabriquer
- * d'elle-même à partir d'ici, sans qu'une seconde liste de liens ait à être
- * tenue à jour à côté. Réordonner cet objet réordonne la nav.
+ * De vraies adresses et non des ancres : chaque entrée mène à une page qui
+ * existe, se partage et se trouve. La barre se fabrique à partir d'ici, il n'y
+ * a donc pas de seconde liste à tenir à jour.
  */
+export const navLinks = [
+  { to: '/', label: 'Accueil' },
+  { to: '/services', label: 'Services' },
+  { to: '/projets', label: 'Projets' },
+  { to: '/about', label: 'About us' },
+  { to: '/contact', label: 'Contact' },
+] as const
+
+/** Les titres des blocs, où qu'ils soient rendus. */
 export const blockTitles = {
   studio: 'Le studio',
   services: 'Services',
-  travaux: 'Travaux',
+  projets: 'Projets',
   tarifs: 'Tarifs flexibles',
   methode: 'Méthode',
   confiance: 'Ils ont confié leur marque',
@@ -71,7 +81,7 @@ export const about: AboutContent = {
     { value: '09', label: 'marques livrées', note: 'de l’identité au packaging' },
     { value: '08', label: 'années de pratique', note: 'en agence, en entreprise, en indépendant' },
   ],
-  cta: { label: 'Voir les travaux', href: '#travaux' },
+  cta: { label: 'Voir les projets', href: '#projets' },
 }
 
 /**
@@ -483,12 +493,54 @@ export function offerById(offerId: string): Offer | undefined {
   return offers.find((offer) => offer.id === offerId)
 }
 
+/**
+ * L'appel au rendez-vous, posé au bas de chaque page.
+ *
+ * Il mène à un courriel et non à un agenda : Océane n'a pas d'outil de prise de
+ * rendez-vous, et en inventer un lien mènerait dans le vide. Le sujet est
+ * prérempli, ce qui épargne à la personne d'avoir à trouver quoi écrire en
+ * première ligne — c'est souvent là qu'on renonce.
+ *
+ * Le jour où un agenda existe, c'est `href` qu'on remplace, ici et nulle part
+ * ailleurs.
+ */
+export const callToAction: CallToActionContent = {
+  title: 'Parlons de votre marque',
+  note: 'Une demi-heure pour dire ce que vous avez en tête. Sans engagement, et déjà une fourchette.',
+  label: 'Prendre rendez-vous',
+  href: 'mailto:oceaneye.studio@gmail.com?subject=Rendez-vous%20%E2%80%94%20Ocean%20Eye%20Studio',
+}
+
 /** Repris tels quels du site actuel : ce sont ses vraies coordonnées. */
 export const contact: Contact = {
   email: 'oceaneye.studio@gmail.com',
   phone: '07 86 93 91 64',
   instagram: '@oceaneye.studio',
   instagramUrl: 'https://www.instagram.com/oceaneye.studio/',
+}
+
+/** Le titre et la description de chaque page, pour les moteurs. */
+export const pageMeta: Record<string, PageMeta> = {
+  services: {
+    title: 'Services · Ocean Eye Studio',
+    description:
+      'Identité visuelle, direction artistique, packaging et supports de communication. Ce que comprend chaque prestation, en combien de temps, et à quel tarif.',
+  },
+  projets: {
+    title: 'Projets · Ocean Eye Studio',
+    description:
+      'Neuf marques accompagnées, de l’identité visuelle au packaging : Satiné, Conciergerie Riviera, Les Bobines de l’Étrange, Thelma & Rose et les autres.',
+  },
+  about: {
+    title: 'Le studio · Ocean Eye Studio',
+    description:
+      'Ocean Eye est un studio de design de marque ancré à Nice. Huit ans de pratique, neuf marques livrées, et ce que leurs fondateurs en disent.',
+  },
+  contact: {
+    title: 'Contact · Ocean Eye Studio',
+    description:
+      'Écrire au studio, et les réponses aux questions qu’on nous pose avant de commencer.',
+  },
 }
 
 export const meta: PageMeta = {

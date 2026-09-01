@@ -313,7 +313,12 @@
     --stack-base: 4rem;
     --stack-step: 3.5rem;
     position: sticky;
-    top: calc(var(--stack-base) + var(--i) * var(--stack-step));
+    /* Le décalage plafonne à quatre niveaux. Au-delà, la pile continue mais
+       ne s'enfonce plus : à neuf travaux, un décalage linéaire laisserait à la
+       dernière carte deux cents pixels de haut. Les cartes suivantes se posent
+       toutes au même endroit et recouvrent la précédente — on voit donc
+       toujours les quatre derniers titres, jamais moins. */
+    top: calc(var(--stack-base) + min(var(--i), 3) * var(--stack-step));
     /* La hauteur décroît avec le rang, de sorte que toutes les cartes collées
        aient le MÊME BAS. Deux effets, et le second est le plus important.
 
@@ -325,8 +330,8 @@
        la quatrième lâchait, puis la troisième, et on les voyait se ramasser les
        unes sur les autres. Un bas commun, et les quatre repartent ensemble,
        comme un seul bloc. */
-    height: calc(100svh - var(--stack-base) - var(--i) * var(--stack-step) - 2rem);
-    margin-inline: calc((var(--n) - 1 - var(--i)) * 0.75rem);
+    height: calc(100svh - var(--stack-base) - min(var(--i), 3) * var(--stack-step) - 2rem);
+    margin-inline: calc(max(0, min(var(--n), 4) - 1 - var(--i)) * 0.75rem);
     border-radius: var(--radius);
     overflow: hidden;
     isolation: isolate;
@@ -337,7 +342,7 @@
     .work-card {
       --stack-base: 5rem;
       --stack-step: 4.5rem;
-      margin-inline: calc((var(--n) - 1 - var(--i)) * 2rem);
+      margin-inline: calc(max(0, min(var(--n), 4) - 1 - var(--i)) * 2rem);
     }
   }
 

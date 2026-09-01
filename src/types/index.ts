@@ -194,6 +194,20 @@ export interface Step {
   detail: string
 }
 
+/**
+ * L'appel posé au bas de chaque page.
+ *
+ * `href` est une adresse et non un identifiant de route : ce sera un `mailto:`
+ * tant qu'il n'y a pas d'outil de prise de rendez-vous, et l'URL de cet outil le
+ * jour où il existe. Les deux se mettent au même endroit.
+ */
+export interface CallToActionContent {
+  title: string
+  note: string
+  label: string
+  href: string
+}
+
 /** Où l'on écrit, et à qui. */
 export interface Contact {
   email: string

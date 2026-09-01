@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { CallToAction } from '~/components/landing/CallToAction'
 import { About } from '~/components/landing/About'
-import { Nav } from '~/components/landing/Nav'
 import { Contact } from '~/components/landing/Contact'
 import { Hero } from '~/components/landing/Hero'
 import { Offers } from '~/components/landing/Offers'
@@ -12,15 +12,16 @@ import { Process } from '~/components/landing/Process'
 import { Work } from '~/components/landing/Work'
 import {
   about,
+  bandWords,
   blockTitles,
+  callToAction,
   contact,
+  faq,
+  featuredProjects,
   hero,
   meta,
   offers,
-  featuredProjects,
   offersIntro,
-  bandWords,
-  faq,
   plans,
   socialProof,
   steps,
@@ -45,18 +46,17 @@ export const Route = createFileRoute('/')({
 function Landing() {
   return (
     <main>
-      <Nav items={blockTitles} quietOver="travaux" />
-
       <Hero {...hero} />
       <About title={blockTitles.studio} about={about} />
       <Offers title={blockTitles.services} lede={offersIntro.lede} offers={offers} />
-      <Work title={blockTitles.travaux} projects={featuredProjects()} />
+      <Work title={blockTitles.projets} projects={featuredProjects()} />
       <WordBand words={bandWords} />
       <Plans title={blockTitles.tarifs} plans={plans} />
       <Process title={blockTitles.methode} steps={steps} />
       <SocialProof title={blockTitles.confiance} proof={socialProof} />
       <Questions title={blockTitles.questions} faq={faq} />
       <Contact title={blockTitles.contact} contact={contact} />
+      <CallToAction cta={callToAction} />
     </main>
   )
 }

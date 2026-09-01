@@ -66,7 +66,7 @@ export function WorkBlock({
       <div className="relative flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 p-6 md:p-8">
         <Heading className="title2 title-panel text-ground shrink-0">
           <Link
-            to="/travaux/$projectId"
+            to="/projets/$projectId"
             params={{ projectId: project.id }}
             className="text-ground no-underline hover:opacity-70 transition-opacity motion-reduce:transition-none"
           >

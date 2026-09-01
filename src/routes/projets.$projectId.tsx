@@ -1,7 +1,15 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
+import { CallToAction } from '~/components/landing/CallToAction'
 import { NotFound } from '~/components/ui/NotFound'
 import { ProjectDetail } from '~/components/landing/ProjectDetail'
-import { errors, offerById, projectById, projectUi, siblingsOf } from '~/data/content'
+import {
+  callToAction,
+  errors,
+  offerById,
+  projectById,
+  projectUi,
+  siblingsOf,
+} from '~/data/content'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
 
 /**
@@ -11,7 +19,7 @@ import { SITE_URL, canonical, seo } from '~/utils/seo'
  * doit répondre 404 au rendu serveur, pas afficher une page vide après avoir
  * été indexée.
  */
-export const Route = createFileRoute('/travaux/$projectId')({
+export const Route = createFileRoute('/projets/$projectId')({
   loader: ({ params }) => {
     const project = projectById(params.projectId)
     if (!project) throw notFound()
@@ -19,7 +27,7 @@ export const Route = createFileRoute('/travaux/$projectId')({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
-    const url = `${SITE_URL}/travaux/${loaderData.project.id}`
+    const url = `${SITE_URL}/projets/${loaderData.project.id}`
     return {
       meta: [
         ...seo({
@@ -38,5 +46,10 @@ export const Route = createFileRoute('/travaux/$projectId')({
 
 function ProjectPage() {
   const { project, offer, siblings } = Route.useLoaderData()
-  return <ProjectDetail project={project} offer={offer} siblings={siblings} ui={projectUi} />
+  return (
+    <>
+      <ProjectDetail project={project} offer={offer} siblings={siblings} ui={projectUi} />
+      <CallToAction cta={callToAction} />
+    </>
+  )
 }

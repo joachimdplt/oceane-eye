@@ -7,9 +7,10 @@ import {
   createRootRouteWithContext,
 } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
+import { Nav } from '~/components/landing/Nav'
 import { ErrorState } from '~/components/ui/ErrorState'
 import { NotFound } from '~/components/ui/NotFound'
-import { errors } from '~/data/content'
+import { errors, navLinks } from '~/data/content'
 import appCss from '~/styles/app.css?url'
 import { SITE_NAME, robotsMeta, seo } from '~/utils/seo'
 
@@ -80,6 +81,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        {/* La barre vit à la racine : elle est la même sur les cinq pages, et
+            une barre recopiée dans chacune finirait par diverger. */}
+        <Nav links={navLinks} quietOver="projets" />
         {children}
         <TanStackRouterDevtools position="bottom-right" />
         <ReactQueryDevtools buttonPosition="bottom-left" />
