@@ -75,7 +75,10 @@
     font-family: var(--font-garamond);
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(2.75rem, 8.5vw, 8rem);
+    /* Pas de plancher en rem : le titre tient sur une seule ligne, donc sa
+       taille doit pouvoir descendre avec l'écran. Un minimum fixe le ferait
+       déborder sur mobile au lieu de le rétrécir. */
+    font-size: min(8.5vw, 8rem);
     line-height: 0.95;
     letter-spacing: -0.012em;
   }

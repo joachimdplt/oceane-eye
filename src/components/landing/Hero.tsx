@@ -107,7 +107,14 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
             {/* Le titre déborde de l'arche des deux côtés, comme la référence :
                 il est donc posé sur le fond autant que sur l'image, et porte la
                 même couleur dans les deux cas. */}
-            <h1 className="display text-accent text-center md:col-start-2 md:row-start-1">
+            {/* Sur une seule ligne, et il déborde de sa colonne : les pistes
+                de la grille sont en `minmax(0, 1fr)`, donc le débordement est
+                visuel et ne déplace rien. C'est ce qui fait passer le titre
+                par-dessus l'arche, comme la référence.
+
+                Le `nowrap` est une promesse que le texte doit tenir : au-delà
+                d'une vingtaine de signes, il finira par toucher les bords. */}
+            <h1 className="display text-accent text-center whitespace-nowrap md:col-start-2 md:row-start-1">
               <GrowText text={title} delay={120} spread={620} />
             </h1>
 
