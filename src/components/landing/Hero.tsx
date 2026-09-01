@@ -66,7 +66,7 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
   const asidesOpacity = Math.max(0, 1 - ease * 3)
 
   return (
-    <section ref={track} className="relative bg-ink" style={{ height: `${TRACK * 100}svh` }}>
+    <section ref={track} className="relative bg-paper" style={{ height: `${TRACK * 100}svh` }}>
       <div className="sticky top-0 h-svh overflow-hidden">
         {/* Le film ne démarre pas pour qui a demandé moins de mouvement : son
             affiche tient l'écran, ce qui est aussi ce qu'on voit le temps du
@@ -98,21 +98,22 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
               dans la même cellule et le titre passerait sur le texte. */}
           <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col items-center gap-8 md:grid md:grid-cols-3 md:items-center">
             <p
-              className="font-plex text-paper text-sm leading-prose max-w-xs text-center md:text-left md:justify-self-start transition-opacity duration-300 motion-reduce:transition-none"
+              className="font-plex text-accent text-sm leading-prose max-w-xs text-center md:text-left md:justify-self-start transition-opacity duration-300 motion-reduce:transition-none"
               style={{ opacity: asidesOpacity }}
             >
               {body}
             </p>
 
             {/* Le titre déborde de l'arche des deux côtés, comme la référence :
-                il est donc toujours clair, sur le fond comme sur l'image. */}
-            <h1 className="display text-paper text-center md:col-start-2 md:row-start-1">
+                il est donc posé sur le fond autant que sur l'image, et porte la
+                même couleur dans les deux cas. */}
+            <h1 className="display text-accent text-center md:col-start-2 md:row-start-1">
               <GrowText text={title} delay={120} spread={620} />
             </h1>
 
             {aside ? (
               <p
-                className="font-plex text-paper text-sm leading-prose max-w-xs text-center md:text-right md:justify-self-end transition-opacity duration-300 motion-reduce:transition-none"
+                className="font-plex text-accent text-sm leading-prose max-w-xs text-center md:text-right md:justify-self-end transition-opacity duration-300 motion-reduce:transition-none"
                 style={{ opacity: asidesOpacity }}
               >
                 {aside}
@@ -127,7 +128,7 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
 
         {/* Le métier et l'invitation à descendre, aux deux bords de l'écran. */}
         <p
-          className="absolute top-8 left-0 right-0 text-center font-plex text-paper text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow transition-opacity duration-300 motion-reduce:transition-none"
+          className="absolute top-8 left-0 right-0 text-center font-plex text-accent text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow transition-opacity duration-300 motion-reduce:transition-none"
           style={{ opacity: asidesOpacity }}
         >
           {role}
@@ -137,8 +138,8 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
           className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-4 transition-opacity duration-300 motion-reduce:transition-none"
           style={{ opacity: asidesOpacity }}
         >
-          <span className="block w-px h-16 bg-paper" aria-hidden="true" />
-          <span className="font-plex text-paper text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow">
+          <span className="block w-px h-16 bg-accent" aria-hidden="true" />
+          <span className="font-plex text-accent text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow">
             {scrollCue}
           </span>
         </div>

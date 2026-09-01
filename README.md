@@ -42,9 +42,12 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   `--color-paper`), police, tailles, mesures. Aucune valeur arbitraire dans le
   JSX — c'est le § 9, et la commande d'audit du § 12 le vérifie.
 - Le texte, l'image et le film : `src/data/content.ts`.
-- La page est **sombre**, et l'effet l'exige : le titre déborde de l'arche des
-  deux côtés, il est donc posé sur le fond autant que sur l'image. Repasser en
-  clair = intervertir deux lignes dans `html, body` (`src/styles/app.css`).
+- Trois tokens dans `@theme` : `--color-paper` (le fond), `--color-accent` (le
+  texte), `--color-ink` (réserve). Le texte porte la même couleur sur le fond et
+  sur l'image, puisque le titre déborde de l'arche des deux côtés.
+- ⚠ **Contraste** : `#FFDE59` sur blanc donne **1,33:1**, là où un corps de texte
+  demande 4,5:1. Sur le ciel de la photo, 1,02:1. La couleur est celle demandée,
+  mais elle n'est pas lisible sur ce fond-là — voir « À finir ».
 - Le domaine : `SITE_URL` dans `src/utils/seo.ts`, puis `public/robots.txt`,
   `public/sitemap.xml` et `APP_DOMAIN` dans `.env.deploy`.
 
@@ -83,8 +86,9 @@ moins de mouvement, et elle qui tient l'écran le temps du chargement.
 
 ## À finir
 
-- [ ] `public/img/hero.jpg` est une image de remplacement : elle vient d'un
-      autre projet et ne dit rien du travail présenté.
+- [ ] Trancher le contraste du texte : garder `#FFDE59` en changeant le fond
+      sous le texte (sur noir il donne 14,9:1), ou garder le fond blanc en
+      fonçant le jaune (`#A87F00` donne 3,68:1).
 - [ ] Les favicons de `public/` sont encore ceux de l'ancienne marque.
 - [ ] Pas d'image de partage : `seo()` n'émet `og:image` que si on lui en donne
       une.

@@ -10,6 +10,8 @@
 @theme {
   --color-ink: #0a0a0a;
   --color-paper: #ffffff;
+  /* La couleur du texte. */
+  --color-accent: #FFDE59;
 
   --font-plex: 'IBM Plex Sans', system-ui, sans-serif;
 
@@ -41,18 +43,13 @@
     color-scheme: light;
   }
 
-  /* La page est sombre, et c'est l'effet qui l'exige : le titre déborde de
-     l'arche des deux côtés, donc il est posé sur le fond autant que sur
-     l'image. Clair sur sombre, il reste lisible dans les deux cas ; l'inverse
-     ne tient pas.
-
-     Une seule valeur de fond, déclarée ici : le rebond du défilement montre le
+  /* Une seule valeur de fond, déclarée ici : le rebond du défilement montre le
      fond du DOCUMENT et non celui de la section, et les deux doivent donc être
-     le même noir. Repasser en clair = intervertir ces deux lignes. */
+     le même blanc. */
   html,
   body {
-    color: var(--color-paper);
-    background-color: var(--color-ink);
+    color: var(--color-accent);
+    background-color: var(--color-paper);
   }
 
   h1,
