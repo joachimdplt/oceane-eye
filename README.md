@@ -53,6 +53,12 @@ précédentes — donc leur titre, qui est pour cette raison en haut de la carte
 retrait latéral se calcule à l'envers du rang, si bien que la dernière est la
 plus large et que la pile paraît s'ouvrir.
 
+Les cartes collées ont **toutes le même bas** : leur hauteur décroît avec le
+rang. Ce n'est pas qu'une question d'allure — une carte se décolle quand son bas
+atteint le bas de la boîte de contenu, donc des bas différents donnent des
+décollements décalés, et on voit les cartes se ramasser les unes sur les autres.
+Un bas commun, et les quatre repartent d'un bloc, en gardant leur décalage.
+
 ⚠ **La réserve sous la pile est un élément, jamais un `padding-bottom`.** La
 zone dans laquelle une carte collante peut se déplacer s'arrête à la **boîte de
 contenu** de son conteneur : une marge intérieure n'y ajoute rien. Mesuré au

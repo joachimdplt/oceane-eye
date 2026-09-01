@@ -289,11 +289,14 @@
      Un bloc vide, lui, occupe le flux : il allonge la boîte de contenu, donc la
      course. C'est ce qui donne enfin sa prise à la dernière carte. */
   .work-stack {
-    padding-bottom: 0;
+    /* Le temps d'arrêt de la pile assemblée, avant qu'elle ne reparte.
+       Aucune marge négative : le bloc suivant ne recouvre pas la pile, c'est la
+       pile qui remonte, par-dessus l'écran d'ouverture resté épinglé derrière. */
+    --stack-tail: 40svh;
   }
 
   .work-stack-tail {
-    height: 55svh;
+    height: var(--stack-tail);
   }
 
   /* Le pas de l'empilement.
@@ -313,7 +316,18 @@
     --stack-step: 3.5rem;
     position: sticky;
     top: calc(var(--stack-base) + var(--i) * var(--stack-step));
-    height: calc(100svh - var(--stack-base) - (var(--n) - 1) * var(--stack-step) - 2rem);
+    /* La hauteur décroît avec le rang, de sorte que toutes les cartes collées
+       aient le MÊME BAS. Deux effets, et le second est le plus important.
+
+       La pile se lit comme un jeu de cartes aligné sur son bord bas plutôt que
+       comme quatre rectangles décalés.
+
+       Et surtout : une carte se décolle quand son bas atteint le bas de la
+       boîte de contenu. Des bas différents, ce sont des décollements décalés —
+       la quatrième lâchait, puis la troisième, et on les voyait se ramasser les
+       unes sur les autres. Un bas commun, et les quatre repartent ensemble,
+       comme un seul bloc. */
+    height: calc(100svh - var(--stack-base) - var(--i) * var(--stack-step) - 2rem);
     margin-inline: calc((var(--n) - 1 - var(--i)) * 0.75rem);
     border-radius: var(--radius);
     overflow: hidden;
