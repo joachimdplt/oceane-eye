@@ -19,3 +19,19 @@ export const meta = {
   description:
     'Identité visuelle, branding et direction artistique. Huit ans d’expérience au service de votre image de marque.',
 }
+
+/**
+ * Les deux écrans qu'on ne veut jamais montrer.
+ *
+ * En français comme le reste : ils héritaient de l'exemple TanStack et
+ * parlaient anglais sous un `<html lang="fr">`. Ils disent ce qui s'est passé
+ * et laissent une porte ouverte, jamais « une erreur est survenue ».
+ * Voir COPYWRITING.md § 10.
+ */
+export const errors = {
+  notFound: 'Cette page n’existe pas.',
+  failed: 'Quelque chose n’a pas tenu de notre côté.',
+  retry: 'Réessayer',
+  back: 'Revenir en arrière',
+  home: 'Retour à l’accueil',
+}
