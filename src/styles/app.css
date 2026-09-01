@@ -264,6 +264,50 @@
     );
   }
 
+  /* L'empilement des travaux.
+
+     Chaque carte se colle à une hauteur croissante : la première se cale, la
+     suivante glisse par-dessus et se cale un cran plus bas. Le décalage laisse
+     voir le bord haut des cartes déjà passées, donc leur titre.
+
+     Elles s'élargissent en descendant — la dernière est la plus large — d'où le
+     retrait latéral calculé à l'envers du rang. `--i` et `--n` sont posés par le
+     composant : la CSS ne peut pas compter les frères d'un élément.
+
+     La carte n'occupe pas toute la hauteur : il faut que la suivante ait de quoi
+     apparaître avant que celle-ci ne soit sortie. */
+  /* La réserve sous la pile : sans elle, la dernière carte resterait collée
+     jusqu'au bloc suivant, qui lui monterait dessus d'un coup. */
+  .work-stack {
+    padding-bottom: 20svh;
+  }
+
+  .work-card {
+    position: sticky;
+    top: calc(5rem + var(--i) * 1.25rem);
+    height: 80svh;
+    margin-inline: calc((var(--n) - 1 - var(--i)) * 0.75rem);
+    border-radius: var(--radius);
+    overflow: hidden;
+    isolation: isolate;
+    background-color: var(--color-ink);
+  }
+
+  @media (min-width: 48rem) {
+    .work-card {
+      top: calc(6rem + var(--i) * 2.25rem);
+      margin-inline: calc((var(--n) - 1 - var(--i)) * 2rem);
+    }
+  }
+
+  /* Le voile d'une carte : aux deux bords, puisque le nom est en haut et le
+     reste en bas. Le milieu reste clair, l'image doit se voir. */
+  .card-scrim {
+    background:
+      linear-gradient(to bottom, rgb(0 0 0 / 0.45) 0%, rgb(0 0 0 / 0) 30%),
+      linear-gradient(to top, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0) 40%);
+  }
+
   /* Le voile posé sous le texte des projets.
 
      Il descend jusqu'au gris de la page plutôt que vers un noir : le bas du

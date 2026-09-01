@@ -64,7 +64,11 @@ export function ServiceDetail({
           </p>
         </section>
       ) : (
-        projects.map((project) => <WorkBlock key={project.id} project={project} />)
+        <div className="work-stack px-6 md:px-gutter">
+          {projects.map((project, i) => (
+            <WorkBlock key={project.id} project={project} index={i} total={projects.length} />
+          ))}
+        </div>
       )}
     </main>
   )

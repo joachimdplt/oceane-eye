@@ -3,12 +3,15 @@ import { BlockTitle } from './BlockTitle'
 import { WorkBlock } from './WorkBlock'
 
 /**
- * Les travaux : un bandeau d'annonce, puis un écran par projet.
+ * Les travaux : un bandeau d'annonce, puis une pile de cartes.
  *
  * Le bandeau n'occupe PAS un écran entier. Il en tenait un, ce qui laissait un
  * écran vide entre la dernière prestation et le premier travail — un titre seul
- * au milieu d'un vide n'annonce rien, il fait attendre. Il se pose donc juste
- * au-dessus de ce qu'il annonce, et le premier travail arrive dans la foulée.
+ * au milieu d'un vide n'annonce rien, il fait attendre.
+ *
+ * La pile a besoin de place SOUS elle pour que la dernière carte finisse de se
+ * décoller : sans cette réserve, elle resterait figée jusqu'au bloc suivant,
+ * qui lui monterait dessus d'un coup.
  */
 export function Work({ title, projects }: { title: string; projects: Project[] }) {
   return (
@@ -23,9 +26,17 @@ export function Work({ title, projects }: { title: string; projects: Project[] }
         </div>
       </section>
 
-      {projects.map((project) => (
-        <WorkBlock key={project.id} project={project} heading="h3" />
-      ))}
+      <div className="work-stack px-6 md:px-gutter">
+        {projects.map((project, i) => (
+          <WorkBlock
+            key={project.id}
+            project={project}
+            index={i}
+            total={projects.length}
+            heading="h3"
+          />
+        ))}
+      </div>
     </>
   )
 }

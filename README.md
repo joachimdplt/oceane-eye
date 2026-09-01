@@ -46,8 +46,15 @@ src/
 Le sens de lecture : **la route lit `data/` et passe le contenu en props ; aucun
 composant ne va rien chercher lui-même** (§ 5 et § 8).
 
-`WorkBlock` est le bloc d'un travail, **partagé par les trois pages** qui en
-montrent. Il a existé en deux exemplaires le temps d'un commit, et les deux
+`WorkBlock` est la carte d'un travail, **partagée par les trois pages** qui en
+montrent. Les cartes **s'empilent** : chacune se colle à une hauteur croissante,
+la suivante glisse par-dessus, et le décalage laisse voir le bord haut des
+précédentes — donc leur titre, qui est pour cette raison en haut de la carte. Le
+retrait latéral se calcule à l'envers du rang, si bien que la dernière est la
+plus large et que la pile paraît s'ouvrir.
+
+`--i` et `--n` sont posés par la page : la CSS ne sait pas compter les frères
+d'un élément, et une carte qui les compterait irait lire son propre parent. Il a existé en deux exemplaires le temps d'un commit, et les deux
 avaient déjà divergé sur la couleur du texte : un bloc dupliqué ne reste jamais
 identique très longtemps.
 

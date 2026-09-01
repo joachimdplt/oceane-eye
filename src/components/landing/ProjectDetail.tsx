@@ -83,9 +83,17 @@ export function ProjectDetail({
               {ui.siblings}
             </h2>
           </section>
-          {siblings.map((sibling) => (
-            <WorkBlock key={sibling.id} project={sibling} heading="h3" />
-          ))}
+          <div className="work-stack px-6 md:px-gutter">
+            {siblings.map((sibling, i) => (
+              <WorkBlock
+                key={sibling.id}
+                project={sibling}
+                index={i}
+                total={siblings.length}
+                heading="h3"
+              />
+            ))}
+          </div>
         </>
       )}
     </main>
