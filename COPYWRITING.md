@@ -137,6 +137,12 @@ C'est ce qui permettait d'écrire SOME et KIND en capitales à l'intérieur d'un
 phrase : la page mettait ainsi un mot entre guillemets sans guillemets, quand
 elle parlait du mot au lieu de s'en servir.
 
+> **Dérogation en vigueur.** Les titres ne sont plus en capitales depuis que la
+> page est composée en Garamond italique : l'italique d'une Garalde tient tout
+> entière dans ses bas de casse, et la passer en capitales revient à payer une
+> police pour n'en rien voir. Le reste de la règle tient : une seule taille de
+> titre, et le corps de texte reste la seule chose qui ne crie pas.
+
 ## 13. Le nom ne se traduit pas
 
 > *It is the name being taken apart, and the name is English on a French page.*

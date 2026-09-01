@@ -42,12 +42,17 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   `--color-paper`), police, tailles, mesures. Aucune valeur arbitraire dans le
   JSX — c'est le § 9, et la commande d'audit du § 12 le vérifie.
 - Le texte, l'image et le film : `src/data/content.ts`.
-- Trois tokens dans `@theme` : `--color-paper` (le fond), `--color-accent` (le
-  texte), `--color-ink` (réserve). Le texte porte la même couleur sur le fond et
-  sur l'image, puisque le titre déborde de l'arche des deux côtés.
-- ⚠ **Contraste** : `#FFDE59` sur blanc donne **1,33:1**, là où un corps de texte
-  demande 4,5:1. Sur le ciel de la photo, 1,02:1. La couleur est celle demandée,
-  mais elle n'est pas lisible sur ce fond-là — voir « À finir ».
+- Deux couleurs dans `@theme`, pas trois : `--color-ground` (#647179, le fond)
+  et `--color-accent` (#FFDE59, le texte). Le texte porte la même couleur sur le
+  fond et sur l'image, puisque le titre déborde de l'arche des deux côtés.
+- La police : `--font-garamond`. **Adobe Garamond Pro est sous licence Adobe** —
+  elle ne peut être ni servie depuis Google Fonts ni auto-hébergée. La page est
+  donc composée en **EB Garamond**, sa reprise libre, dont l'italique est
+  réellement dessinée et non calculée. Pour la vraie Adobe Garamond Pro, il faut
+  un projet web Adobe Fonts et remplacer l'`@import` par leur balise.
+- ⚠ **Contraste** : `#FFDE59` sur `#647179` donne **3,79:1**. Cela passe pour un
+  grand titre (seuil 3:1), pas pour un corps de texte (seuil 4,5:1) — voir
+  « À finir ».
 - Le domaine : `SITE_URL` dans `src/utils/seo.ts`, puis `public/robots.txt`,
   `public/sitemap.xml` et `APP_DOMAIN` dans `.env.deploy`.
 
@@ -86,9 +91,10 @@ moins de mouvement, et elle qui tient l'écran le temps du chargement.
 
 ## À finir
 
-- [ ] Trancher le contraste du texte : garder `#FFDE59` en changeant le fond
-      sous le texte (sur noir il donne 14,9:1), ou garder le fond blanc en
-      fonçant le jaune (`#A87F00` donne 3,68:1).
+- [ ] Le petit texte (flancs, surtitre, « Défiler ») est à 3,79:1 alors qu'il
+      lui en faut 4,5. Le titre, lui, passe. Deux issues : foncer un peu le gris
+      du fond, ou passer ces petits textes en blanc — sur ce gris, le blanc
+      donne 5,02:1.
 - [ ] Les favicons de `public/` sont encore ceux de l'ancienne marque.
 - [ ] Pas d'image de partage : `seo()` n'émet `og:image` que si on lui en donne
       une.

@@ -1,19 +1,23 @@
 /* L'import de police AVANT tout le reste : un `@import` placé après une règle
    est retiré silencieusement du CSS compilé, et la police se déclare partout
    sans jamais se charger en production. */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 @import 'tailwindcss' source('../');
 
 /* Les tokens du site. Toute couleur, police, mesure ou graisse utilisée dans le
    JSX descend d'ici : aucune valeur arbitraire au fil du code (CONVENTIONS.md
    § 9). Changer l'identité se fait dans ce bloc et nulle part ailleurs. */
 @theme {
-  --color-ink: #0a0a0a;
-  --color-paper: #ffffff;
-  /* La couleur du texte. */
+  /* Le fond de la page, et l'encre qui va dessus. Deux valeurs, pas trois. */
+  --color-ground: #647179;
   --color-accent: #FFDE59;
 
-  --font-plex: 'IBM Plex Sans', system-ui, sans-serif;
+  /* Adobe Garamond Pro est une police sous licence Adobe : elle ne peut être
+     ni servie depuis Google Fonts ni auto-hébergée. EB Garamond en est la
+     reprise libre, avec une vraie italique dessinée — pas une inclinaison
+     calculée. Les alternatives système listées ensuite sont des Garaldes, pour
+     que la page garde sa couleur avant le chargement. */
+  --font-garamond: 'EB Garamond', 'Adobe Garamond Pro', Garamond, 'Times New Roman', serif;
 
   /* Le surtitre, en capitales espacées : deux tailles, une par palier. */
   --text-eyebrow: 11px;
@@ -45,30 +49,35 @@
 
   /* Une seule valeur de fond, déclarée ici : le rebond du défilement montre le
      fond du DOCUMENT et non celui de la section, et les deux doivent donc être
-     le même blanc. */
+     le même gris. */
   html,
   body {
     color: var(--color-accent);
-    background-color: var(--color-paper);
+    background-color: var(--color-ground);
   }
 
   h1,
   h2,
   h3 {
-    font-family: var(--font-plex);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-family: var(--font-garamond);
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
-  /* Tous les titres à une seule taille, en capitales : la page se lit d'une
-     seule voix au lieu d'une échelle d'importance. Voir COPYWRITING.md § 12. */
+  /* Les titres en Garamond italique.
+     Pas de capitales : l'italique de Garamond tient tout entière dans ses bas
+     de casse, et la passer en capitales revient à payer une police pour n'en
+     rien voir. C'est une dérogation assumée à COPYWRITING.md § 12, notée là-bas.
+     Les chiffres serrés d'une grotesque ne conviennent pas non plus : une
+     Garalde veut de l'air, donc un interlignage moins écrasé et un crénage
+     presque neutre. */
   .display {
-    font-family: var(--font-plex);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: clamp(2.5rem, 8vw, 7.5rem);
-    line-height: 0.88;
-    letter-spacing: -0.045em;
+    font-family: var(--font-garamond);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.75rem, 8.5vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: -0.012em;
   }
 
   /* Chaque lettre pousse hors de sa propre ligne de base, à son tour.

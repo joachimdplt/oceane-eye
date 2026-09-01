@@ -20,12 +20,12 @@ export function ErrorState({ messages, ...props }: ErrorComponentProps & { messa
   console.error(props.error)
 
   const actionClass =
-    'font-plex text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow underline underline-offset-4'
+    'font-garamond text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow underline underline-offset-4'
 
   return (
     <main className="min-h-svh flex items-center px-6 md:px-gutter py-20">
       <div className="w-full max-w-page xl:max-w-wide mx-auto">
-        <p className="font-plex mb-8 max-w-2xl text-base md:text-lg leading-prose">
+        <p className="font-garamond mb-8 max-w-2xl text-base md:text-lg leading-prose">
           {messages.failed}
         </p>
 
