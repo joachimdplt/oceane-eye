@@ -9,9 +9,9 @@ import { WorkBlock } from './WorkBlock'
  * écran vide entre la dernière prestation et le premier travail — un titre seul
  * au milieu d'un vide n'annonce rien, il fait attendre.
  *
- * La pile a besoin de place SOUS elle pour que la dernière carte finisse de se
- * décoller : sans cette réserve, elle resterait figée jusqu'au bloc suivant,
- * qui lui monterait dessus d'un coup.
+ * La pile ne réserve RIEN sous elle : une fois assemblée, tout est dit. Du vide
+ * en dessous obligerait à défiler devant des cartes qui remontent une à une
+ * avant que le bloc suivant n'arrive.
  */
 export function Work({ title, projects }: { title: string; projects: Project[] }) {
   return (

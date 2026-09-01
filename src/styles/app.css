@@ -276,10 +276,17 @@
 
      La carte n'occupe pas toute la hauteur : il faut que la suivante ait de quoi
      apparaître avant que celle-ci ne soit sortie. */
-  /* La réserve sous la pile : sans elle, la dernière carte resterait collée
-     jusqu'au bloc suivant, qui lui monterait dessus d'un coup. */
+  /* Aucune réserve sous la pile.
+
+     Elle en portait une, pour laisser la dernière carte se décoller
+     tranquillement. C'était une erreur de lecture du geste : une fois la pile
+     assemblée, tout est dit. Ce vide obligeait à continuer de défiler devant
+     des cartes qui remontaient une à une avant que le bloc suivant n'arrive.
+
+     Sans lui, le conteneur s'arrête exactement où la pile est complète : les
+     cartes tiennent leur position, et la suite prend le relais. */
   .work-stack {
-    padding-bottom: 20svh;
+    padding-bottom: 0;
   }
 
   /* Le pas de l'empilement.
