@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import type { CSSProperties } from 'react'
 import type { Project } from '~/types'
-import { Unfold } from '~/components/ui/Unfold'
 
 /**
  * Un travail, en carte qui s'empile.
@@ -47,15 +46,16 @@ export function WorkBlock({
       className="work-card"
       style={{ '--i': index, '--n': total } as CSSProperties}
     >
-      <Unfold className="absolute inset-0">
-        <img
-          src={project.image}
-          alt={`${project.name} — ${project.summary}`}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover"
-        />
-      </Unfold>
+      {/* Pas de dépliage ici : la carte se déplace déjà, et deux gestes qui se
+          superposent ne se lisent ni l'un ni l'autre. C'est l'empilement qui
+          porte le mouvement, l'image se contente d'être là. */}
+      <img
+        src={project.image}
+        alt={`${project.name} — ${project.summary}`}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
       {/* Un voile aux deux bords : le nom est en haut, le reste en bas, et la
           photo change à chaque carte. Sans lui, la lisibilité dépendrait de
