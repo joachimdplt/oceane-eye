@@ -1,0 +1,94 @@
+/// <reference types="vite/client" />
+import * as React from 'react'
+import {
+  HeadContent,
+  Outlet,
+  Scripts,
+  createRootRouteWithContext,
+} from '@tanstack/react-router'
+import type { QueryClient } from '@tanstack/react-query'
+import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
+import { NotFound } from '~/components/NotFound'
+import { useLocaleStore } from '~/stores/useLocaleStore'
+import appCss from '~/styles/app.css?url'
+import { SITE_NAME, seo } from '~/utils/seo'
+
+const ReactQueryDevtools = import.meta.env.PROD
+  ? () => null
+  : React.lazy(() =>
+      import('@tanstack/react-query-devtools').then((m) => ({
+        default: m.ReactQueryDevtools,
+      })),
+    )
+
+const TanStackRouterDevtools = import.meta.env.PROD
+  ? () => null
+  : React.lazy(() =>
+      import('@tanstack/react-router-devtools').then((m) => ({
+        default: m.TanStackRouterDevtools,
+      })),
+    )
+
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient
+}>()({
+  head: () => ({
+    meta: [
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ...seo({ title: SITE_NAME }),
+    ],
+    links: [
+      { rel: 'preload', href: appCss, as: 'style' },
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'icon', href: '/favicon.ico' },
+    ],
+  }),
+  errorComponent: (props) => (
+    <RootDocument>
+      <DefaultCatchBoundary {...props} />
+    </RootDocument>
+  ),
+  notFoundComponent: () => <NotFound />,
+  component: RootComponent,
+})
+
+function RootComponent() {
+  const hydrate = useLocaleStore((s) => s.hydrate)
+  React.useEffect(() => {
+    hydrate()
+  }, [hydrate])
+
+  return (
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
+  )
+}
+
+/**
+ * Aucune donnée structurée déclarée pour l'instant.
+ *
+ * Une propriété absente vaut mieux qu'une propriété inventée : le graphe
+ * schema.org se réécrira quand la maison aura une adresse, un catalogue et des
+ * prix vrais à y mettre. Voir COPYWRITING.md § 6.
+ */
+function RootDocument({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="fr">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <TanStackRouterDevtools position="bottom-right" />
+        <ReactQueryDevtools buttonPosition="bottom-left" />
+        <Scripts />
+      </body>
+    </html>
+  )
+}

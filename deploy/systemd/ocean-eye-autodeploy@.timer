@@ -1,0 +1,12 @@
+[Unit]
+Description=Surveille le dépôt de %i et déploie les nouveaux commits
+
+[Timer]
+# Deux minutes : assez court pour qu'un push se voie presque tout de suite,
+# assez espacé pour que la vérification (un git fetch) reste négligeable.
+OnBootSec=2min
+OnUnitActiveSec=2min
+Unit=ocean-eye-autodeploy@%i.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,27 @@
+# Déploiement du site sur le VPS.
+#
+#   docker compose -f docker-compose.prod.yml --env-file .env.deploy up -d --build
+#
+# Aucun port n'est publié : le proxy partagé (/opt/infra/proxy) termine le TLS et
+# route vers ce conteneur par le réseau `web`.
+#
+# Pas de base de données : le site ne stocke rien.
+name: ${STACK:?renseignez STACK (ex. ocean-eye)}
+
+services:
+  web:
+    build:
+      context: .
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+    networks:
+      web:
+        # Alias explicite : plusieurs applications du VPS déclarent un service
+        # nommé `web`, l'alias seul les distingue pour le proxy.
+        aliases:
+          - ${STACK}-web
+
+networks:
+  web:
+    external: true

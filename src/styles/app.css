@@ -1,0 +1,102 @@
+/* L'import de police AVANT tout le reste.
+   Un `@import` placé après une règle est retiré silencieusement du CSS compilé :
+   la police se déclarait partout et ne se chargeait jamais en production.
+   Voir CONVENTIONS.md § 21. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss' source('../');
+@plugin "daisyui";
+
+@theme {
+  --color-brand: #0E7C86;
+  --color-brand-light: #D5EDEF;
+  --color-brand-dark: #08525A;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  h1, h2, h3 {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  html,
+  body {
+    @apply text-gray-900;
+    background-color: #FDFBF8;
+  }
+
+  /* La page tourne sur le ton sombre d'un bord à l'autre : le fond crème
+     apparaîtrait sinon au rebond du défilement, seul écran clair restant. */
+  body:has(.landing-dark) {
+    background-color: #0a0a0a;
+  }
+
+  /* Tous les titres à une seule taille, en capitales : la page se lit d'une
+     seule voix au lieu d'une échelle d'importance. Voir COPYWRITING.md § 12. */
+  .display {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(2.5rem, 8vw, 7.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+  }
+
+  /* Tenu immobile tant que le bloc n'est pas à l'écran, puis relâché.
+     Une vraie boîte, pas `display: contents` : un élément sans boîte n'est
+     jamais vu par un IntersectionObserver, et les lettres ne partaient pas. */
+  .reveal,
+  .reveal > span {
+    display: inline;
+  }
+
+  .reveal .grow-letter {
+    animation-play-state: paused;
+  }
+
+  .reveal-on .grow-letter {
+    animation-play-state: running;
+  }
+
+  /* Chaque lettre pousse hors de sa propre ligne de base, à son tour.
+     Aucun fondu : un noir à moitié fondu reste un noir plus clair, et la page
+     n'en a qu'un. */
+  .grow-letter {
+    display: inline-block;
+    transform-origin: center bottom;
+    animation-name: grow-letter;
+    animation-timing-function: cubic-bezier(0.18, 0.9, 0.24, 1);
+    animation-fill-mode: both;
+  }
+
+  @keyframes grow-letter {
+    from { transform: scale(0); }
+    to   { transform: scale(1); }
+  }
+
+  /* Moins de mouvement demandé : tout se pose où ça atterrit, d'un coup. */
+  @media (prefers-reduced-motion: reduce) {
+    .grow-letter,
+    .reveal .grow-letter {
+      animation: none;
+    }
+  }
+}
+
+@layer components {
+  .font-plex {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+}
