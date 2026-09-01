@@ -9,7 +9,7 @@ import type { ErrorMessages, HeroContent, PageMeta } from '~/types'
 export const hero: HeroContent = {
   role: 'SERVICE 1 - SERVICE 2 - SERVICE 3',
   title: { name: 'Océane', tag: 'studio' },
-  body: 'À la rencontre de l’image et des lettres',
+  disciplines: ['Brand', 'Identité'],
   // ⚠ Image de remplacement, à changer : elle vient d'un autre projet et ne
   // dit rien du travail présenté. Déposer la bonne au même chemin suffit.
   //

@@ -9,7 +9,7 @@ const ARCH = { top: 16, side: 36, bottom: 24 }
 /** Hauteur de la piste de défilement, en écrans. */
 const TRACK = 2.6
 
-export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent) {
+export function Hero({ role, title, disciplines, media, aside, scrollCue }: HeroContent) {
   const track = useRef<HTMLElement | null>(null)
   const [progress, setProgress] = useState(0)
   const [still, setStill] = useState(false)
@@ -131,10 +131,14 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
           style={{ '--aside-top': `${titleTop.toFixed(2)}%` } as React.CSSProperties}
         >
           <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-8">
-            {/* À gauche, ferré à gauche. */}
-            <p className="border-text-xl text-accent max-w-xs text-center md:text-left">
-              {body}
-            </p>
+            {/* À gauche, ferré à gauche. Une vraie liste : ce sont des
+                éléments de même rang, et un lecteur d'écran les annonce alors
+                comme tels au lieu d'en faire une phrase. */}
+            <ul className="border-text-xl text-accent max-w-xs text-center md:text-left">
+              {disciplines.map((discipline) => (
+                <li key={discipline}>{discipline}</li>
+              ))}
+            </ul>
 
             {/* À droite, ferré à droite : les deux blocs se regardent en
                 miroir, comme la référence. */}

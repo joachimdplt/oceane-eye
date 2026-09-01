@@ -40,7 +40,8 @@ export interface HeroContent {
   /** Le métier, au-dessus du nom. */
   role: string
   title: HeroTitle
-  body: string
+  /** Le bloc de gauche : les disciplines, une par ligne. */
+  disciplines: string[]
   /** Ce que l'arche révèle : une image, ou un film. */
   media: HeroMedia
   /** Le vis-à-vis du corps de texte, à droite de l'arche. */
