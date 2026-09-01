@@ -87,7 +87,7 @@ export function Plans({ title, plans }: { title: string; plans: PlansContent }) 
                 {/* « dès » reste, en petit : ces montants sont des planchers, et
                     un chiffre nu vaudrait engagement. */}
                 <span className="label text-muted">dès</span>
-                <span className="title1 text-ink leading-none">{euros(plan.from)}</span>
+                <span className="title2 title-price text-ink">{euros(plan.from)}</span>
                 <span className="label text-muted">{plan.unit}</span>
               </p>
 

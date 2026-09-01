@@ -151,19 +151,21 @@ export interface PlansContent {
   plans: Plan[]
 }
 
-/** Une voix qui parle pour le studio : un client, et ce qui a été fait. */
+/**
+ * Un avis client, tel qu'il a été écrit.
+ *
+ * `quote` est une CITATION : elle se coupe, jamais ne se réécrit. Les coupes
+ * portent des points de suspension, comme dans la source.
+ *
+ * Pas de note sur cinq : aucun de ces clients n'en a donné, et une étoile
+ * inventée sous une phrase authentique jetterait le doute sur la phrase.
+ */
 export interface Voice {
   id: string
+  quote: string
   name: string
-  detail: string
-  image: string
-  /**
-   * Une note sur cinq, UNIQUEMENT si elle existe vraiment quelque part.
-   * Absente tant qu'aucun avis n'a été recueilli : des étoiles inventées sur la
-   * page de quelqu'un qui vend son jugement coûtent plus cher qu'elles ne
-   * rapportent.
-   */
-  rating?: number
+  /** Sa fonction, telle qu'il la donne. */
+  role: string
 }
 
 /** Le bloc de preuve : un bandeau de mots, puis les voix. */

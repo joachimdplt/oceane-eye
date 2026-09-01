@@ -478,6 +478,14 @@
     line-height: 1.02;
   }
 
+  /* Un montant : plus gros que le nom de sa formule, sans atteindre la taille
+     d'un titre de bloc. C'est le chiffre qu'on vient chercher, il doit se lire
+     de loin sans écraser ce qui l'explique. */
+  .title-price {
+    font-size: clamp(1.75rem, 4.5vw, 3rem);
+    line-height: 1;
+  }
+
   /* Le nom d'un panneau de prestation : plus petit encore, il doit tenir
      couché dans une bande étroite. */
   .title-panel {

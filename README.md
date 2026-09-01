@@ -224,16 +224,23 @@ Les quatre planchers de `offers` restent dans les données sans être affichés,
 avec `pitch` et `deliverables` : ils sont la seule trace écrite de ce que chaque
 prestation coûte.
 
-## ⚠ Aucune note client n'est affichée
+## Les avis sont authentiques, et cités
 
-Le bloc « Ils ont confié leur marque » sait rendre des étoiles — le champ
-`rating` existe sur chaque voix — mais **aucune n'en porte**, parce qu'il
-n'existe nulle part d'avis recueilli pour ce studio. Des étoiles inventées sur
-la page de quelqu'un qui vend son jugement coûtent plus cher qu'elles ne
-rapportent. Le jour où il y a trois vrais avis, il suffit de renseigner le champ.
+Les six avis viennent des publications d'Océane (`Posts Instagram.pdf`), repris
+**mot pour mot**. Les coupes portent des points de suspension ; rien n'est
+réécrit, rien n'est arrangé. `quote` est une citation : elle se coupe, jamais
+elle ne se réécrit.
 
-Les trois clients et ce qui leur a été livré, eux, sont vrais : ils viennent de
-son portfolio.
+**Aucune note sur cinq**, parce qu'aucun de ces clients n'en a donné. Une étoile
+inventée sous une phrase authentique jetterait le doute sur la phrase — qui vaut
+de toute façon mieux qu'une étoile.
+
+**Aucun portrait** non plus : on n'a la photo d'aucune de ces personnes, et poser
+l'image d'un projet derrière une citation laisserait croire que son auteur y
+figure.
+
+⚠ À vérifier avec Océane : que ces personnes acceptent de voir leur avis sur le
+site, et pas seulement sur son compte.
 
 ## ⚠ Les réponses de la FAQ sont des engagements
 

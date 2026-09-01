@@ -1,16 +1,23 @@
-import { Star } from 'lucide-react'
 import type { SocialProofContent } from '~/types'
 
 /**
- * La preuve par les clients : un bandeau de mots, puis trois voix.
+ * La preuve par les clients : un bandeau de mots, puis leurs avis.
  *
  * Le bandeau est rendu DEUX FOIS et glisse de la moitié de sa largeur : c'est
  * ce qui rend la boucle sans couture. Une seule copie laisserait un blanc à
  * chaque tour.
  *
- * Les étoiles ne paraissent que si une note existe dans les données. Aucune n'en
- * a pour l'instant, et c'est voulu : des étoiles inventées sur la page de
- * quelqu'un qui vend son jugement coûtent plus cher qu'elles ne rapportent.
+ * Des citations et non des étoiles. Aucun de ces clients n'a donné de note, et
+ * une étoile inventée sous une phrase authentique jetterait le doute sur la
+ * phrase — qui vaut de toute façon mieux qu'une étoile.
+ *
+ * Pas de portrait non plus : on n'a la photo d'aucune de ces personnes, et
+ * poser l'image d'un projet derrière une citation laisserait croire que l'auteur
+ * y figure.
+ *
+ * Le balisage dit ce que c'est : `<blockquote>` pour la parole rapportée,
+ * `<figcaption>` pour qui l'a dite. Un lecteur d'écran annonce alors une
+ * citation, pas un paragraphe de plus.
  */
 export function SocialProof({ title, proof }: { title: string; proof: SocialProofContent }) {
   return (
@@ -26,7 +33,10 @@ export function SocialProof({ title, proof }: { title: string; proof: SocialProo
           {[0, 1].map((copie) => (
             <div key={copie} className="flex items-baseline shrink-0">
               {proof.words.map((word) => (
-                <span key={word} className="title2 title-block text-ink px-6 md:px-10 whitespace-nowrap">
+                <span
+                  key={word}
+                  className="title2 title-block text-ink px-6 md:px-10 whitespace-nowrap"
+                >
                   {word}
                 </span>
               ))}
@@ -34,44 +44,25 @@ export function SocialProof({ title, proof }: { title: string; proof: SocialProo
           ))}
         </div>
       </div>
-      {/* Le bandeau est décoratif et masqué : sa liste est déjà dite ailleurs.
-          Le titre du bloc, lui, doit être lu. */}
-      <h2 className="sr-only">{title}</h2>
 
-      <ul className="relative w-full max-w-page xl:max-w-wide mx-auto px-6 md:px-gutter grid gap-4 md:grid-cols-3">
-        {proof.voices.map((voice) => (
-          <li
-            key={voice.id}
-            className="relative isolate rounded-card overflow-hidden aspect-[3/4] bg-ink"
-          >
-            <img
-              src={voice.image}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <span aria-hidden="true" className="card-scrim-bottom absolute inset-x-0 bottom-0" />
+      <div className="relative w-full max-w-page xl:max-w-wide mx-auto px-6 md:px-gutter flex flex-col gap-10">
+        <h2 className="title2 title-block text-ink">{title}</h2>
 
-            <div className="relative h-full flex flex-col justify-end gap-1 p-6">
-              {voice.rating ? (
-                <span className="flex gap-1" aria-label={`${voice.rating} sur 5`}>
-                  {Array.from({ length: 5 }, (_, i) => (
-                    <Star
-                      key={i}
-                      aria-hidden="true"
-                      className={`size-4 ${i < voice.rating! ? 'fill-ground text-ground' : 'text-ground/40'}`}
-                    />
-                  ))}
-                </span>
-              ) : null}
+        <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {proof.voices.map((voice) => (
+            <li key={voice.id}>
+              <figure className="h-full flex flex-col gap-6 border border-rule rounded-card p-6 md:p-8">
+                <blockquote className="body-text text-ink">« {voice.quote} »</blockquote>
 
-              <p className="border-text-xl text-ground">{voice.name}</p>
-              <p className="label text-ground">{voice.detail}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+                <figcaption className="mt-auto flex flex-col gap-1">
+                  <span className="border-text-xl text-ink">{voice.name}</span>
+                  <span className="label text-muted">{voice.role}</span>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   )
 }

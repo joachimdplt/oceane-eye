@@ -205,35 +205,61 @@ export const plans: PlansContent = {
 /**
  * La preuve par les clients.
  *
- * ⚠ AUCUNE NOTE N'EST AFFICHÉE, et c'est délibéré : il n'existe nulle part
- * d'avis recueilli pour ce studio. Le composant sait rendre des étoiles — le
- * champ `rating` est prévu — mais des étoiles inventées sur la page de quelqu'un
- * qui vend son jugement coûtent plus cher qu'elles ne rapportent. Le jour où
- * Océane aura trois vrais avis, il suffit de renseigner le champ.
+ * Six avis VRAIS, repris mot pour mot des publications d'Océane. Les coupes
+ * portent des points de suspension ; rien n'est réécrit, rien n'est arrangé.
  *
- * Les trois clients et ce qui leur a été livré sont vrais : ils viennent de son
- * propre portfolio.
+ * Aucune note sur cinq : personne n'en a donné. Une étoile inventée sous une
+ * phrase authentique jetterait le doute sur la phrase elle-même, et ces
+ * phrases-là valent mieux que n'importe quelle étoile.
+ *
+ * Pas de portrait non plus : on n'a la photo d'aucune de ces personnes, et
+ * poser l'image d'un projet derrière une citation laisserait croire que
+ * l'auteur y figure.
  */
 export const socialProof: SocialProofContent = {
   words: ['Identité', 'Marque', 'Packaging', 'Direction artistique', 'Édition', 'Nice'],
   voices: [
     {
-      id: 'satine-by-fany',
-      name: 'Satiné by Fany',
-      detail: 'Identité visuelle',
-      image: '/img/projets/satine-by-fany.jpg',
+      id: 'guillaume',
+      quote:
+        'Je travaille depuis 3 ans avec Océane et elle m’a toujours donné pleinement satisfaction. Ses capacités de designer sont très supérieures à ce que j’ai pu rencontrer par ailleurs. Elle ne se contente pas d’être un conseiller artistique au goût très sûr : elle s’assure toujours de la cohérence d’ensemble des projets qui lui sont confiés.',
+      name: 'Guillaume',
+      role: 'Fondateur de STANTEM, coach et conférencier',
     },
     {
-      id: 'conciergerie-riviera',
-      name: 'Conciergerie Riviera',
-      detail: 'Identité visuelle',
-      image: '/img/projets/conciergerie-riviera.jpg',
+      id: 'fany',
+      quote:
+        'Tu as su être à l’écoute de mes besoins, force de proposition et très professionnelle. Je me suis sentie accompagnée et comprise tout au long du projet, ce qui a rendu l’expérience fluide et agréable.',
+      name: 'Fany',
+      role: 'Fondatrice de Satiné',
     },
     {
-      id: 'bobines-etrange',
-      name: 'Les Bobines de l’Étrange',
-      detail: 'Packaging et identité visuelle',
-      image: '/img/projets/bobines-etrange.jpg',
+      id: 'kerrynn',
+      quote:
+        'Dès le départ, elle a su capter l’essence de mon activité de coaching sportif et traduire mon univers à travers une identité visuelle forte et élégante.',
+      name: 'Kerry-Ann',
+      role: 'Fondatrice du ItsKerrynClub',
+    },
+    {
+      id: 'majorel',
+      quote:
+        'Tu as su parfaitement comprendre nos attentes et retranscrire notre univers avec justesse. Nous avons beaucoup apprécié ton écoute, ta disponibilité et ta créativité tout au long du processus.',
+      name: 'Zoé F. et Mohammed C.',
+      role: 'Fondateurs du Majorel',
+    },
+    {
+      id: 'romain',
+      quote:
+        'Je me suis senti vraiment écouté. Tu as tout de suite capté ce que j’aimais ou pas. Le logo que tu as créé me ressemble vraiment beaucoup, et j’ai même eu pas mal de retours positifs dessus.',
+      name: 'Romain T.',
+      role: 'Fondateur de RTMO',
+    },
+    {
+      id: 'alice',
+      quote:
+        'Elle a su être à l’écoute et répondre à mes attentes. Je ne peux que recommander Océane pour sa créativité et son professionnalisme !',
+      name: 'Alice P.',
+      role: 'Dirigeante de D Day Wedding Planner, Nice',
     },
   ],
 }
