@@ -4,6 +4,7 @@ import { Nav } from '~/components/landing/Nav'
 import { Contact } from '~/components/landing/Contact'
 import { Hero } from '~/components/landing/Hero'
 import { Offers } from '~/components/landing/Offers'
+import { Plans } from '~/components/landing/Plans'
 import { Process } from '~/components/landing/Process'
 import { Work } from '~/components/landing/Work'
 import {
@@ -15,6 +16,7 @@ import {
   offers,
   featuredProjects,
   offersIntro,
+  plans,
   steps,
 } from '~/data/content'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
@@ -43,6 +45,7 @@ function Landing() {
       <About title={blockTitles.studio} about={about} />
       <Offers title={blockTitles.services} lede={offersIntro.lede} offers={offers} />
       <Work title={blockTitles.travaux} projects={featuredProjects()} />
+      <Plans title={blockTitles.tarifs} plans={plans} />
       <Process title={blockTitles.methode} steps={steps} />
       <Contact title={blockTitles.contact} contact={contact} />
     </main>

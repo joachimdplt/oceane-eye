@@ -4,6 +4,7 @@ import type {
   ErrorMessages,
   HeroContent,
   Offer,
+  PlansContent,
   OffersIntro,
   PageMeta,
   Project,
@@ -40,6 +41,7 @@ export const blockTitles = {
   studio: 'Le studio',
   services: 'Services',
   travaux: 'Travaux',
+  tarifs: 'Tarifs flexibles',
   methode: 'Méthode',
   contact: 'Travaillons ensemble',
 }
@@ -146,6 +148,50 @@ export const offers: Offer[] = [
     duration: '2 à 3 semaines',
   },
 ]
+
+/**
+ * Les tarifs.
+ *
+ * ⚠ LES DEUX MONTANTS SONT À VALIDER, comme ceux des prestations. Le plancher
+ * au projet reprend celui de la prestation la moins chère ; celui au mois n'a
+ * aucune source — il n'existe nulle part dans ce qu'Océane a écrit, et personne
+ * d'autre qu'elle ne peut l'arrêter.
+ *
+ * C'est le seul endroit du site où un prix s'affiche. Les prestations n'en
+ * portent plus : un tarif au milieu d'une page qui cherche encore à convaincre
+ * fait trier avant d'avoir donné envie, alors qu'un bloc qui s'annonce comme tel
+ * est consulté par quelqu'un qui a déjà décidé de regarder.
+ */
+export const plans: PlansContent = {
+  eyebrow: 'Ocean Eye Studio',
+  lede: 'Deux façons de travailler ensemble, selon que votre marque se lance ou qu’elle avance déjà.',
+  rest: 'Le périmètre et le prix sont posés avant de commencer, et rien ne s’ajoute en chemin sans que vous l’ayez demandé.',
+  image: '/img/projets/conciergerie-riviera.jpg',
+  plans: [
+    {
+      id: 'projet',
+      name: 'Au projet',
+      features: [
+        'Périmètre écrit avant de commencer',
+        'Nombre de pistes fixé',
+        'Prix ferme, sans dépassement',
+      ],
+      from: 1800,
+      unit: 'au projet',
+    },
+    {
+      id: 'mois',
+      name: 'Au mois',
+      features: [
+        'Pistes et retouches sans compter',
+        'Vos supports suivis dans la durée',
+        'Interruptible d’un mois sur l’autre',
+      ],
+      from: 900,
+      unit: 'par mois',
+    },
+  ],
+}
 
 /**
  * La méthode, reprise du site actuel : elle y était déjà juste.

@@ -127,6 +127,26 @@ export interface OffersIntro {
   lede: string
 }
 
+/** Une formule de travail, avec ce qu'elle comprend et son plancher. */
+export interface Plan {
+  id: string
+  name: string
+  features: string[]
+  /** Plancher en euros, hors taxes. */
+  from: number
+  /** Ce qui suit le montant : « au projet », « par mois »… */
+  unit: string
+}
+
+/** Le bloc des tarifs : deux formules encadrant une image. */
+export interface PlansContent {
+  eyebrow: string
+  lede: string
+  rest: string
+  image: string
+  plans: Plan[]
+}
+
 /** Une étape de la méthode. */
 export interface Step {
   id: string

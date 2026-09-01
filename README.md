@@ -212,15 +212,17 @@ media: { kind: 'video', src: '/video/hero.mp4', poster: '/img/hero.jpg', alt: ''
 Le film porte toujours une affiche : c'est elle qu'on montre à qui a demandé
 moins de mouvement, et elle qui tient l'écran le temps du chargement.
 
-## ⚠ Les prix ne sont affichés nulle part
+## ⚠ Les prix ne s'affichent qu'à un seul endroit
 
-Les quatre planchers vivent dans `offers` (`src/data/content.ts`) mais **aucun
-n'apparaît sur la page** : le bloc des prestations ne montre que l'icône, le nom
-et le délai. Les montants sont gardés pour le jour où ils auront leur place — un
-devis, une page dédiée — et non supprimés, parce qu'ils restent la seule trace
-écrite de ce que chaque prestation coûte.
+Le bloc **Tarifs flexibles** (`plans`) porte les deux seuls montants visibles du
+site. Les prestations n'en montrent aucun : un tarif au milieu d'une page qui
+cherche encore à convaincre fait trier avant d'avoir donné envie, alors qu'un
+bloc qui s'annonce comme tel est consulté par quelqu'un qui a déjà décidé de
+regarder.
 
-`pitch` et `deliverables` sont dans le même cas : plus affichés, toujours là.
+Les quatre planchers de `offers` restent dans les données sans être affichés,
+avec `pitch` et `deliverables` : ils sont la seule trace écrite de ce que chaque
+prestation coûte.
 
 ## ⚠ Et ils ne sont pas validés
 
