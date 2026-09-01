@@ -132,13 +132,13 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
         >
           <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-8">
             {/* À gauche, ferré à gauche. */}
-            <p className="font-garamond text-accent text-base md:text-xl leading-prose max-w-xs text-center md:text-left">
+            <p className="border-text-xl text-accent max-w-xs text-center md:text-left">
               {body}
             </p>
 
             {/* À droite, ferré à droite : les deux blocs se regardent en
                 miroir, comme la référence. */}
-            <p className="font-garamond text-accent text-base md:text-xl leading-prose max-w-xs text-center md:text-right">
+            <p className="border-text-xl text-accent max-w-xs text-center md:text-right">
               {aside.place} · <LiveTime timeZone={aside.timeZone} />
               <br />
               {aside.since}

@@ -155,6 +155,32 @@
      L'opacité est le seul bouton : 0.32 donne un écart-type de 8,6 niveaux sur
      255, la valeur mesurée sur la référence. Monter pour plus de grain,
      descendre pour moins. */
+  /* Les textes de bordure — les deux blocs posés aux bords de l'écran.
+
+     Ils empruntent la grotesque du titre 2 : la Garalde donne le nom, la
+     grotesque donne les faits, et les deux ne se confondent jamais.
+
+     La taille prend quatre points sur chaque palier, 16 → 20 et 20 → 24. Ce
+     n'est pas qu'une question de lisibilité de près : au-delà de 24 px en gras,
+     le WCAG les compte comme du grand texte, dont le seuil tombe de 4,5:1 à
+     3:1 — ce qui les rend conformes sur le fond, qu'ils ne l'étaient pas.
+
+     L'interlignage se resserre : 1,6 convient à de la prose au petit corps, pas
+     à deux lignes grasses au grand. */
+  .border-text-xl {
+    font-family: var(--font-grotesk);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 48rem) {
+    .border-text-xl {
+      font-size: 1.5rem;
+    }
+  }
+
   /* Les textes de flanc, calés sur la ligne du titre.
 
      Pas au milieu de l'écran : le titre est au centre de l'ARCHE, à 46 %, et

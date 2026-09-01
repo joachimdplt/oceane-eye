@@ -57,6 +57,10 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   `.title2` déclare `font-style: normal` et ce n'est pas redondant : la
   propriété s'hérite, donc imbriquée dans un `.title1` elle prenait son
   italique sans que rien ne le demande.
+- **`.border-text-xl`** — les deux blocs posés aux bords de l'écran. Ils
+  empruntent la grotesque du titre 2 : la Garalde donne le nom, la grotesque
+  donne les faits. En gras et à 24 px, le WCAG les compte comme du grand texte
+  (seuil 3:1 au lieu de 4,5:1), ce qui les rend **conformes sur le fond**.
 - La Garalde : `--font-garamond`. **Adobe Garamond Pro est sous licence Adobe** —
   elle ne peut être ni servie depuis Google Fonts ni auto-hébergée. La page est
   donc composée en **EB Garamond**, sa reprise libre, dont l'italique est
