@@ -81,7 +81,7 @@ export const about: AboutContent = {
  */
 export const offersIntro: OffersIntro = {
   lede:
-    'Une marque a un univers avant d’avoir une forme. Le travail commence là : aller chercher ce qui vous ressemble déjà sans avoir été nommé, puis lui donner de quoi se voir.',
+    'Une marque a un univers avant d’avoir une forme. Le travail commence ici : aller chercher ce qui vous ressemble déjà sans avoir été nommé, puis lui donner de quoi se voir.',
 }
 
 export const offers: Offer[] = [
@@ -96,6 +96,7 @@ export const offers: Offer[] = [
       'Fichiers sources et exports',
     ],
     image: '/img/projets/satine-by-fany.jpg',
+    icon: 'identite',
     from: 2400,
     duration: '4 à 6 semaines',
   },
@@ -110,6 +111,7 @@ export const offers: Offer[] = [
       'Suivi de production',
     ],
     image: '/img/projets/thelma-rose.jpg',
+    icon: 'direction',
     from: 3200,
     duration: '5 à 8 semaines',
   },
@@ -124,6 +126,7 @@ export const offers: Offer[] = [
       'Fichiers prêts pour l’imprimeur',
     ],
     image: '/img/projets/bobines-etrange.jpg',
+    icon: 'packaging',
     from: 1800,
     duration: '3 à 5 semaines',
   },
@@ -138,6 +141,7 @@ export const offers: Offer[] = [
       'Fichiers d’impression',
     ],
     image: '/img/projets/bauhaus-109.jpg',
+    icon: 'supports',
     from: 900,
     duration: '2 à 3 semaines',
   },

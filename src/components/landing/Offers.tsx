@@ -1,35 +1,39 @@
 import { useState } from 'react'
-import type { Offer } from '~/types'
+import { Compass, Fingerprint, Megaphone, Package } from 'lucide-react'
+import type { Offer, OfferIcon } from '~/types'
 import { GrowText } from '~/components/ui/GrowText'
 import { Reveal } from '~/components/ui/Reveal'
 
-/** `2 400 €`, jamais `2400€` : l'espace insécable, et le symbole après. */
-function euros(amount: number) {
-  return new Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: 'EUR',
-    maximumFractionDigits: 0,
-  })
-    .format(amount)
-    // fr-FR sépare les milliers par une espace FINE insécable (U+202F), qui se
-    // lit comme un artefact dans certaines polices. On la remplace par une
-    // insécable ordinaire — en l'écrivant en échappement, parce qu'une espace
-    // invisible dans un littéral ne se relit pas.
-    .replace(/[\u202f\u2009]/g, '\u00a0')
+/**
+ * Le nom d'icône venu des données rendu en composant.
+ *
+ * La table vit ici et non dans `data/` : une donnée qui importerait un
+ * composant lierait la couche transversale à la couche 4 (CONVENTIONS.md § 8).
+ */
+const ICONS: Record<OfferIcon, typeof Compass> = {
+  identite: Fingerprint,
+  direction: Compass,
+  packaging: Package,
+  supports: Megaphone,
 }
 
 /**
  * Les prestations, en accordéon de panneaux.
  *
- * Un seul panneau est ouvert ; les autres se réduisent à une bande où le nom
- * passe à la verticale — « Supports de communication » ne tiendrait pas
- * couché dans une colonne de cette largeur.
+ * Chaque panneau ne porte que son icône, son nom et son délai. Pas de prix :
+ * une grille tarifaire au milieu d'une page qui cherche encore à convaincre
+ * fait trier avant d'avoir donné envie. Les montants restent dans les données,
+ * pour le jour où ils auront leur place — un devis, une page dédiée.
  *
- * Chaque panneau est un vrai bouton : il s'ouvre au survol comme à la tabulation
- * et au clic, donc au doigt et au clavier autant qu'à la souris. Le contenu des
- * panneaux fermés reste dans le document — il est rogné, jamais retiré — pour
- * qu'un lecteur d'écran lise les quatre offres et leurs prix sans avoir à
- * deviner qu'il faut ouvrir quelque chose.
+ * Un seul panneau est ouvert ; les autres se réduisent à une bande où le nom
+ * passe à la verticale — « Supports de communication » ne tiendrait pas couché
+ * dans une colonne de cette largeur.
+ *
+ * Chaque panneau est un vrai bouton : il s'ouvre au survol comme à la
+ * tabulation et au clic, donc au doigt et au clavier autant qu'à la souris. Le
+ * contenu des panneaux fermés reste dans le document, rogné et jamais retiré,
+ * pour qu'un lecteur d'écran lise les quatre prestations sans avoir à deviner
+ * qu'il faut ouvrir quelque chose.
  *
  * Sous `md`, l'accordéon se déplie en pile : quatre bandes verticales dans la
  * largeur d'un téléphone ne seraient lisibles pour personne.
@@ -65,6 +69,7 @@ export function Offers({
         <ul className="services-rail flex flex-col md:flex-row gap-3">
           {offers.map((offer, i) => {
             const active = i === open
+            const Icon = ICONS[offer.icon]
             return (
               <li
                 key={offer.id}
@@ -86,63 +91,41 @@ export function Offers({
                     decoding="async"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  {/* Le voile : le nom et les prix sont posés sur une photo dont
-                      on ne maîtrise pas le fond. Il descend vers l'encre, donc
-                      le texte est en clair dessus, quelle que soit l'image. */}
+                  {/* Le voile : le nom est posé sur une photo dont on ne
+                      maîtrise pas le fond. Il descend vers l'encre, donc le
+                      texte reste en clair dessus quelle que soit l'image. */}
                   <span aria-hidden="true" className="panel-scrim absolute inset-0" />
+
+                  {/* L'icône, en haut : elle est décorative et le nom est juste
+                      dessous, donc elle est cachée aux lecteurs d'écran plutôt
+                      que de faire entendre la prestation deux fois. */}
+                  <Icon
+                    aria-hidden="true"
+                    strokeWidth={1.5}
+                    className="absolute top-6 left-6 md:top-8 md:left-8 z-10 size-7 md:size-8 text-ground"
+                  />
 
                   {/* Fermé, le nom se redresse : couché, il serait tronqué. */}
                   <span
                     className={`absolute z-10 title2 title-panel text-ground whitespace-nowrap ${
                       active
-                        ? 'top-6 left-6 md:top-8 md:left-8'
-                        : 'top-6 left-6 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-rotate-90'
+                        ? 'bottom-14 left-6 md:bottom-16 md:left-8'
+                        : 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:origin-center md:-rotate-90'
                     }`}
                   >
                     {offer.name}
                   </span>
 
-                  {/* Toujours rendu, seulement rogné quand le panneau est
-                      fermé : un prix retiré du document est un prix que
-                      personne ne trouve. */}
-                  {/* Le prix est HORS du bloc qui s'efface : c'est la première
-                      chose qu'on vient chercher ici, et trois prix sur quatre
-                      cachés derrière un survol sont trois prix qu'on ne lit
-                      pas. Fermé, il se réduit et se centre au pied de la bande. */}
+                  {/* Le délai, seul chiffre gardé. Visible ouvert comme fermé :
+                      c'est ce qu'on vient vérifier en premier après le nom. */}
                   <span
-                    className={`absolute inset-x-0 bottom-0 z-20 flex flex-wrap items-baseline gap-x-4 gap-y-1 px-6 md:px-8 pb-6 md:pb-8 ${
-                      active ? 'justify-between' : 'justify-center text-center'
+                    className={`absolute z-10 label text-ground whitespace-nowrap ${
+                      active
+                        ? 'bottom-6 left-6 md:bottom-8 md:left-8'
+                        : 'bottom-6 inset-x-0 text-center px-2'
                     }`}
                   >
-                    <span className={active ? 'border-text-xl text-ground' : 'label text-ground'}>
-                      dès {euros(offer.from)}
-                    </span>
-                    <span
-                      className={`label text-ground transition-opacity duration-300 motion-reduce:transition-none ${
-                        active ? 'opacity-100' : 'opacity-0'
-                      }`}
-                    >
-                      {offer.duration}
-                    </span>
-                  </span>
-
-                  <span
-                    className={`absolute inset-x-0 bottom-0 z-10 flex flex-col gap-4 p-6 md:p-8 pb-20 md:pb-24 transition-opacity duration-300 motion-reduce:transition-none ${
-                      active ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                    }`}
-                  >
-                    <span className="body-text text-ground max-w-xl">{offer.pitch}</span>
-
-                    <span className="flex flex-col">
-                      {offer.deliverables.map((item) => (
-                        <span
-                          key={item}
-                          className="label text-ground py-2 border-t border-ground/25"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </span>
+                    {offer.duration}
                   </span>
                 </button>
               </li>

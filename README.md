@@ -172,7 +172,17 @@ media: { kind: 'video', src: '/video/hero.mp4', poster: '/img/hero.jpg', alt: ''
 Le film porte toujours une affiche : c'est elle qu'on montre à qui a demandé
 moins de mouvement, et elle qui tient l'écran le temps du chargement.
 
-## ⚠ Les prix ne sont pas validés
+## ⚠ Les prix ne sont affichés nulle part
+
+Les quatre planchers vivent dans `offers` (`src/data/content.ts`) mais **aucun
+n'apparaît sur la page** : le bloc des prestations ne montre que l'icône, le nom
+et le délai. Les montants sont gardés pour le jour où ils auront leur place — un
+devis, une page dédiée — et non supprimés, parce qu'ils restent la seule trace
+écrite de ce que chaque prestation coûte.
+
+`pitch` et `deliverables` sont dans le même cas : plus affichés, toujours là.
+
+## ⚠ Et ils ne sont pas validés
 
 `offers` dans `src/data/content.ts` porte quatre planchers — 2 400, 3 200,
 1 800 et 900 € — **calés sur le marché français d'un studio indépendant de ce

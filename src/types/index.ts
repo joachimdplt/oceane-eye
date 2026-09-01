@@ -73,6 +73,9 @@ export interface AboutContent {
   cta: { label: string; href: string }
 }
 
+/** Les icônes disponibles pour une prestation. */
+export type OfferIcon = 'identite' | 'direction' | 'packaging' | 'supports'
+
 /**
  * Une prestation vendue.
  *
@@ -87,6 +90,12 @@ export interface Offer {
   deliverables: string[]
   /** L'image du panneau. Prise dans les projets : elle montre la discipline. */
   image: string
+  /**
+   * L'icône du panneau, désignée par un NOM et non par un composant : `data/`
+   * ne connaît pas React, et une donnée qui importerait un composant lierait la
+   * couche transversale à la couche 4 (CONVENTIONS.md § 8).
+   */
+  icon: OfferIcon
   /** Plancher en euros, hors taxes. */
   from: number
   /** Délai indicatif, en clair. */
