@@ -11,6 +11,7 @@ import type {
   OffersIntro,
   PageMeta,
   Project,
+  Voice,
   Step,
 } from '~/types'
 
@@ -268,6 +269,9 @@ export const socialProof: SocialProofContent = {
         'Tu as su être à l’écoute de mes besoins, force de proposition et très professionnelle. Je me suis sentie accompagnée et comprise tout au long du projet, ce qui a rendu l’expérience fluide et agréable.',
       name: 'Fany',
       role: 'Fondatrice de Satiné',
+      // Le seul avis qui parle d'un projet montré sur le site. Les cinq autres
+      // viennent de clients dont le travail n'est pas au portfolio.
+      project: 'satine-by-fany',
     },
     {
       id: 'kerrynn',
@@ -639,6 +643,11 @@ export function featuredProjects(): Project[] {
   return offers
     .map((offer) => projects.find((project) => project.offer === offer.id))
     .filter((project): project is Project => Boolean(project))
+}
+
+/** L'avis qui parle de ce projet, s'il y en a un. */
+export function voiceFor(projectId: string): Voice | undefined {
+  return socialProof.voices.find((voice) => voice.project === projectId)
 }
 
 /** Le projet portant cet identifiant, s'il existe. */

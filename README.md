@@ -239,6 +239,11 @@ de toute façon mieux qu'une étoile.
 l'image d'un projet derrière une citation laisserait croire que son auteur y
 figure.
 
+Un avis peut être **rattaché à un projet** (`voice.project`) : il s'affiche
+alors sur la page de ce projet, juste après le récit. Un seul l'est aujourd'hui,
+celui de Fany pour Satiné — les cinq autres viennent de clients dont le travail
+n'est pas au portfolio, et les rattacher de force ferait de faux témoignages.
+
 ⚠ À vérifier avec Océane : que ces personnes acceptent de voir leur avis sur le
 site, et pas seulement sur son compte.
 

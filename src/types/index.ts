@@ -193,6 +193,14 @@ export interface Voice {
   name: string
   /** Sa fonction, telle qu'il la donne. */
   role: string
+  /**
+   * Le projet du portfolio dont cet avis parle, s'il y en a un.
+   *
+   * Absent pour la plupart : les clients qui ont laissé un avis ne sont pas
+   * ceux dont le travail est montré. Un avis rattaché de force à un projet qui
+   * n'est pas le sien serait un faux témoignage.
+   */
+  project?: string
 }
 
 /** Le bloc de preuve. */

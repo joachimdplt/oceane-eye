@@ -7,6 +7,7 @@ import {
   projectById,
   projectUi,
   siblingsOf,
+  voiceFor,
 } from '~/data/content'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
 
@@ -21,7 +22,12 @@ export const Route = createFileRoute('/projets/$projectId')({
   loader: ({ params }) => {
     const project = projectById(params.projectId)
     if (!project) throw notFound()
-    return { project, offer: offerById(project.offer), siblings: siblingsOf(project) }
+    return {
+      project,
+      offer: offerById(project.offer),
+      siblings: siblingsOf(project),
+      voice: voiceFor(project.id),
+    }
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
@@ -43,6 +49,12 @@ export const Route = createFileRoute('/projets/$projectId')({
 })
 
 function ProjectPage() {
-  const { project, offer, siblings } = Route.useLoaderData()
-  return <ProjectDetail project={project} offer={offer} siblings={siblings} ui={projectUi} />
+  const { project, offer, siblings, voice } = Route.useLoaderData()
+  return <ProjectDetail
+      project={project}
+      offer={offer}
+      siblings={siblings}
+      voice={voice}
+      ui={projectUi}
+    />
 }

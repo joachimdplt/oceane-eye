@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import type { Offer, Project } from '~/types'
+import type { Offer, Project, Voice } from '~/types'
 import { Unfold } from '~/components/ui/Unfold'
 import { WorkBlock } from './WorkBlock'
 
@@ -19,11 +19,14 @@ export function ProjectDetail({
   project,
   offer,
   siblings,
+  voice,
   ui,
 }: {
   project: Project
   offer?: Offer
   siblings: Project[]
+  /** L'avis du client de CE projet, quand il en a laissé un. */
+  voice?: Voice
   ui: {
     back: string
     client: string
@@ -112,6 +115,24 @@ export function ProjectDetail({
           </div>
         </div>
       </section>
+
+      {/* Ce que le client en a dit.
+          Posé juste après le récit et avant les visuels : c'est la parole qui
+          valide ce qu'on vient de lire, et elle perd de sa force reléguée en
+          bas de page. Rendu seulement quand cet avis existe — la plupart des
+          projets n'en ont pas. */}
+      {voice ? (
+        <section className="relative isolate flex items-center px-6 md:px-gutter pb-20 bg-ground overflow-hidden">
+          <span aria-hidden="true" className="grain absolute inset-0" />
+          <figure className="relative w-full max-w-page xl:max-w-wide mx-auto flex flex-col gap-6 border border-rule rounded-card p-6 md:p-10">
+            <blockquote className="title2 title-panel text-ink max-w-3xl">« {voice.quote} »</blockquote>
+            <figcaption className="flex flex-col gap-1">
+              <span className="border-text-xl text-ink">{voice.name}</span>
+              <span className="label text-muted">{voice.role}</span>
+            </figcaption>
+          </figure>
+        </section>
+      ) : null}
 
       {/* Les visuels, à la suite et en pleine largeur.
 
