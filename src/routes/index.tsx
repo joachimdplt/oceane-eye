@@ -37,7 +37,7 @@ export const Route = createFileRoute('/')({
 function Landing() {
   return (
     <main>
-      <Nav items={blockTitles} />
+      <Nav items={blockTitles} quietOver="travaux" />
 
       <Hero {...hero} />
       <About title={blockTitles.studio} about={about} />

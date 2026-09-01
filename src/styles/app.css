@@ -289,14 +289,12 @@
      Un bloc vide, lui, occupe le flux : il allonge la boîte de contenu, donc la
      course. C'est ce qui donne enfin sa prise à la dernière carte. */
   .work-stack {
-    /* Le temps d'arrêt de la pile assemblée, avant qu'elle ne reparte.
-       Aucune marge négative : le bloc suivant ne recouvre pas la pile, c'est la
-       pile qui remonte, par-dessus l'écran d'ouverture resté épinglé derrière. */
-    --stack-tail: 40svh;
-  }
+    /* Aucun temps d'arrêt : la pile repart à l'instant où la dernière carte se
+       pose. Mesuré au navigateur, les deux se produisent au même pixel.
 
-  .work-stack-tail {
-    height: var(--stack-tail);
+       Ce n'est possible que parce que les cartes ont un bas commun (voir plus
+       bas) : à hauteurs égales, la dernière n'avait aucune course et ne se
+       posait jamais — il fallait alors lui réserver un bloc vide. */
   }
 
   /* Le pas de l'empilement.
@@ -488,6 +486,27 @@
        `min()` le ramenait à 13 px sur un téléphone. */
     font-size: clamp(1.125rem, 3.4vw, 1.75rem);
     line-height: 1.05;
+  }
+
+  /* La barre de navigation, et son effacement.
+
+     `visibility: hidden` en plus de la translation : une barre seulement
+     déplacée hors de l'écran reste dans l'ordre de tabulation, et le clavier y
+     tomberait sans que rien ne se voie. */
+  .site-nav {
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 220ms;
+  }
+
+  .site-nav--hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-nav {
+      transition: none;
+    }
   }
 
   /* Les textes de bordure — les deux blocs posés aux bords de l'écran.
