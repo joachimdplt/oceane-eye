@@ -224,7 +224,24 @@ Les quatre planchers de `offers` restent dans les données sans être affichés,
 avec `pitch` et `deliverables` : ils sont la seule trace écrite de ce que chaque
 prestation coûte.
 
-## ⚠ Et ils ne sont pas validés
+## ⚠ Aucune note client n'est affichée
+
+Le bloc « Ils ont confié leur marque » sait rendre des étoiles — le champ
+`rating` existe sur chaque voix — mais **aucune n'en porte**, parce qu'il
+n'existe nulle part d'avis recueilli pour ce studio. Des étoiles inventées sur
+la page de quelqu'un qui vend son jugement coûtent plus cher qu'elles ne
+rapportent. Le jour où il y a trois vrais avis, il suffit de renseigner le champ.
+
+Les trois clients et ce qui leur a été livré, eux, sont vrais : ils viennent de
+son portfolio.
+
+## ⚠ Les réponses de la FAQ sont des engagements
+
+Elles sont construites sur ce que le site dit déjà — les délais des prestations,
+les quatre étapes de la méthode, la différence entre la formule au projet et
+celle au mois. Mais chacune engage Océane, et **aucune ne vient d'elle**.
+
+## ⚠ Et les prix ne sont pas validés
 
 `offers` dans `src/data/content.ts` porte quatre planchers — 2 400, 3 200,
 1 800 et 900 € — **calés sur le marché français d'un studio indépendant de ce

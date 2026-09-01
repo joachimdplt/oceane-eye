@@ -5,6 +5,8 @@ import { Contact } from '~/components/landing/Contact'
 import { Hero } from '~/components/landing/Hero'
 import { Offers } from '~/components/landing/Offers'
 import { Plans } from '~/components/landing/Plans'
+import { Questions } from '~/components/landing/Questions'
+import { SocialProof } from '~/components/landing/SocialProof'
 import { Process } from '~/components/landing/Process'
 import { Work } from '~/components/landing/Work'
 import {
@@ -16,7 +18,9 @@ import {
   offers,
   featuredProjects,
   offersIntro,
+  faq,
   plans,
+  socialProof,
   steps,
 } from '~/data/content'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
@@ -47,6 +51,8 @@ function Landing() {
       <Work title={blockTitles.travaux} projects={featuredProjects()} />
       <Plans title={blockTitles.tarifs} plans={plans} />
       <Process title={blockTitles.methode} steps={steps} />
+      <SocialProof title={blockTitles.confiance} proof={socialProof} />
+      <Questions title={blockTitles.questions} faq={faq} />
       <Contact title={blockTitles.contact} contact={contact} />
     </main>
   )

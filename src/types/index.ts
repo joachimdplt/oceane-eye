@@ -136,6 +136,8 @@ export interface Plan {
   from: number
   /** Ce qui suit le montant : « au projet », « par mois »… */
   unit: string
+  /** Les deux lignes sous le prix, qui disent ce qu'il achète. */
+  note: string
 }
 
 /** Le bloc des tarifs : deux formules encadrant une image. */
@@ -144,7 +146,45 @@ export interface PlansContent {
   lede: string
   rest: string
   image: string
+  /** Le même appel pour les deux formules : le choix se fait avant, pas ici. */
+  cta: { label: string; href: string }
   plans: Plan[]
+}
+
+/** Une voix qui parle pour le studio : un client, et ce qui a été fait. */
+export interface Voice {
+  id: string
+  name: string
+  detail: string
+  image: string
+  /**
+   * Une note sur cinq, UNIQUEMENT si elle existe vraiment quelque part.
+   * Absente tant qu'aucun avis n'a été recueilli : des étoiles inventées sur la
+   * page de quelqu'un qui vend son jugement coûtent plus cher qu'elles ne
+   * rapportent.
+   */
+  rating?: number
+}
+
+/** Le bloc de preuve : un bandeau de mots, puis les voix. */
+export interface SocialProofContent {
+  /** Les mots du bandeau défilant. */
+  words: string[]
+  voices: Voice[]
+}
+
+/** Une question et sa réponse. */
+export interface Faq {
+  question: string
+  answer: string
+}
+
+/** Le bloc des questions fréquentes. */
+export interface FaqContent {
+  eyebrow: string
+  lede: string
+  cta: { label: string; href: string }
+  items: Faq[]
 }
 
 /** Une étape de la méthode. */

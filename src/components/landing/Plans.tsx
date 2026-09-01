@@ -24,6 +24,9 @@ function euros(amount: number) {
  * se lit en bas de carte : un chiffre posé avant son périmètre ne se compare à
  * rien, et c'est ce qui fait écrire « sur devis » à tout le monde.
  *
+ * Le « dès » subsiste, en petit, devant le montant : ce sont des planchers, et
+ * un chiffre nu vaudrait engagement sur un périmètre qu'on n'a pas encore lu.
+ *
  * L'image tient la colonne du milieu, sans texte. Elle n'est pas décorative au
  * sens où on pourrait la retirer : c'est elle qui empêche les deux cartes de se
  * lire comme un comparatif à cocher.
@@ -56,15 +59,17 @@ export function Plans({ title, plans }: { title: string; plans: PlansContent }) 
         </p>
       </div>
 
+      {/* Trois colonnes de même hauteur : les deux formules se lisent l'une en
+          face de l'autre, ligne à ligne, et l'image tient le milieu. */}
       <div className="relative w-full max-w-page xl:max-w-wide mx-auto grid gap-4 md:grid-cols-3 md:items-stretch">
         {plans.plans.map((plan, i) => (
           <div
             key={plan.id}
-            className={`flex flex-col gap-8 border border-rule rounded-card p-6 md:p-8 min-h-80 ${
+            className={`flex flex-col border border-rule rounded-card p-6 md:p-8 ${
               i === 0 ? '' : 'md:order-last'
             }`}
           >
-            <h3 className="title2 title-panel text-ink">{plan.name}</h3>
+            <h3 className="title2 title-panel text-ink pb-5">{plan.name}</h3>
 
             <ul className="flex flex-col">
               {plan.features.map((feature) => (
@@ -74,13 +79,24 @@ export function Plans({ title, plans }: { title: string; plans: PlansContent }) 
               ))}
             </ul>
 
-            {/* `mt-auto` colle le prix au bas de la carte, quelle que soit la
+            {/* `mt-auto` pousse le prix au bas de la carte quelle que soit la
                 longueur de la liste : les deux montants se lisent alors sur une
-                même ligne d'un bord à l'autre du bloc. */}
-            <p className="mt-auto flex flex-wrap items-baseline gap-x-3">
-              <span className="title1 text-ink leading-none">dès {euros(plan.from)}</span>
-              <span className="label text-muted">{plan.unit}</span>
-            </p>
+                même ligne, d'un bord à l'autre du bloc. */}
+            <div className="mt-auto pt-16 flex flex-col gap-4 items-start">
+              <p className="flex flex-wrap items-baseline gap-x-2">
+                {/* « dès » reste, en petit : ces montants sont des planchers, et
+                    un chiffre nu vaudrait engagement. */}
+                <span className="label text-muted">dès</span>
+                <span className="title1 text-ink leading-none">{euros(plan.from)}</span>
+                <span className="label text-muted">{plan.unit}</span>
+              </p>
+
+              <p className="body-text text-muted max-w-xs">{plan.note}</p>
+
+              <a href={plans.cta.href} className="pill label text-ink">
+                {plans.cta.label}
+              </a>
+            </div>
           </div>
         ))}
 
@@ -89,7 +105,7 @@ export function Plans({ title, plans }: { title: string; plans: PlansContent }) 
           alt=""
           loading="lazy"
           decoding="async"
-          className="rounded-card w-full h-full min-h-64 object-cover"
+          className="rounded-card w-full h-full min-h-72 object-cover"
         />
       </div>
     </section>

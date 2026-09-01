@@ -5,6 +5,8 @@ import type {
   HeroContent,
   Offer,
   PlansContent,
+  FaqContent,
+  SocialProofContent,
   OffersIntro,
   PageMeta,
   Project,
@@ -43,6 +45,8 @@ export const blockTitles = {
   travaux: 'Travaux',
   tarifs: 'Tarifs flexibles',
   methode: 'Méthode',
+  confiance: 'Ils ont confié leur marque',
+  questions: 'Questions fréquentes',
   contact: 'Travaillons ensemble',
 }
 
@@ -166,7 +170,10 @@ export const plans: PlansContent = {
   eyebrow: 'Ocean Eye Studio',
   lede: 'Deux façons de travailler ensemble, selon que votre marque se lance ou qu’elle avance déjà.',
   rest: 'Le périmètre et le prix sont posés avant de commencer, et rien ne s’ajoute en chemin sans que vous l’ayez demandé.',
-  image: '/img/projets/conciergerie-riviera.jpg',
+  // Une image neutre, et non un projet : entre deux formules, une réalisation
+  // ferait croire qu'elle en illustre une des deux.
+  image: '/img/hero.jpg',
+  cta: { label: 'En parler', href: '#contact' },
   plans: [
     {
       id: 'projet',
@@ -178,6 +185,7 @@ export const plans: PlansContent = {
       ],
       from: 1800,
       unit: 'au projet',
+      note: 'Une identité livrée en une fois, avec ses fichiers et son guide d’usage.',
     },
     {
       id: 'mois',
@@ -189,6 +197,89 @@ export const plans: PlansContent = {
       ],
       from: 900,
       unit: 'par mois',
+      note: 'Vos supports tenus dans la durée, mois après mois.',
+    },
+  ],
+}
+
+/**
+ * La preuve par les clients.
+ *
+ * ⚠ AUCUNE NOTE N'EST AFFICHÉE, et c'est délibéré : il n'existe nulle part
+ * d'avis recueilli pour ce studio. Le composant sait rendre des étoiles — le
+ * champ `rating` est prévu — mais des étoiles inventées sur la page de quelqu'un
+ * qui vend son jugement coûtent plus cher qu'elles ne rapportent. Le jour où
+ * Océane aura trois vrais avis, il suffit de renseigner le champ.
+ *
+ * Les trois clients et ce qui leur a été livré sont vrais : ils viennent de son
+ * propre portfolio.
+ */
+export const socialProof: SocialProofContent = {
+  words: ['Identité', 'Marque', 'Packaging', 'Direction artistique', 'Édition', 'Nice'],
+  voices: [
+    {
+      id: 'satine-by-fany',
+      name: 'Satiné by Fany',
+      detail: 'Identité visuelle',
+      image: '/img/projets/satine-by-fany.jpg',
+    },
+    {
+      id: 'conciergerie-riviera',
+      name: 'Conciergerie Riviera',
+      detail: 'Identité visuelle',
+      image: '/img/projets/conciergerie-riviera.jpg',
+    },
+    {
+      id: 'bobines-etrange',
+      name: 'Les Bobines de l’Étrange',
+      detail: 'Packaging et identité visuelle',
+      image: '/img/projets/bobines-etrange.jpg',
+    },
+  ],
+}
+
+/**
+ * Les questions fréquentes.
+ *
+ * ⚠ LES RÉPONSES SONT À VALIDER. Elles sont construites sur ce que le site dit
+ * déjà — les délais des prestations, les quatre étapes de la méthode, la
+ * distinction entre la formule au projet et celle au mois — mais chacune est un
+ * engagement pris au nom d'Océane, et aucune ne vient d'elle.
+ */
+export const faq: FaqContent = {
+  eyebrow: 'Réponses rapides',
+  lede: 'Ce qu’on nous demande avant de commencer, et ce qu’on répond.',
+  cta: { label: 'Poser la vôtre', href: '#contact' },
+  items: [
+    {
+      question: 'Combien de temps prend une identité visuelle ?',
+      answer:
+        'Quatre à six semaines pour une identité complète, deux à trois pour une campagne. Le délai est écrit dans le devis, avec les étapes qui le composent.',
+    },
+    {
+      question: 'Qu’est-ce que je reçois à la fin ?',
+      answer:
+        'Tous les fichiers finaux, sources comprises, et le guide qui dit comment s’en servir. Une identité qu’on ne peut pas appliquer sans son auteur n’est pas livrée.',
+    },
+    {
+      question: 'Et si le projet change en cours de route ?',
+      answer:
+        'Le périmètre est écrit au cadrage. Ce qui s’y ajoute est chiffré à part et validé avant d’être fait, jamais découvert sur la facture.',
+    },
+    {
+      question: 'Combien de pistes créatives ?',
+      answer:
+        'Au projet, le nombre est fixé au départ, avec les retouches qui vont avec. Au mois, il ne l’est pas.',
+    },
+    {
+      question: 'Travaillez-vous à distance ?',
+      answer:
+        'Le studio est à Nice et travaille avec des marques ailleurs. Les rendez-vous se font sur place ou à distance, comme vous préférez.',
+    },
+    {
+      question: 'Comment est-ce qu’on commence ?',
+      answer:
+        'Par un échange d’une demi-heure sur ce que vous avez en tête. Il n’engage à rien et donne déjà une fourchette.',
     },
   ],
 }
