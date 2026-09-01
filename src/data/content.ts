@@ -399,6 +399,12 @@ export const projects: Project[] = [
       'Thelma Rose est une aventure écrite entre sœurs. C’est une histoire de femmes, d’envies, de passions et d’exigences. La marque s’inspire de l’univers sensible et complice de ses deux fondatrices pour créer une identité à la fois féminine, solaire et contemporaine.',
       'Pour résumer, Thelma Rose, c’est une communauté, où chaque femme s’affirme et se retrouve, entre bien-être, féminité et élégance naturelle. Un mélange de modernité et d’intemporalité, où le luxe se veut sincère et responsable. Un univers doux, pensé pour sublimer sans artifice.',
     ],
+    gallery: [
+      '/img/projets/thelma-rose-1.jpg',
+      '/img/projets/thelma-rose-2.jpg',
+      '/img/projets/thelma-rose-3.jpg',
+      '/img/projets/thelma-rose-4.jpg',
+    ],
   },
   {
     id: 'satine-by-fany',
@@ -417,6 +423,11 @@ export const projects: Project[] = [
     narrative: [
       'Graphiquement, l’univers repose sur une cohérence visuelle douce et raffinée, portée par des matières sensorielles comme le sable, la soie, les bulles d’eau ou les cheveux. La palette, naturelle et élégante, associe beige, crème et brun pour renforcer le positionnement haut de gamme. Les typographies fines et modernes apportent une lecture fluide et sophistiquée, tandis que le moodboard développe une véritable sensualité visuelle, à la fois texturée, lisse et rassurante.',
       'Côté community management, les contenus sont structurés selon des rôles précis : présenter la marque, valoriser les produits, informer sur les prix ou développer le storytelling. Des call-to-action discrets accompagnent les publications sans rompre avec l’esthétique premium. L’objectif est de construire une expérience visuelle cohérente, mêlant contenus pédagogiques et images organiques et esthétiques, propres à l’identité de SATINÉ.',
+    ],
+    gallery: [
+      '/img/projets/satine-by-fany-1.jpg',
+      '/img/projets/satine-by-fany-2.jpg',
+      '/img/projets/satine-by-fany-3.jpg',
     ],
   },
   {
@@ -437,6 +448,11 @@ export const projects: Project[] = [
       'Entre luxe discret et esprit méditerranéen, cette identité a été imaginée comme une respiration. Un souffle chaud et élégant, porté par les courbes du Sud, la lumière du bord de mer, et l’art de vivre sur mesure.',
       'Chaque élément visuel — logo, palette, typographie, textures — traduit une promesse : celle d’un service haut de gamme, incarné avec douceur, exigence et simplicité. Le résultat ? Une conciergerie d’exception, à l’image de ses clients : exigeants, sensibles à la beauté, et attachés à une certaine idée du slow living.',
     ],
+    gallery: [
+      '/img/projets/conciergerie-riviera-1.jpg',
+      '/img/projets/conciergerie-riviera-2.jpg',
+      '/img/projets/conciergerie-riviera-3.jpg',
+    ],
   },
   {
     id: 'bobines-etrange',
@@ -454,6 +470,12 @@ export const projects: Project[] = [
     deliverables: 'Product Design, Art Direction',
     narrative: [
       'Mon souhait fut de créer un pont visuel entre le folklore breton (dont je suis moi-même originaire), et l\'angoisse du cinéma de genre. Le projet repose sur un décalage humoristique : la sardine est modulée à chaque édition par l’univers qu’elle illustre. Le trait naïf sert une narration précise, transformant un objet quotidien en une pièce de collection hybride, nostalgique et résolument culte.',
+    ],
+    gallery: [
+      '/img/projets/bobines-etrange-1.jpg',
+      '/img/projets/bobines-etrange-2.jpg',
+      '/img/projets/bobines-etrange-3.jpg',
+      '/img/projets/bobines-etrange-4.jpg',
     ],
   },
   {
@@ -473,6 +495,12 @@ export const projects: Project[] = [
     narrative: [
       'Le nom et l’univers visuel traduisent une approche douce, rassurante et profondément humaine, loin des codes médicaux traditionnels. L’identité cherche à créer un sentiment de confiance, d’écoute et de connexion, essentiel dans la relation thérapeutique. Le langage graphique associe ainsi sobriété, sensibilité et organicité pour évoquer le vivant et le lien qui se crée au cours de l’accompagnement. ZOENKA devient une identité chaleureuse et contemporaine, qui place la relation, l’humain et l’animal au cœur du soin.',
     ],
+    gallery: [
+      '/img/projets/zoenka-1.jpg',
+      '/img/projets/zoenka-2.jpg',
+      '/img/projets/zoenka-3.jpg',
+      '/img/projets/zoenka-4.jpg',
+    ],
   },
   {
     id: 'lavender-rose',
@@ -490,6 +518,12 @@ export const projects: Project[] = [
     deliverables: 'Graphisme',
     narrative: [
       'Ma proposition révèle un univers visuel qui évoque le savoir-faire artisanal, la délicatesse et une esthétique européenne classique revisitée. Le nom Lavender & Rose suggère la Provence et la sophistication florale, tandis que L’Art de la Table renforce l’idée de tradition française et de raffinement dans le détail. En somme, un logo proposant une fusion entre l’élégance française et la sensibilité romantique anglaise.',
+    ],
+    gallery: [
+      '/img/projets/lavender-rose-1.jpg',
+      '/img/projets/lavender-rose-2.jpg',
+      '/img/projets/lavender-rose-3.jpg',
+      '/img/projets/lavender-rose-4.jpg',
     ],
   },
   {
@@ -509,6 +543,12 @@ export const projects: Project[] = [
     narrative: [
       'AMARE puise son nom dans amare, « aimer » en latin et en italien, et dans mare, « la mer ». Le concept associe ainsi l’amour que l’on porte à la Méditerranée à la volonté de la préserver. Il évoque aussi l’idée de s’ancrer, de créer un lien durable avec la mer et son territoire. Celle-ci transforme les déchets marins en ressources grâce au design circulaire et à l’éco-conception, donnant une nouvelle vie à ce qui pollue nos océans. AMARE devient ainsi un objet porteur de sens, de fierté et de transmission, pensé pour protéger la mer dont dépend notre avenir.',
     ],
+    gallery: [
+      '/img/projets/amare-1.jpg',
+      '/img/projets/amare-2.jpg',
+      '/img/projets/amare-3.jpg',
+      '/img/projets/amare-4.jpg',
+    ],
   },
   {
     id: 'bauhaus-109',
@@ -527,6 +567,12 @@ export const projects: Project[] = [
     narrative: [
       'Ma proposition envisage la fête du Bauhaus comme un moment de rassemblement festif, tout en restant fidèle à ses principes fondateurs : rigueur, fonctionnalité et langage formel.',
       'Une approche qui repose sur un décalage maîtrisé entre l’univers de la fête (gâteau, cocktail, célébration) et une traduction graphique minimaliste et structurée, inspirée des codes modernistes. L’humour s’exprime à travers des jeux de mots et des métaphores visuelles, traités de manière sobre et conceptuelle.',
+    ],
+    gallery: [
+      '/img/projets/bauhaus-109-1.jpg',
+      '/img/projets/bauhaus-109-2.jpg',
+      '/img/projets/bauhaus-109-3.jpg',
+      '/img/projets/bauhaus-109-4.jpg',
     ],
   },
   {
@@ -548,6 +594,11 @@ export const projects: Project[] = [
       'Un personnage féminin, une muse, dessinée de manière faussement naïve. Toujours reconnaissable grâce à ses traits reprennant légèrement les miens, afin d’injecter une part de moi dans ce travail qui m’est très personnel grâce à : de longs cheveux ondulés, un grain de beauté au nez, des piercings à l’oreille.',
       'Selon les scènes, La Doyenne est… trop vieille (dans sa tête), perdue, doute, progresse, ou trouve sa place.',
       'Un guide du survie illustré aux couleurs méditerranéennes, entre illustrations à la Picasso, Matisse et Persepolis pour un côté plus éditorial et contemporain. Le recours au faux naïf vise ici à évoquer avec honnêteté un parcours atypique avec légèreté, humour et clarté.',
+    ],
+    gallery: [
+      '/img/projets/la-doyenne-1.jpg',
+      '/img/projets/la-doyenne-2.jpg',
+      '/img/projets/la-doyenne-3.jpg',
     ],
   },
 ]

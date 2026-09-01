@@ -138,6 +138,15 @@ export interface Project {
   deliverables: string
   /** Le récit du projet, un paragraphe par entrée. */
   narrative: string[]
+  /**
+   * Les visuels du projet, dans l'ordre où ils se lisent.
+   *
+   * `image` reste la vignette — celle des listes et des aperçus de partage. La
+   * galerie est ce qu'on déroule sur la page, et les deux ne se confondent pas :
+   * une vignette est choisie pour se reconnaître en petit, une planche pour se
+   * regarder en grand.
+   */
+  gallery: string[]
 }
 
 /** Le chapô du bloc des prestations. */

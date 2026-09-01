@@ -7,8 +7,10 @@ import { WorkBlock } from './WorkBlock'
  * La page d'un projet.
  *
  * Elle porte le contenu repris du portfolio d'Océane : la demande telle qu'elle
- * s'est posée, la fiche du projet, et le récit de ce qui a été fait. C'est le
- * récit qui fait la page — le reste le situe.
+ * s'est posée, la fiche du projet, le récit de ce qui a été fait, puis tous les
+ * visuels à la suite.
+
+ * Le récit situe, les visuels montrent. C'est pour eux qu'on vient.
  *
  * Les projets voisins réutilisent le même bloc que partout ailleurs : c'est ce
  * qui garantit qu'ils se lisent exactement comme sur l'accueil.
@@ -110,6 +112,31 @@ export function ProjectDetail({
           </div>
         </div>
       </section>
+
+      {/* Les visuels, à la suite et en pleine largeur.
+
+          Ils ne sont pas dépliés un par un : sur une page qu'on parcourt pour
+          regarder, une animation par image ferait attendre à chaque planche.
+          Seule la première est chargée d'emblée — c'est la seule qu'on voit
+          sans avoir défilé. */}
+      {project.gallery.length > 0 && (
+        <section className="relative isolate flex flex-col gap-4 md:gap-6 px-6 md:px-gutter pb-24 bg-ground overflow-hidden">
+          <span aria-hidden="true" className="grain absolute inset-0" />
+
+          <div className="relative w-full max-w-page xl:max-w-wide mx-auto flex flex-col gap-4 md:gap-6">
+            {project.gallery.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={`${project.name}, visuel ${i + 1} sur ${project.gallery.length}`}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                className="w-full rounded-card"
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
       {siblings.length > 0 && (
         <>
