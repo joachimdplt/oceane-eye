@@ -5,9 +5,11 @@ import { BlockTitle } from './BlockTitle'
 /**
  * La méthode, numérotée.
  *
- * Le numéro est décoratif et sort donc du flux de lecture : la liste ordonnée
- * dit déjà le rang à qui écoute la page, et l'entendre deux fois n'aide
- * personne.
+ * Le numéro est en titre 1, la Garalde : c'est le chiffre qui porte le geste
+ * ici, pas l'intitulé de l'étape.
+ *
+ * Il est décoratif et sort du flux de lecture : la liste ordonnée dit déjà le
+ * rang à qui écoute la page, et l'entendre deux fois n'aide personne.
  */
 export function Process({ title, steps }: { title: string; steps: Step[] }) {
   return (
@@ -18,7 +20,7 @@ export function Process({ title, steps }: { title: string; steps: Step[] }) {
             key={step.id}
             className="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-3 py-8 border-t border-ink/15"
           >
-            <p className="title2 text-ink" aria-hidden="true">
+            <p className="title1 text-ink" aria-hidden="true">
               {String(i + 1).padStart(2, '0')}
             </p>
             <div className="flex flex-col gap-3">

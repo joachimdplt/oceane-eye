@@ -195,6 +195,64 @@
      gris moyen : `slope` et `intercept` l'amènent à une moyenne de 247 pour un
      écart-type de 8,3 sur 255, mesuré au rendu. Baisser `slope` pour moins de
      grain, le monter pour plus. */
+  /* L'accordéon des prestations.
+
+     Ce sont les PROPORTIONS qui s'animent, pas les largeurs en pixels : chaque
+     panneau porte un `flex` que l'ouverture fait passer de 1 à 5. Une
+     transition sur `width` aurait fait recalculer la mise en page à chaque
+     trame ; sur `flex-grow`, le navigateur ne repasse que par la répartition de
+     la rangée.
+
+     Sous `md`, l'accordéon se déplie : quatre bandes verticales dans la largeur
+     d'un téléphone ne seraient lisibles pour personne. Chaque panneau y prend
+     donc sa propre hauteur, et le fermé n'est plus fermé. */
+  .services-rail {
+    height: auto;
+  }
+
+  .services-panel {
+    flex: 1 1 auto;
+    min-height: 22rem;
+  }
+
+  .services-panel[data-open='false'] > button > .panel-open {
+    opacity: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .services-rail {
+      height: 34rem;
+    }
+
+    .services-panel {
+      flex-grow: 1;
+      flex-basis: 0;
+      min-height: 0;
+      transition: flex-grow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .services-panel[data-open='true'] {
+      flex-grow: 5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .services-panel {
+        transition: none;
+      }
+    }
+  }
+
+  /* Le voile des panneaux : vers l'encre, pour que le texte clair posé dessus
+     tienne quelle que soit la photo. */
+  .panel-scrim {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-ink) 88%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 45%, transparent) 45%,
+      color-mix(in srgb, var(--color-ink) 25%, transparent) 100%
+    );
+  }
+
   /* Le voile posé sous le texte des projets.
 
      Il descend jusqu'au gris de la page plutôt que vers un noir : le bas du

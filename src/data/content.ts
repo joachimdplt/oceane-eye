@@ -4,6 +4,7 @@ import type {
   ErrorMessages,
   HeroContent,
   Offer,
+  OffersIntro,
   PageMeta,
   Project,
   Step,
@@ -37,8 +38,8 @@ export const hero: HeroContent = {
  */
 export const blockTitles = {
   studio: 'Le studio',
-  travaux: 'Travaux',
   services: 'Services',
+  travaux: 'Travaux',
   methode: 'Méthode',
   contact: 'Travaillons ensemble',
 }
@@ -78,6 +79,11 @@ export const about: AboutContent = {
  * Le plancher plutôt que le tarif : il écarte les demandes hors budget sans
  * engager sur un périmètre qu'on n'a pas encore lu.
  */
+export const offersIntro: OffersIntro = {
+  lede:
+    'Quatre prestations, chacune avec son plancher et son délai. Le prix est posé à côté de ce qu’il achète : un montant seul ne se compare à rien.',
+}
+
 export const offers: Offer[] = [
   {
     id: 'identite',
@@ -89,6 +95,7 @@ export const offers: Offer[] = [
       'Charte d’utilisation',
       'Fichiers sources et exports',
     ],
+    image: '/img/projets/satine-by-fany.jpg',
     from: 2400,
     duration: '4 à 6 semaines',
   },
@@ -102,6 +109,7 @@ export const offers: Offer[] = [
       'Déclinaisons sur vos supports',
       'Suivi de production',
     ],
+    image: '/img/projets/thelma-rose.jpg',
     from: 3200,
     duration: '5 à 8 semaines',
   },
@@ -115,6 +123,7 @@ export const offers: Offer[] = [
       'Déclinaison sur la gamme',
       'Fichiers prêts pour l’imprimeur',
     ],
+    image: '/img/projets/bobines-etrange.jpg',
     from: 1800,
     duration: '3 à 5 semaines',
   },
@@ -128,6 +137,7 @@ export const offers: Offer[] = [
       'Gabarits réutilisables',
       'Fichiers d’impression',
     ],
+    image: '/img/projets/bauhaus-109.jpg',
     from: 900,
     duration: '2 à 3 semaines',
   },

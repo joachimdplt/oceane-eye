@@ -85,6 +85,8 @@ export interface Offer {
   name: string
   pitch: string
   deliverables: string[]
+  /** L'image du panneau. Prise dans les projets : elle montre la discipline. */
+  image: string
   /** Plancher en euros, hors taxes. */
   from: number
   /** Délai indicatif, en clair. */
@@ -100,6 +102,11 @@ export interface Project {
   /** Ce qui a été livré, en une phrase. */
   summary: string
   image: string
+}
+
+/** Le chapô du bloc des prestations. */
+export interface OffersIntro {
+  lede: string
 }
 
 /** Une étape de la méthode. */

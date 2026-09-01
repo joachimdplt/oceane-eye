@@ -34,7 +34,7 @@ src/
   components/
     ui/             → génériques : GrowText, Reveal, Unfold, LiveTime,
                        NotFound, ErrorState
-    landing/        → Hero (l'arche qui s'ouvre en plein écran au défilement)
+    landing/        → Hero, About, Offers, Work, Process, Contact, Nav
   routes/           → Couche 5, assemblage seul (TanStack Router)
   utils/seo.ts      → SITE_URL : l'adresse du site, en un seul endroit
   styles/app.css    → les tokens du thème, et rien d'arbitraire ailleurs

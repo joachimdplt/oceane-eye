@@ -24,7 +24,7 @@ export function About({ title, about }: { title: string; about: AboutContent }) 
       <span aria-hidden="true" className="grain absolute inset-0" />
 
       <div className="relative w-full max-w-page xl:max-w-wide mx-auto grid md:grid-cols-2 gap-12 md:gap-16">
-        <h2 className="title1 text-ink self-start">
+        <h2 className="title2 text-ink self-start">
           <Reveal>
             <GrowText text={title} delay={0} spread={520} />
           </Reveal>
@@ -47,7 +47,7 @@ export function About({ title, about }: { title: string; about: AboutContent }) 
                   i > 0 ? 'border-t sm:border-t-0 sm:border-l border-rule' : ''
                 }`}
               >
-                <p className="title2 text-ink leading-none">{stat.value}</p>
+                <p className="title1 text-ink leading-none">{stat.value}</p>
                 <p className="body-text text-ink">{stat.label}</p>
                 <p className="label text-muted mt-auto">{stat.note}</p>
               </li>
