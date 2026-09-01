@@ -27,12 +27,18 @@ export const hero: HeroContent = {
   scrollCue: 'Défiler',
 }
 
-/** Les titres des blocs. Ils vivent ici comme le reste du texte visible. */
+/**
+ * Les blocs de la page, dans leur ordre.
+ *
+ * Les CLÉS sont les ancres : c'est ce qui permet à la nav de se fabriquer
+ * d'elle-même à partir d'ici, sans qu'une seconde liste de liens ait à être
+ * tenue à jour à côté. Réordonner cet objet réordonne la nav.
+ */
 export const blockTitles = {
-  about: 'Le studio',
-  offers: 'Services',
-  work: 'Travaux',
-  process: 'Méthode',
+  studio: 'Le studio',
+  travaux: 'Travaux',
+  services: 'Services',
+  methode: 'Méthode',
   contact: 'Travaillons ensemble',
 }
 

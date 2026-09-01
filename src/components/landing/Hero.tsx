@@ -160,12 +160,6 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
           </div>
         </div>
 
-        {/* Les mêmes disciplines qu'à gauche, mises en ligne. Elles viennent
-            de la même liste : le point médian est une mise en forme, pas une
-            seconde version du contenu. */}
-        <p className="absolute top-8 left-0 right-0 text-center font-garamond text-accent text-eyebrow-lg md:text-sm font-bold uppercase tracking-eyebrow">
-          {disciplines.join(' · ')}
-        </p>
 
         <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-4">
           <span className="block w-px h-16 bg-accent" aria-hidden="true" />

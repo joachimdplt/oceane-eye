@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { About } from '~/components/landing/About'
+import { Nav } from '~/components/landing/Nav'
 import { Contact } from '~/components/landing/Contact'
 import { Hero } from '~/components/landing/Hero'
 import { Offers } from '~/components/landing/Offers'
@@ -26,11 +27,16 @@ export const Route = createFileRoute('/')({
 function Landing() {
   return (
     <main>
+      <Nav items={blockTitles} />
+
       <Hero {...hero} />
-      <About title={blockTitles.about} lines={about.lines} />
-      <Offers title={blockTitles.offers} offers={offers} />
-      <Work title={blockTitles.work} projects={projects} />
-      <Process title={blockTitles.process} steps={steps} />
+      {/* Qui l'on est, puis la preuve, puis le prix, puis comment on s'y prend.
+          Les services passaient avant les travaux : on demandait 2 400 € à
+          quelqu'un qui n'avait encore rien vu. */}
+      <About title={blockTitles.studio} lines={about.lines} />
+      <Work title={blockTitles.travaux} projects={projects} />
+      <Offers title={blockTitles.services} offers={offers} />
+      <Process title={blockTitles.methode} steps={steps} />
       <Contact title={blockTitles.contact} contact={contact} />
     </main>
   )

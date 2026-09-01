@@ -59,6 +59,13 @@
     background-color: var(--color-ground);
   }
 
+  /* La barre est fixe : sans cette marge, une ancre déposerait le haut du bloc
+     dessous et son titre serait caché. */
+  section[id],
+  article[id] {
+    scroll-margin-top: 5rem;
+  }
+
   h1,
   h2,
   h3 {

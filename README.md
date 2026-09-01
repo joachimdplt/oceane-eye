@@ -96,6 +96,17 @@ bougé, et reconstruit le cas échéant.
 systemctl enable --now ocean-eye-autodeploy@ocean-eye.timer
 ```
 
+## La nav
+
+Elle se fabrique à partir de `blockTitles` (`src/data/content.ts`), **dont les
+clés sont les ancres**. Il n'y a donc pas de seconde liste de liens à tenir à
+jour : réordonner cet objet réordonne la barre, et renommer un bloc le renomme
+partout. Ce sont de vraies ancres, pas des gestionnaires de clic — un lien se
+copie, s'ouvre dans un onglet, et fonctionne avant que le JavaScript ait chargé.
+
+La barre étant fixe, les blocs portent un `scroll-margin-top` : sans lui, une
+ancre déposerait le haut du bloc sous la barre et son titre serait caché.
+
 ## Les blocs empilés
 
 L'écran d'ouverture et sa piste de défilement sont **frères**, pas imbriqués :
