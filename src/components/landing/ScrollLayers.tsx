@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { LAYERS, site } from '~/data/layers'
 import { useLocaleStore } from '~/stores/useLocaleStore'
-import { toneAt } from '~/components/ui/tones'
 import { GrowText } from './GrowText'
 import { Reveal } from './Reveal'
 
@@ -20,7 +19,6 @@ import { Reveal } from './Reveal'
  */
 export function ScrollLayers() {
   const locale = useLocaleStore((s) => s.locale)
-  const ground = toneAt(1)
   const track = useRef<HTMLElement | null>(null)
   const [active, setActive] = useState(0)
 
@@ -68,7 +66,8 @@ export function ScrollLayers() {
     <section
       id="layers"
       ref={track}
-      style={{ height: `${LAYERS.length * 100}svh`, background: ground.bg, color: ground.fg }}
+      className="bg-white text-[#0a0a0a]"
+      style={{ height: `${LAYERS.length * 100}svh` }}
     >
       <div className="sticky top-0 h-[100svh] flex items-center px-6 md:px-[6vw] py-12">
         <div className="w-full max-w-[1070px] xl:max-w-[74vw] mx-auto">
@@ -78,7 +77,7 @@ export function ScrollLayers() {
               <span
                 key={layer.id}
                 className="h-px flex-1 transition-opacity duration-500 motion-reduce:transition-none"
-                style={{ background: ground.fg, opacity: j <= active ? 1 : 0.3 }}
+                style={{ background: '#0a0a0a', opacity: j <= active ? 1 : 0.2 }}
               />
             ))}
           </div>

@@ -19,7 +19,7 @@ export const Route = createFileRoute('/')({
 
 function Home() {
   return (
-    <main className="landing-dark">
+    <main>
       <FixedNav />
       <ScrollLayers />
     </main>

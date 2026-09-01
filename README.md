@@ -28,8 +28,7 @@ src/
 │   │   ├── GrowText.tsx      # une ligne qui arrive lettre par lettre
 │   │   └── Reveal.tsx        # tient les lettres jusqu'à ce qu'on les voie
 │   └── ui/
-│       ├── LocaleToggle.tsx
-│       └── tones.ts          # les deux valeurs de la page, et rien d'autre
+│       └── LocaleToggle.tsx
 ├── data/
 │   └── layers.ts             # ⚠ TOUT le texte visible est ici
 ├── routes/
@@ -60,8 +59,10 @@ défilement, la barre de progression et le compteur se règlent seuls sur
 
 ## Changer d'identité
 
-- La couleur : une ligne dans `src/components/ui/tones.ts`, une dans `@theme`
-  (`src/styles/app.css`). La page n'a que **deux valeurs**, pas trois.
+- La page est en **noir sur blanc**, sans aucune couleur : le fond est déclaré
+  une seule fois, sur `html, body` (`src/styles/app.css`). Le rebond du
+  défilement montre le fond du document et non celui de la section — les deux
+  doivent rester le même blanc.
 - Le nom : `site.name` dans `src/data/layers.ts`.
 - Le domaine : `SITE_URL` dans `src/utils/seo.ts`, puis `public/robots.txt`,
   `public/sitemap.xml` et `APP_DOMAIN` dans `.env.deploy`.

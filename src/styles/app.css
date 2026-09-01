@@ -6,12 +6,6 @@
 @import 'tailwindcss' source('../');
 @plugin "daisyui";
 
-@theme {
-  --color-brand: #0E7C86;
-  --color-brand-light: #D5EDEF;
-  --color-brand-dark: #08525A;
-}
-
 @layer base {
   *,
   ::after,
@@ -31,16 +25,13 @@
     letter-spacing: -0.02em;
   }
 
+  /* Une seule valeur de fond, déclarée ici : le rebond du défilement montre le
+     fond du document et non celui de la section, et les deux doivent donc être
+     le même blanc. */
   html,
   body {
-    @apply text-gray-900;
-    background-color: #FDFBF8;
-  }
-
-  /* La page tourne sur le ton sombre d'un bord à l'autre : le fond crème
-     apparaîtrait sinon au rebond du défilement, seul écran clair restant. */
-  body:has(.landing-dark) {
-    background-color: #0a0a0a;
+    color: #0a0a0a;
+    background-color: #ffffff;
   }
 
   /* Tous les titres à une seule taille, en capitales : la page se lit d'une

@@ -173,18 +173,16 @@ l'hydratation.
 const locale: Locale = hydrated ? storedLocale : 'fr'
 ```
 
-### 19. Deux valeurs, pas trois
+### 19. Une seule valeur de fond, déclarée une seule fois
 
-```ts
-export const TONES: Tone[] = [
-  { bg: '#DF2522', fg: '#0a0a0a', accent: '#0a0a0a' },
-  { bg: '#0a0a0a', fg: '#DF2522', accent: '#DF2522' },
-]
-```
+La page est en noir sur blanc, sans couleur d'accent. Le fond est posé sur
+`html, body` et nulle part ailleurs : le rebond du défilement révèle le fond du
+*document*, pas celui de la section, et une section qui se peint elle-même
+laisse donc apparaître un autre blanc au rebond.
 
-> *No third colour, and no near-white anywhere — the page has exactly two
-> values.* Et donc : pas de fondu, *« because a half-faded black is still a
-> lighter black, and the page only has the one »*.
+Le corollaire de l'ancien système à deux valeurs tient toujours : **pas de
+fondu**, *« un noir à moitié fondu reste un noir plus clair, et la page n'en a
+qu'un »*. Les lettres poussent, elles n'apparaissent pas.
 
 ### 20. Empiler dans une cellule de grille, pas en absolu
 
