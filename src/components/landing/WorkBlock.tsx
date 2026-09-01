@@ -63,7 +63,7 @@ export function WorkBlock({
           du texte, et l'assombrir en bas ne ferait que manger l'image. */}
       <span aria-hidden="true" className="card-scrim absolute inset-x-0 top-0" />
 
-      <div className="relative flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 p-6 md:p-10">
+      <div className="relative flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 p-6 md:p-8">
         <Heading className="title2 title-panel text-ground shrink-0">
           <Link
             to="/travaux/$projectId"

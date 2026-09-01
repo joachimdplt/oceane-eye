@@ -282,10 +282,24 @@
     padding-bottom: 20svh;
   }
 
+  /* Le pas de l'empilement.
+
+     Il ne se choisit pas à l'œil : c'est la hauteur de la bande qu'une carte
+     recouverte laisse voir, et cette bande doit contenir SA LIGNE DE TITRE en
+     entier. Marge haute plus hauteur de la ligne, plus un peu d'air. En dessous,
+     le titre de la carte précédente est coupé — c'était le cas à 2,25 rem, où
+     la marge haute seule en faisait déjà 2,5.
+
+     La hauteur des cartes s'en déduit : la dernière se cale à
+     `base + (n-1) × pas`, donc sa hauteur ne peut pas dépasser ce qui reste de
+     l'écran. Elle est calculée et non fixée, sinon ajouter une carte ferait
+     déborder la pile par le bas. */
   .work-card {
+    --stack-base: 4rem;
+    --stack-step: 3.5rem;
     position: sticky;
-    top: calc(5rem + var(--i) * 1.25rem);
-    height: 80svh;
+    top: calc(var(--stack-base) + var(--i) * var(--stack-step));
+    height: calc(100svh - var(--stack-base) - (var(--n) - 1) * var(--stack-step) - 2rem);
     margin-inline: calc((var(--n) - 1 - var(--i)) * 0.75rem);
     border-radius: var(--radius);
     overflow: hidden;
@@ -295,7 +309,8 @@
 
   @media (min-width: 48rem) {
     .work-card {
-      top: calc(6rem + var(--i) * 2.25rem);
+      --stack-base: 5rem;
+      --stack-step: 4.5rem;
       margin-inline: calc((var(--n) - 1 - var(--i)) * 2rem);
     }
   }
@@ -440,7 +455,10 @@
   /* Le nom d'un panneau de prestation : plus petit encore, il doit tenir
      couché dans une bande étroite. */
   .title-panel {
-    font-size: min(3.4vw, 1.75rem);
+    /* Un plancher, contrairement au titre de l'ouverture : celui-ci s'enroule
+       plutôt que de tenir sur une ligne, il peut donc en avoir un. Sans lui,
+       `min()` le ramenait à 13 px sur un téléphone. */
+    font-size: clamp(1.125rem, 3.4vw, 1.75rem);
     line-height: 1.05;
   }
 
