@@ -68,10 +68,6 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
   const archCentre = (ARCH.top + (100 - ARCH.bottom)) / 2
   const titleTop = archCentre + (50 - archCentre) * ease
 
-  // Les textes de flanc s'effacent pendant le premier tiers : passé là, l'image
-  // occupe leur place et un texte posé dessus deviendrait illisible.
-  const asidesOpacity = Math.max(0, 1 - ease * 3)
-
   return (
     <section ref={track} className="relative bg-ground" style={{ height: `${TRACK * 100}svh` }}>
       <div className="sticky top-0 h-svh overflow-hidden bg-ground">
@@ -125,23 +121,18 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
 
         {/* Les textes de flanc, en miroir de part et d'autre du titre. */}
         <div
-          className="hero-asides absolute inset-x-0 px-6 md:px-gutter transition-opacity duration-300 motion-reduce:transition-none"
-          style={
-            {
-              opacity: asidesOpacity,
-              '--aside-top': `${titleTop.toFixed(2)}%`,
-            } as React.CSSProperties
-          }
+          className="hero-asides absolute inset-x-0 px-6 md:px-gutter"
+          style={{ '--aside-top': `${titleTop.toFixed(2)}%` } as React.CSSProperties}
         >
           <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-8">
             {/* À gauche, ferré à gauche. */}
-            <p className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-left">
+            <p className="font-garamond text-accent text-base md:text-xl leading-prose max-w-xs text-center md:text-left">
               {body}
             </p>
 
             {/* À droite, ferré à droite : les deux blocs se regardent en
                 miroir, comme la référence. */}
-            <p className="font-garamond text-accent text-sm leading-prose max-w-xs text-center md:text-right">
+            <p className="font-garamond text-accent text-base md:text-xl leading-prose max-w-xs text-center md:text-right">
               {aside.place} · <LiveTime timeZone={aside.timeZone} />
               <br />
               {aside.since}
@@ -150,19 +141,13 @@ export function Hero({ role, title, body, media, aside, scrollCue }: HeroContent
         </div>
 
         {/* Le métier et l'invitation à descendre, aux deux bords de l'écran. */}
-        <p
-          className="absolute top-8 left-0 right-0 text-center font-garamond text-accent text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow transition-opacity duration-300 motion-reduce:transition-none"
-          style={{ opacity: asidesOpacity }}
-        >
+        <p className="absolute top-8 left-0 right-0 text-center font-garamond text-accent text-eyebrow-lg md:text-sm font-bold uppercase tracking-eyebrow">
           {role}
         </p>
 
-        <div
-          className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-4 transition-opacity duration-300 motion-reduce:transition-none"
-          style={{ opacity: asidesOpacity }}
-        >
+        <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-4">
           <span className="block w-px h-16 bg-accent" aria-hidden="true" />
-          <span className="font-garamond text-accent text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow">
+          <span className="font-garamond text-accent text-eyebrow-lg md:text-sm font-bold uppercase tracking-eyebrow">
             {scrollCue}
           </span>
         </div>

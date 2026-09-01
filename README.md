@@ -53,9 +53,10 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   donc composée en **EB Garamond**, sa reprise libre, dont l'italique est
   réellement dessinée et non calculée. Pour la vraie Adobe Garamond Pro, il faut
   un projet web Adobe Fonts et remplacer l'`@import` par leur balise.
-- ⚠ **Contraste** : `#FFDE59` sur `#647179` donne **3,79:1**. Cela passe pour un
-  grand titre (seuil 3:1), pas pour un corps de texte (seuil 4,5:1) — voir
-  « À finir ».
+- ⚠ **Contraste** : `#FFDE59` sur le gris du fond donne **3,79:1** — bon pour un
+  grand titre (seuil 3:1), juste pour un corps de texte (seuil 4,5:1). Une fois
+  l'arche ouverte, les textes sont posés sur la photo : **1,45:1** à gauche et
+  **1,69:1** à droite, la mer étant claire à cette hauteur. Voir « À finir ».
 - Le domaine : `SITE_URL` dans `src/utils/seo.ts`, puis `public/robots.txt`,
   `public/sitemap.xml` et `APP_DOMAIN` dans `.env.deploy`.
 
@@ -94,10 +95,10 @@ moins de mouvement, et elle qui tient l'écran le temps du chargement.
 
 ## À finir
 
-- [ ] Le petit texte (flancs, surtitre, « Défiler ») est à 3,79:1 alors qu'il
-      lui en faut 4,5. Le titre, lui, passe. Deux issues : foncer un peu le gris
-      du fond, ou passer ces petits textes en blanc — sur ce gris, le blanc
-      donne 5,02:1.
+- [ ] Les textes restent affichés après l'ouverture de l'arche, donc par-dessus
+      la photo, où ils tombent à 1,45:1 et 1,69:1 : illisibles. Trois issues, au
+      choix — un voile sombre sur la photo, un fond plein derrière chaque bloc
+      de texte, ou descendre les flancs sur la dune (10,60:1 là).
 - [ ] Les favicons de `public/` sont encore ceux de l'ancienne marque.
 - [ ] Pas d'image de partage : `seo()` n'émet `og:image` que si on lui en donne
       une.
