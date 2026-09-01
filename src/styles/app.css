@@ -1,10 +1,32 @@
-/* L'import de police AVANT tout le reste.
-   Un `@import` placé après une règle est retiré silencieusement du CSS compilé :
-   la police se déclarait partout et ne se chargeait jamais en production.
-   Voir CONVENTIONS.md § 21. */
+/* L'import de police AVANT tout le reste : un `@import` placé après une règle
+   est retiré silencieusement du CSS compilé, et la police se déclare partout
+   sans jamais se charger en production. */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 @import 'tailwindcss' source('../');
-@plugin "daisyui";
+
+/* Les tokens du site. Toute couleur, police, mesure ou graisse utilisée dans le
+   JSX descend d'ici : aucune valeur arbitraire au fil du code (CONVENTIONS.md
+   § 9). Changer l'identité se fait dans ce bloc et nulle part ailleurs. */
+@theme {
+  --color-ink: #0a0a0a;
+  --color-paper: #ffffff;
+
+  --font-plex: 'IBM Plex Sans', system-ui, sans-serif;
+
+  /* Le surtitre, en capitales espacées : deux tailles, une par palier. */
+  --text-eyebrow: 11px;
+  --text-eyebrow-lg: 13px;
+  --tracking-eyebrow: 0.18em;
+
+  --leading-prose: 1.6;
+
+  /* La colonne de texte : une largeur fixe, et un plafond relatif au-delà. */
+  --container-page: 1070px;
+  --container-wide: 74vw;
+
+  /* La gouttière latérale aux grands paliers. */
+  --spacing-gutter: 6vw;
+}
 
 @layer base {
   *,
@@ -19,25 +41,27 @@
     color-scheme: light;
   }
 
-  h1, h2, h3 {
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
   /* Une seule valeur de fond, déclarée ici : le rebond du défilement montre le
      fond du document et non celui de la section, et les deux doivent donc être
      le même blanc. */
   html,
   body {
-    color: #0a0a0a;
-    background-color: #ffffff;
+    color: var(--color-ink);
+    background-color: var(--color-paper);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-plex);
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   /* Tous les titres à une seule taille, en capitales : la page se lit d'une
      seule voix au lieu d'une échelle d'importance. Voir COPYWRITING.md § 12. */
   .display {
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-family: var(--font-plex);
     font-weight: 700;
     text-transform: uppercase;
     font-size: clamp(2.5rem, 8vw, 7.5rem);
@@ -57,8 +81,12 @@
   }
 
   @keyframes grow-letter {
-    from { transform: scale(0); }
-    to   { transform: scale(1); }
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
   }
 
   /* Moins de mouvement demandé : tout se pose où ça atterrit, d'un coup. */
@@ -66,11 +94,5 @@
     .grow-letter {
       animation: none;
     }
-  }
-}
-
-@layer components {
-  .font-plex {
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
   }
 }

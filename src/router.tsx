@@ -2,8 +2,9 @@ import { QueryClient } from '@tanstack/react-query'
 import { createRouter } from '@tanstack/react-router'
 import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query'
 import { routeTree } from './routeTree.gen'
-import { DefaultCatchBoundary } from './components/DefaultCatchBoundary'
-import { NotFound } from './components/NotFound'
+import { ErrorState } from './components/ui/ErrorState'
+import { NotFound } from './components/ui/NotFound'
+import { errors } from './data/content'
 
 export function getRouter() {
   const queryClient = new QueryClient()
@@ -12,8 +13,10 @@ export function getRouter() {
     routeTree,
     context: { queryClient },
     defaultPreload: 'intent',
-    defaultErrorComponent: DefaultCatchBoundary,
-    defaultNotFoundComponent: () => <NotFound />,
+    // Le câblage est de l'assemblage : c'est ici que le contenu descend en
+    // props, jamais dans les composants eux-mêmes (CONVENTIONS.md § 5).
+    defaultErrorComponent: (props) => <ErrorState {...props} messages={errors} />,
+    defaultNotFoundComponent: () => <NotFound messages={errors} />,
   })
   setupRouterSsrQueryIntegration({
     router,

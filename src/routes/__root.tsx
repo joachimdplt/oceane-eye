@@ -7,8 +7,9 @@ import {
   createRootRouteWithContext,
 } from '@tanstack/react-router'
 import type { QueryClient } from '@tanstack/react-query'
-import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
-import { NotFound } from '~/components/NotFound'
+import { ErrorState } from '~/components/ui/ErrorState'
+import { NotFound } from '~/components/ui/NotFound'
+import { errors } from '~/data/content'
 import appCss from '~/styles/app.css?url'
 import { SITE_NAME, seo } from '~/utils/seo'
 
@@ -49,10 +50,10 @@ export const Route = createRootRouteWithContext<{
   }),
   errorComponent: (props) => (
     <RootDocument>
-      <DefaultCatchBoundary {...props} />
+      <ErrorState {...props} messages={errors} />
     </RootDocument>
   ),
-  notFoundComponent: () => <NotFound />,
+  notFoundComponent: () => <NotFound messages={errors} />,
   component: RootComponent,
 })
 
