@@ -1,27 +1,18 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { FixedNav } from '~/components/landing/FixedNav'
-import { ScrollLayers } from '~/components/landing/ScrollLayers'
+import { Hero } from '~/components/landing/Hero'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
 
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
       ...seo({
-        title: 'Ocean Eye',
-        description: 'Ocean Eye.',
+        title: 'Océane · Graphiste',
+        description:
+          'Identité visuelle, branding et direction artistique. Huit ans d’expérience au service de votre image de marque.',
         url: SITE_URL,
       }),
     ],
     links: [canonical(SITE_URL)],
   }),
-  component: Home,
+  component: Hero,
 })
-
-function Home() {
-  return (
-    <main>
-      <FixedNav />
-      <ScrollLayers />
-    </main>
-  )
-}

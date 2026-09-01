@@ -9,7 +9,6 @@ import {
 import type { QueryClient } from '@tanstack/react-query'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
 import { NotFound } from '~/components/NotFound'
-import { useLocaleStore } from '~/stores/useLocaleStore'
 import appCss from '~/styles/app.css?url'
 import { SITE_NAME, seo } from '~/utils/seo'
 
@@ -58,11 +57,6 @@ export const Route = createRootRouteWithContext<{
 })
 
 function RootComponent() {
-  const hydrate = useLocaleStore((s) => s.hydrate)
-  React.useEffect(() => {
-    hydrate()
-  }, [hydrate])
-
   return (
     <RootDocument>
       <Outlet />

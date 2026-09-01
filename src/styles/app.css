@@ -45,22 +45,6 @@
     letter-spacing: -0.045em;
   }
 
-  /* Tenu immobile tant que le bloc n'est pas à l'écran, puis relâché.
-     Une vraie boîte, pas `display: contents` : un élément sans boîte n'est
-     jamais vu par un IntersectionObserver, et les lettres ne partaient pas. */
-  .reveal,
-  .reveal > span {
-    display: inline;
-  }
-
-  .reveal .grow-letter {
-    animation-play-state: paused;
-  }
-
-  .reveal-on .grow-letter {
-    animation-play-state: running;
-  }
-
   /* Chaque lettre pousse hors de sa propre ligne de base, à son tour.
      Aucun fondu : un noir à moitié fondu reste un noir plus clair, et la page
      n'en a qu'un. */
@@ -79,8 +63,7 @@
 
   /* Moins de mouvement demandé : tout se pose où ça atterrit, d'un coup. */
   @media (prefers-reduced-motion: reduce) {
-    .grow-letter,
-    .reveal .grow-letter {
+    .grow-letter {
       animation: none;
     }
   }
