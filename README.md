@@ -20,8 +20,10 @@ npm run preview
 ```
 src/
 ├── components/landing/
-│   ├── Hero.tsx        # l'écran, et le seul : le titre, le métier, le texte
+│   ├── Hero.tsx        # l'écran, et le seul
 │   └── GrowText.tsx    # une ligne qui arrive lettre par lettre
+├── data/
+│   └── content.ts      # ⚠ TOUT le texte visible est ici
 ├── routes/
 │   ├── __root.tsx
 │   └── index.tsx       # la page : <Hero />
@@ -29,9 +31,9 @@ src/
 └── utils/seo.ts        # SITE_URL : l'adresse du site, en un seul endroit
 ```
 
-Le texte de la page vit dans `Hero.tsx`. Il y tient parce qu'il n'y a qu'un
-écran : dès qu'il y en aura deux, il redescend dans `src/data/`, comme le veut
-CONVENTIONS.md § 3.
+Aucun composant ne porte ses propres mots : le texte visible vit dans
+`src/data/content.ts`, y compris le titre et la description de la page.
+Voir CONVENTIONS.md § 3.
 
 ## Les deux documents à lire avant d'écrire quoi que ce soit
 
