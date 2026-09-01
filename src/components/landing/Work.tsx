@@ -17,30 +17,37 @@ function ProjectBlock({ project }: { project: Project }) {
   return (
     <article
       id={project.id}
-      className="relative isolate min-h-svh flex flex-col justify-center gap-8 px-6 md:px-gutter py-24 bg-ground overflow-hidden"
+      className="relative isolate h-svh overflow-hidden bg-ground"
     >
-      <span aria-hidden="true" className="grain absolute inset-0" />
+      {/* Plein cadre, d'un bord à l'autre : l'image n'est plus enfermée dans
+          une boîte au milieu de la colonne, elle EST l'écran. Le dépliage
+          reprend donc exactement le geste de l'arche de l'ouverture. */}
+      <Unfold className="absolute inset-0">
+        <img
+          src={project.image}
+          alt={`${project.name} — ${project.summary}`}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover"
+        />
+      </Unfold>
 
-      <div className="relative w-full max-w-page xl:max-w-wide mx-auto flex flex-col gap-8">
-        <Unfold>
-          <img
-            src={project.image}
-            alt={`${project.name} — ${project.summary}`}
-            loading="lazy"
-            decoding="async"
-            className="w-full aspect-[16/9] object-cover"
-          />
-        </Unfold>
+      {/* Le voile.
+          Le texte est posé sur une photo dont on ne maîtrise pas le fond : sans
+          lui, le jaune tombait à 1,5:1 sur les fonds clairs. Le dégradé descend
+          jusqu'au gris de la page, donc le texte y retrouve le contraste qu'il
+          a partout ailleurs — et le raccord avec le bloc suivant est invisible,
+          puisque c'est la même couleur. */}
+      <div aria-hidden="true" className="project-scrim absolute inset-x-0 bottom-0" />
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div className="flex flex-col gap-2">
-            <h3 className="title1 text-accent">{project.name}</h3>
-            <p className="font-garamond text-accent text-lg md:text-xl leading-prose max-w-2xl">
-              {project.summary}
-            </p>
+      <div className="relative h-full flex flex-col justify-end px-6 md:px-gutter pb-14 md:pb-20">
+        <div className="w-full max-w-page xl:max-w-wide mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div className="flex flex-col gap-4">
+            <h3 className="title2 text-accent">{project.name}</h3>
+            <p className="border-text-xl text-accent max-w-2xl">{project.summary}</p>
           </div>
 
-          <p className="border-text-xl text-accent md:text-right whitespace-nowrap">
+          <p className="border-text-xl text-accent md:text-right shrink-0">
             {project.discipline}
           </p>
         </div>

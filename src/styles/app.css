@@ -179,6 +179,22 @@
      L'opacité est le seul bouton : 0.32 donne un écart-type de 8,6 niveaux sur
      255, la valeur mesurée sur la référence. Monter pour plus de grain,
      descendre pour moins. */
+  /* Le voile posé sous le texte des projets.
+
+     Il descend jusqu'au gris de la page plutôt que vers un noir : le bas du
+     bloc devient donc exactement la couleur du bloc suivant, et le raccord ne
+     se voit pas. C'est aussi ce qui rend le contraste du texte prévisible —
+     il est celui qu'il a partout ailleurs, quelle que soit la photo. */
+  .project-scrim {
+    height: 58%;
+    background: linear-gradient(
+      to top,
+      var(--color-ground) 0%,
+      var(--color-ground) 12%,
+      transparent 100%
+    );
+  }
+
   /* Le dépliage des images.
 
      La fenêtre s'écarte, l'image ne bouge pas : `clip-path` et rien d'autre,

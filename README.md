@@ -74,9 +74,11 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   réellement dessinée et non calculée. Pour la vraie Adobe Garamond Pro, il faut
   un projet web Adobe Fonts et remplacer l'`@import` par leur balise.
 - ⚠ **Contraste** : `#FFDE59` sur le gris du fond donne **3,79:1** — bon pour un
-  grand titre (seuil 3:1), juste pour un corps de texte (seuil 4,5:1). Une fois
-  l'arche ouverte, les textes sont posés sur la photo : **1,45:1** à gauche et
-  **1,69:1** à droite, la mer étant claire à cette hauteur. Voir « À finir ».
+  grand texte (seuil 3:1), juste pour un corps de texte (seuil 4,5:1). Les blocs
+  de projets sont réglés : leur texte repose sur un voile qui descend jusqu'au
+  gris de la page, donc il y retrouve ces 3,79:1 quelle que soit la photo. Reste
+  l'ouverture, où les flancs sont posés à même l'image une fois l'arche ouverte
+  (1,45:1 et 1,69:1). Voir « À finir ».
 - Le domaine : `SITE_URL` dans `src/utils/seo.ts`, puis `public/robots.txt`,
   `public/sitemap.xml` et `APP_DOMAIN` dans `.env.deploy`.
 
@@ -152,10 +154,9 @@ chaque prix est posé à côté de ce qu'il achète — un montant seul ne se co
 
 ## À finir
 
-- [ ] Les textes restent affichés après l'ouverture de l'arche, donc par-dessus
-      la photo, où ils tombent à 1,45:1 et 1,69:1 : illisibles. Trois issues, au
-      choix — un voile sombre sur la photo, un fond plein derrière chaque bloc
-      de texte, ou descendre les flancs sur la dune (10,60:1 là).
+- [ ] Dans l'ouverture, les flancs et la barre de nav restent posés à même la
+      photo une fois l'arche ouverte : 1,45:1 et 1,69:1. Le même voile que sur
+      les blocs de projets réglerait les deux d'un coup.
 - [ ] Les favicons de `public/` sont encore ceux de l'ancienne marque.
 - [ ] Pas d'image de partage : `seo()` n'émet `og:image` que si on lui en donne
       une.
