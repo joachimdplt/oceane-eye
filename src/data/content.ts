@@ -1,4 +1,4 @@
-import type { ErrorMessages, HeroContent, PageMeta } from '~/types'
+import type { ErrorMessages, HeroContent, LandingSection, PageMeta } from '~/types'
 
 /**
  * Le contenu éditorial du site, statique.
@@ -18,6 +18,21 @@ export const hero: HeroContent = {
   aside: { place: 'Nice', timeZone: 'Europe/Paris', since: 'since 2018' },
   scrollCue: 'Défiler',
 }
+
+/**
+ * La suite de la page, un bloc par écran.
+ *
+ * Chacun ne porte que son titre pour l'instant : la structure se lit avant
+ * d'être remplie, et un bloc vide se voit tout de suite alors qu'un bloc rempli
+ * de faux texte se laisse oublier.
+ */
+export const sections: LandingSection[] = [
+  { id: 'travaux', title: 'Travaux' },
+  { id: 'services', title: 'Services' },
+  { id: 'approche', title: 'Approche' },
+  { id: 'a-propos', title: 'À propos' },
+  { id: 'contact', title: 'Contact' },
+]
 
 export const meta: PageMeta = {
   title: 'Océane studio · Graphiste',

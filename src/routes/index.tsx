@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Hero } from '~/components/landing/Hero'
-import { hero, meta } from '~/data/content'
+import { Section } from '~/components/landing/Section'
+import { hero, meta, sections } from '~/data/content'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
 
 /**
@@ -14,5 +15,16 @@ export const Route = createFileRoute('/')({
     meta: [...seo({ ...meta, url: SITE_URL })],
     links: [canonical(SITE_URL)],
   }),
-  component: () => <Hero {...hero} />,
+  component: Landing,
 })
+
+function Landing() {
+  return (
+    <>
+      <Hero {...hero} />
+      {sections.map((section) => (
+        <Section key={section.id} {...section} />
+      ))}
+    </>
+  )
+}

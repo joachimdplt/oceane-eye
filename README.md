@@ -3,8 +3,9 @@
 Site public en [TanStack Start](https://tanstack.com/start) (React 19, rendu
 serveur), Tailwind v4, déployé en Docker derrière un Caddy partagé.
 
-Une page, un écran : le portfolio d'Océane, graphiste — identité visuelle,
-branding et direction artistique.
+Le portfolio d'Océane, graphiste — identité visuelle, branding et direction
+artistique. Une page, en blocs plein écran : l'ouverture avec son arche, puis
+cinq sections qui ne portent pour l'instant que leur titre.
 
 ## Démarrer
 
@@ -26,7 +27,7 @@ src/
   types/            → types du domaine, en barrel
   data/             → transversal : le contenu éditorial, statique
   components/
-    ui/             → génériques : GrowText, LiveTime, NotFound, ErrorState
+    ui/             → génériques : GrowText, Reveal, LiveTime, NotFound, ErrorState
     landing/        → Hero (l'arche qui s'ouvre en plein écran au défilement)
   routes/           → Couche 5, assemblage seul (TanStack Router)
   utils/seo.ts      → SITE_URL : l'adresse du site, en un seul endroit

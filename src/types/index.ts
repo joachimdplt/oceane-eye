@@ -52,6 +52,18 @@ export interface HeroContent {
   scrollCue: string
 }
 
+/**
+ * Un bloc de la page, sous l'écran d'ouverture.
+ *
+ * `id` sert d'ancre : il vit dans les données parce qu'un lien qui pointe une
+ * section doit pouvoir être écrit à côté d'elle, pas déduit de son titre — un
+ * titre se réécrit, une adresse non.
+ */
+export interface LandingSection {
+  id: string
+  title: string
+}
+
 /** Ce que la page raconte aux moteurs et aux aperçus de partage. */
 export interface PageMeta {
   title: string
