@@ -14,6 +14,13 @@
      pour ce qui n'a pas à être lu. */
   --color-ground: #ffffff;
   --color-ink: #0a0a0a;
+  /* Le texte en retrait : une couleur DÉCLARÉE et non une opacité. Un noir à
+     60 % change de valeur selon ce qu'il y a derrière ; un gris nommé vaut la
+     même chose partout, et se vérifie. Celui-ci donne 4,76:1 sur le fond, donc
+     il reste lisible au lieu d'être seulement décoratif. */
+  --color-muted: #6E6E6E;
+  /* Le trait des cartes, assez léger pour ne pas concurrencer le texte. */
+  --color-rule: #E2E2E2;
   --color-accent: #FFDE59;
 
   /* Adobe Garamond Pro est une police sous licence Adobe : elle ne peut être
@@ -235,6 +242,30 @@
      reste immobile. */
   .hero-track {
     height: 160svh;
+  }
+
+  /* Le bouton en pilule : un contour, pas un aplat.
+     La page n'a qu'une encre et pas de couleur d'action — c'est donc la forme
+     qui dit qu'on peut cliquer, et le contour suffit. */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--color-ink);
+    border-radius: 999px;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    transition: background-color 200ms, color 200ms;
+  }
+
+  .pill:hover {
+    background-color: var(--color-ink);
+    color: var(--color-ground);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pill {
+      transition: none;
+    }
   }
 
   /* Les micro-libellés : « Défiler », un délai, une action.

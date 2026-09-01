@@ -1,4 +1,5 @@
 import type {
+  AboutContent,
   Contact,
   ErrorMessages,
   HeroContent,
@@ -49,13 +50,21 @@ export const blockTitles = {
  * construire avec des personnes motivées ». Un acheteur n'achète pas un goût,
  * il achète un résultat : le texte dit donc ce qui sort du studio et ce que ça
  * change, et garde la personne pour la preuve, pas pour l'argument.
+ *
+ * Les deux chiffres sont VRAIS et vérifiables sur la page elle-même : neuf
+ * projets sont montrés plus bas, et huit ans séparent 2018 d'aujourd'hui. Pas
+ * de note de satisfaction ni de nombre de clients — on n'en a aucune trace, et
+ * un chiffre invente vaut moins qu'une case vide.
  */
-export const about = {
-  lines: [
-    'Ocean Eye est un studio de design de marque, installé à Nice.',
+export const about: AboutContent = {
+  lede: 'Ocean Eye est un studio de design de marque, installé à Nice.',
+  rest:
     'On construit des identités qui tiennent hors de leur charte : sur un packaging, sur une devanture, sur un écran de téléphone. Le logo n’est pas le livrable, c’est la première pièce d’un système qui doit encore fonctionner dans deux ans, entre les mains de quelqu’un d’autre.',
-    'Huit ans de pratique, en agence, en entreprise et en indépendant. Neuf marques livrées.',
+  stats: [
+    { value: '09', label: 'marques livrées', note: 'de l’identité au packaging' },
+    { value: '08', label: 'années de pratique', note: 'en agence, en entreprise, en indépendant' },
   ],
+  cta: { label: 'Voir les travaux', href: '#travaux' },
 }
 
 /**

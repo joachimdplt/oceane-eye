@@ -33,7 +33,7 @@ function Landing() {
       {/* Qui l'on est, puis la preuve, puis le prix, puis comment on s'y prend.
           Les services passaient avant les travaux : on demandait 2 400 € à
           quelqu'un qui n'avait encore rien vu. */}
-      <About title={blockTitles.studio} lines={about.lines} />
+      <About title={blockTitles.studio} about={about} />
       <Work title={blockTitles.travaux} projects={projects} />
       <Offers title={blockTitles.services} offers={offers} />
       <Process title={blockTitles.methode} steps={steps} />

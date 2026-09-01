@@ -52,6 +52,27 @@ export interface HeroContent {
   scrollCue: string
 }
 
+/** Un chiffre mis en avant, avec ce qu'il compte. */
+export interface Stat {
+  value: string
+  label: string
+  note: string
+}
+
+/**
+ * Le bloc du studio.
+ *
+ * `lede` et `rest` sont deux champs et non un seul texte coupé au rendu : la
+ * césure est une décision d'écriture — quelle phrase porte l'annonce — et non
+ * un comptage de caractères.
+ */
+export interface AboutContent {
+  lede: string
+  rest: string
+  stats: Stat[]
+  cta: { label: string; href: string }
+}
+
 /**
  * Une prestation vendue.
  *

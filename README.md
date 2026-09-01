@@ -50,7 +50,12 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
   JSX — c'est le § 9, et la commande d'audit du § 12 le vérifie.
 - Le texte, l'image et le film : `src/data/content.ts`.
 - `--color-ground` (#ffffff), `--color-ink` (#0a0a0a, le texte),
-  `--color-accent` (#FFDE59, gardé pour ce qui n'a pas à être lu).
+  `--color-muted` (#6E6E6E, le texte en retrait), `--color-rule` (#E2E2E2, les
+  traits), `--color-accent` (#FFDE59, gardé pour ce qui n'a pas à être lu).
+- **Le retrait est une couleur, jamais une opacité.** Un noir à 60 % change de
+  valeur selon ce qu'il y a derrière ; un gris nommé vaut la même chose partout
+  et se vérifie. `--color-muted` donne 4,76:1 sur le fond, donc il se lit
+  encore au lieu d'être seulement décoratif.
 - Le fond porte un **grain** (classe `.grain`) : un aplat se lirait comme un
   trou à côté d'une photo argentique. Deux réglages qui ne se devinent pas —
   `mix-blend-mode: multiply` et non `overlay`, car **sur du blanc pur la
