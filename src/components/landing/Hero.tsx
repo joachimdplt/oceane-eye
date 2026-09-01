@@ -4,6 +4,11 @@ import { GrowText } from '~/components/ui/GrowText'
 /**
  * L'écran d'ouverture, et le seul.
  *
+ * Tout est au centre, dans les deux sens : le bloc est centré verticalement par
+ * le `flex items-center`, et son texte horizontalement. Le surtitre et la prose
+ * suivent le titre — un titre centré au-dessus d'un texte ferré à gauche laisse
+ * une composition bancale plutôt qu'une composition centrée.
+ *
  * Présentationnel : il reçoit son texte en props et n'en va chercher aucun
  * (CONVENTIONS.md § 5). Aucune valeur arbitraire non plus, tout descend du
  * thème (§ 9).
@@ -21,7 +26,7 @@ import { GrowText } from '~/components/ui/GrowText'
 export function Hero({ role, title, body }: HeroContent) {
   return (
     <main className="min-h-svh flex items-center px-6 md:px-gutter py-20">
-      <div className="w-full max-w-page xl:max-w-wide mx-auto">
+      <div className="w-full max-w-page xl:max-w-wide mx-auto text-center">
         <p className="font-plex text-eyebrow md:text-eyebrow-lg font-bold uppercase tracking-eyebrow">
           {role}
         </p>
@@ -31,9 +36,11 @@ export function Hero({ role, title, body }: HeroContent) {
         </h1>
 
         {/* Le corps est la seule chose ici destinée à se lire comme de la
-            prose : c'est donc la seule qui ne crie pas.
-            Voir COPYWRITING.md § 12. */}
-        <p className="font-plex mt-8 md:mt-10 max-w-2xl text-base md:text-lg leading-prose">
+            prose : c'est donc la seule qui ne crie pas (COPYWRITING.md § 12).
+            `mx-auto` en plus de `text-center` : sans lui, la colonne resterait
+            collée au bord gauche et le texte serait centré dans une boîte qui
+            ne l'est pas. */}
+        <p className="font-plex mt-8 md:mt-10 max-w-2xl mx-auto text-base md:text-lg leading-prose">
           {body}
         </p>
       </div>

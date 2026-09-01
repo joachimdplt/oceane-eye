@@ -7,9 +7,10 @@ import type { ErrorMessages, HeroContent, PageMeta } from '~/types'
  * aux composants, qui eux ne l'importent jamais (CONVENTIONS.md § 5 et § 10).
  */
 export const hero: HeroContent = {
-  role: 'Graphiste ùolb',
-  title: 'OCEAN EYE STUDIO',
-  body: 'Avec mes 8 ans d’expérience, je propose mes compétences en identité visuelle, branding et direction artistique, afin de vous accompagner dans votre image de marque.',
+  role: 'SERVICE 1 - SERVICE 2 - SERVICE 3',
+  title: 'Une PROMESSE UNIQUE',
+  body: '+10 clients accompagnés',
+
 }
 
 export const meta: PageMeta = {
