@@ -274,6 +274,22 @@ export function projectsOf(offerId: string): Project[] {
   return projects.filter((project) => project.offer === offerId)
 }
 
+/**
+ * Un travail par prestation, dans l'ordre des prestations.
+ *
+ * C'est ce que montre la page d'accueil : quatre travaux qui disent chacun une
+ * discipline, plutôt que les neuf à la suite. Le premier de chaque liste, donc
+ * réordonner `projects` change la vitrine sans toucher au code.
+ *
+ * Les cinq autres ne sont pas perdus : chaque bloc renvoie à la page de sa
+ * prestation, qui les porte tous.
+ */
+export function featuredProjects(): Project[] {
+  return offers
+    .map((offer) => projects.find((project) => project.offer === offer.id))
+    .filter((project): project is Project => Boolean(project))
+}
+
 /** Le projet portant cet identifiant, s'il existe. */
 export function projectById(projectId: string): Project | undefined {
   return projects.find((project) => project.id === projectId)

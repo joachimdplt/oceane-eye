@@ -13,8 +13,8 @@ import {
   hero,
   meta,
   offers,
+  featuredProjects,
   offersIntro,
-  projects,
   steps,
 } from '~/data/content'
 import { SITE_URL, canonical, seo } from '~/utils/seo'
@@ -42,7 +42,7 @@ function Landing() {
       <Hero {...hero} />
       <About title={blockTitles.studio} about={about} />
       <Offers title={blockTitles.services} lede={offersIntro.lede} offers={offers} />
-      <Work title={blockTitles.travaux} projects={projects} />
+      <Work title={blockTitles.travaux} projects={featuredProjects()} />
       <Process title={blockTitles.methode} steps={steps} />
       <Contact title={blockTitles.contact} contact={contact} />
     </main>

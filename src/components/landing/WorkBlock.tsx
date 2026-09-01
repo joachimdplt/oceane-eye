@@ -54,7 +54,16 @@ export function WorkBlock({ project, heading = 'h2' }: { project: Project; headi
             <p className="body-text text-ink max-w-2xl">{project.summary}</p>
           </div>
 
-          <p className="border-text-xl text-ink md:text-right shrink-0">{project.discipline}</p>
+          {/* La discipline mène à sa prestation, qui porte tous ses travaux.
+              C'est le seul chemin vers les cinq que l'accueil ne montre pas :
+              il n'en garde qu'un par discipline. */}
+          <Link
+            to="/services/$serviceId"
+            params={{ serviceId: project.offer }}
+            className="border-text-xl text-ink md:text-right shrink-0 no-underline underline-offset-4 hover:underline"
+          >
+            {project.discipline}
+          </Link>
         </div>
       </div>
     </article>

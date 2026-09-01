@@ -51,6 +51,12 @@ montrent. Il a existé en deux exemplaires le temps d'un commit, et les deux
 avaient déjà divergé sur la couleur du texte : un bloc dupliqué ne reste jamais
 identique très longtemps.
 
+L'accueil ne montre **qu'un travail par prestation** (`featuredProjects()`) :
+quatre qui disent chacun une discipline, plutôt que les neuf à la suite. C'est
+le premier de chaque liste, donc réordonner `projects` change la vitrine sans
+toucher au code. Les cinq autres sont sur les pages de prestation, où mène la
+discipline inscrite sur chaque bloc.
+
 Le rattachement d'un travail à sa prestation est une **donnée explicite**
 (`project.offer`), jamais un rapprochement sur le libellé de la discipline —
 « Identité visuelle et community management » ne s'apparierait pas avec
