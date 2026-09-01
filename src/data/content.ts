@@ -39,7 +39,7 @@ export const hero: HeroContent = {
 export const blockTitles = {
   studio: 'Le studio',
   services: 'Services',
-  produits: 'Produits',
+  travaux: 'Travaux',
   methode: 'Méthode',
   contact: 'Travaillons ensemble',
 }
@@ -65,7 +65,7 @@ export const about: AboutContent = {
     { value: '09', label: 'marques livrées', note: 'de l’identité au packaging' },
     { value: '08', label: 'années de pratique', note: 'en agence, en entreprise, en indépendant' },
   ],
-  cta: { label: 'Voir les produits', href: '#produits' },
+  cta: { label: 'Voir les travaux', href: '#travaux' },
 }
 
 /**

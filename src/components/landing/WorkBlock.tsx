@@ -20,7 +20,7 @@ import { Unfold } from '~/components/ui/Unfold'
  * raccord ne se voit pas.
  */
 export function WorkBlock({ project, heading = 'h2' }: { project: Project; heading?: 'h2' | 'h3' }) {
-  // Le rang du titre dépend de la page : sous un « Produits » il est de niveau
+  // Le rang du titre dépend de la page : sous un « Travaux » il est de niveau
   // 3, seul sur une page de prestation il est de niveau 2. Un plan de titres
   // qui saute un niveau se lit mal à la synthèse vocale.
   const Heading = heading
@@ -44,7 +44,7 @@ export function WorkBlock({ project, heading = 'h2' }: { project: Project; headi
           <div className="flex flex-col gap-4">
             <Heading className="title2 text-ink">
               <Link
-                to="/produits/$projectId"
+                to="/travaux/$projectId"
                 params={{ projectId: project.id }}
                 className="text-ink no-underline hover:opacity-70 transition-opacity motion-reduce:transition-none"
               >

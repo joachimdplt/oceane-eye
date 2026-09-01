@@ -1,6 +1,5 @@
 import { Link } from '@tanstack/react-router'
 import type { Offer, Project } from '~/types'
-import { Unfold } from '~/components/ui/Unfold'
 import { WorkBlock } from './WorkBlock'
 
 /**
@@ -39,6 +38,10 @@ export function ServiceDetail({
           <p className="body-text text-ink max-w-2xl">{offer.pitch}</p>
 
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+            {/* Pas d'image ici. Celle de la prestation est empruntée à l'un de
+                ses propres projets : elle réapparaissait donc deux écrans plus
+                bas, et la page donnait l'impression de n'en montrer qu'un. Ce
+                sont les travaux qui portent l'image. */}
             <ul className="flex flex-col">
               {offer.deliverables.map((item) => (
                 <li key={item} className="body-text text-ink py-3 border-t border-rule">
@@ -47,15 +50,6 @@ export function ServiceDetail({
               ))}
             </ul>
 
-            <Unfold className="w-full">
-              <img
-                src={offer.image}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                className="w-full aspect-[4/3] object-cover"
-              />
-            </Unfold>
           </div>
 
           <p className="label text-muted">{offer.duration}</p>

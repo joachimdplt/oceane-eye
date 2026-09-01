@@ -11,7 +11,7 @@ import { SITE_URL, canonical, seo } from '~/utils/seo'
  * doit répondre 404 au rendu serveur, pas afficher une page vide après avoir
  * été indexée.
  */
-export const Route = createFileRoute('/produits/$projectId')({
+export const Route = createFileRoute('/travaux/$projectId')({
   loader: ({ params }) => {
     const project = projectById(params.projectId)
     if (!project) throw notFound()
@@ -19,7 +19,7 @@ export const Route = createFileRoute('/produits/$projectId')({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
-    const url = `${SITE_URL}/produits/${loaderData.project.id}`
+    const url = `${SITE_URL}/travaux/${loaderData.project.id}`
     return {
       meta: [
         ...seo({

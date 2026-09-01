@@ -42,7 +42,7 @@ function Landing() {
       <Hero {...hero} />
       <About title={blockTitles.studio} about={about} />
       <Offers title={blockTitles.services} lede={offersIntro.lede} offers={offers} />
-      <Work title={blockTitles.produits} projects={projects} />
+      <Work title={blockTitles.travaux} projects={projects} />
       <Process title={blockTitles.methode} steps={steps} />
       <Contact title={blockTitles.contact} contact={contact} />
     </main>
