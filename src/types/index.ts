@@ -106,6 +106,15 @@ export interface Offer {
 export interface Project {
   id: string
   name: string
+  /**
+   * La prestation dont ce projet relève, par son `id`.
+   *
+   * Un lien explicite, et non un rapprochement sur le libellé de la discipline :
+   * « Identité visuelle et community management » ne s'appariera jamais avec
+   * « Identité visuelle » par comparaison de chaînes, et le jour où l'un des
+   * deux se réécrit, le rapprochement casse en silence.
+   */
+  offer: string
   /** La discipline, telle qu'elle se vend. */
   discipline: string
   /** Ce qui a été livré, en une phrase. */

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Compass, Fingerprint, Megaphone, Package } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
+import { ArrowUpRight, Compass, Fingerprint, Megaphone, Package } from 'lucide-react'
 import type { Offer, OfferIcon } from '~/types'
 import { GrowText } from '~/components/ui/GrowText'
 import { Reveal } from '~/components/ui/Reveal'
@@ -29,8 +30,14 @@ const ICONS: Record<OfferIcon, typeof Compass> = {
  * passe à la verticale — « Supports de communication » ne tiendrait pas couché
  * dans une colonne de cette largeur.
  *
- * Chaque panneau est un vrai bouton : il s'ouvre au survol comme à la
- * tabulation et au clic, donc au doigt et au clavier autant qu'à la souris. Le
+ * Chaque panneau est un LIEN vers la page de sa prestation, pas un bouton : il
+ * s'ouvre au survol et à la tabulation, et le clic emmène. C'est ce qui lui
+ * permet d'être copié, ouvert dans un onglet, et de fonctionner avant que le
+ * JavaScript ait chargé — un gestionnaire de clic n'aurait rien de tout ça.
+ *
+ * Au doigt, où il n'y a pas de survol, la première touche ouvre le panneau et
+ * la seconde y emmène : le lien reste atteignable sans que rien ne parte au
+ * premier contact. Le
  * contenu des panneaux fermés reste dans le document, rogné et jamais retiré,
  * pour qu'un lecteur d'écran lise les quatre prestations sans avoir à deviner
  * qu'il faut ouvrir quelque chose.
@@ -76,13 +83,21 @@ export function Offers({
                 className="services-panel"
                 data-open={active ? 'true' : 'false'}
               >
-                <button
-                  type="button"
-                  aria-expanded={active}
+                <Link
+                  to="/services/$serviceId"
+                  params={{ serviceId: offer.id }}
+                  aria-label={`${offer.name} — voir les projets`}
                   onMouseEnter={() => setOpen(i)}
                   onFocus={() => setOpen(i)}
-                  onClick={() => setOpen(i)}
-                  className="relative block w-full h-full overflow-hidden text-left"
+                  onClick={(event) => {
+                    // Au doigt : la première touche ouvre, la seconde emmène.
+                    // Sans ça, effleurer un panneau fermé quitterait la page.
+                    if (!active) {
+                      event.preventDefault()
+                      setOpen(i)
+                    }
+                  }}
+                  className="relative block w-full h-full overflow-hidden text-left no-underline"
                 >
                   <img
                     src={offer.image}
@@ -127,7 +142,17 @@ export function Offers({
                   >
                     {offer.duration}
                   </span>
-                </button>
+
+                  {/* La flèche ne paraît que sur le panneau ouvert : c'est le
+                      seul sur lequel un clic emmène du premier coup. */}
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    strokeWidth={1.5}
+                    className={`absolute bottom-6 right-6 md:bottom-8 md:right-8 z-10 size-6 text-ground transition-opacity duration-300 motion-reduce:transition-none ${
+                      active ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                </Link>
               </li>
             )
           })}

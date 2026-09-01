@@ -219,7 +219,7 @@
     min-height: 22rem;
   }
 
-  .services-panel > button {
+  .services-panel > a {
     border-radius: var(--radius);
     /* Sans lui, l'image et le voile dépassent des angles qu'on vient
        d'arrondir : un rayon ne rogne pas ce qui est posé en absolu dedans. */

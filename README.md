@@ -36,12 +36,25 @@ src/
                        NotFound, ErrorState
     landing/        → Hero, About, Offers, Work, Process, Contact, Nav
   routes/           → Couche 5, assemblage seul (TanStack Router)
+                       /                       la page
+                       /services/$serviceId    une prestation et ses produits
+                       /produits/$projectId    un produit et ses voisins
   utils/seo.ts      → SITE_URL : l'adresse du site, en un seul endroit
   styles/app.css    → les tokens du thème, et rien d'arbitraire ailleurs
 ```
 
 Le sens de lecture : **la route lit `data/` et passe le contenu en props ; aucun
 composant ne va rien chercher lui-même** (§ 5 et § 8).
+
+`WorkBlock` est le bloc d'un produit, **partagé par les trois pages** qui en
+montrent. Il a existé en deux exemplaires le temps d'un commit, et les deux
+avaient déjà divergé sur la couleur du texte : un bloc dupliqué ne reste jamais
+identique très longtemps.
+
+Le rattachement d'un produit à sa prestation est une **donnée explicite**
+(`project.offer`), jamais un rapprochement sur le libellé de la discipline —
+« Identité visuelle et community management » ne s'apparierait pas avec
+« Identité visuelle », et le jour où l'un se réécrit le lien casse en silence.
 
 ## Changer d'identité
 

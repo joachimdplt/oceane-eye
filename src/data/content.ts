@@ -39,7 +39,7 @@ export const hero: HeroContent = {
 export const blockTitles = {
   studio: 'Le studio',
   services: 'Services',
-  travaux: 'Travaux',
+  produits: 'Produits',
   methode: 'Méthode',
   contact: 'Travaillons ensemble',
 }
@@ -65,7 +65,7 @@ export const about: AboutContent = {
     { value: '09', label: 'marques livrées', note: 'de l’identité au packaging' },
     { value: '08', label: 'années de pratique', note: 'en agence, en entreprise, en indépendant' },
   ],
-  cta: { label: 'Voir les travaux', href: '#travaux' },
+  cta: { label: 'Voir les produits', href: '#produits' },
 }
 
 /**
@@ -185,6 +185,7 @@ export const projects: Project[] = [
   {
     id: 'thelma-rose',
     name: 'Thelma & Rose',
+    offer: 'direction-artistique',
     discipline: 'Direction artistique',
     summary: 'Appel d’offres remporté pour une marque française engagée de prêt-à-porter féminin.',
     image: '/img/projets/thelma-rose.jpg',
@@ -192,6 +193,7 @@ export const projects: Project[] = [
   {
     id: 'satine-by-fany',
     name: 'Satiné by Fany',
+    offer: 'identite',
     discipline: 'Identité visuelle',
     summary: 'L’identité d’une experte en soins et lissages capillaires.',
     image: '/img/projets/satine-by-fany.jpg',
@@ -199,6 +201,7 @@ export const projects: Project[] = [
   {
     id: 'conciergerie-riviera',
     name: 'Conciergerie Riviera',
+    offer: 'identite',
     discipline: 'Identité visuelle',
     summary: 'La Côte d’Azur sur mesure, pour une conciergerie niçoise de luxe.',
     image: '/img/projets/conciergerie-riviera.jpg',
@@ -206,6 +209,7 @@ export const projects: Project[] = [
   {
     id: 'bobines-etrange',
     name: 'Les Bobines de l’Étrange',
+    offer: 'packaging',
     discipline: 'Packaging et identité visuelle',
     summary: 'Une édition limitée de boîtes de sardines de collection.',
     image: '/img/projets/bobines-etrange.jpg',
@@ -213,6 +217,7 @@ export const projects: Project[] = [
   {
     id: 'zoenka',
     name: 'ZOËNKA',
+    offer: 'identite',
     discipline: 'Identité visuelle et community management',
     summary: 'Une identité pensée pour une psychologue et thérapeute en médiation animale.',
     image: '/img/projets/zoenka.jpg',
@@ -220,6 +225,7 @@ export const projects: Project[] = [
   {
     id: 'lavender-rose',
     name: 'Lavender & Rose',
+    offer: 'identite',
     discipline: 'Identité visuelle',
     summary: 'Un logo pour une collection de vaisselle haut de gamme.',
     image: '/img/projets/lavender-rose.jpg',
@@ -227,6 +233,7 @@ export const projects: Project[] = [
   {
     id: 'amare',
     name: 'Amare',
+    offer: 'direction-artistique',
     discipline: 'Conception produit et direction artistique',
     summary: 'Un concept produit qui transforme la pollution en ressource, pour reconnecter à l’océan.',
     image: '/img/projets/amare.jpg',
@@ -234,6 +241,7 @@ export const projects: Project[] = [
   {
     id: 'bauhaus-109',
     name: 'BAUHAUS by Le 109',
+    offer: 'supports',
     discipline: 'Supports de communication',
     summary: 'La campagne visuelle des 109 ans du 109, à Nice.',
     image: '/img/projets/bauhaus-109.jpg',
@@ -241,11 +249,45 @@ export const projects: Project[] = [
   {
     id: 'la-doyenne',
     name: 'La Doyenne',
+    offer: 'supports',
     discipline: 'Print',
     summary: 'Un dépliant-affiche illustré sur l’expérience d’alternance à Condé Nice.',
     image: '/img/projets/la-doyenne.jpg',
   },
 ]
+
+/** Le peu de texte propre aux pages de prestation. */
+export const serviceUi = {
+  back: 'Retour',
+  empty: 'Les projets de cette prestation arrivent bientôt.',
+}
+
+/** Le peu de texte propre aux pages de projet. */
+export const projectUi = {
+  back: 'Retour',
+  offer: 'Prestation',
+  siblings: 'Dans la même prestation',
+}
+
+/** Les projets d'une prestation, dans l'ordre de la liste principale. */
+export function projectsOf(offerId: string): Project[] {
+  return projects.filter((project) => project.offer === offerId)
+}
+
+/** Le projet portant cet identifiant, s'il existe. */
+export function projectById(projectId: string): Project | undefined {
+  return projects.find((project) => project.id === projectId)
+}
+
+/** Les autres projets de la même prestation, sans celui qu'on regarde. */
+export function siblingsOf(project: Project): Project[] {
+  return projects.filter((p) => p.offer === project.offer && p.id !== project.id)
+}
+
+/** La prestation portant cet identifiant, si elle existe. */
+export function offerById(offerId: string): Offer | undefined {
+  return offers.find((offer) => offer.id === offerId)
+}
 
 /** Repris tels quels du site actuel : ce sont ses vraies coordonnées. */
 export const contact: Contact = {
