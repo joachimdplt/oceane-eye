@@ -39,7 +39,7 @@ export function About({ title, about }: { title: string; about: AboutContent }) 
           {/* Les cartes partagent leur trait plutôt que d'en porter chacune un :
               accolées, deux bordures voisines feraient un filet deux fois plus
               épais que les autres. */}
-          <ul className="grid sm:grid-cols-2 border border-rule">
+          <ul className="grid sm:grid-cols-2 border border-rule rounded-card overflow-hidden">
             {about.stats.map((stat, i) => (
               <li
                 key={stat.label}

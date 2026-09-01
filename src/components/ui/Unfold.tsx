@@ -7,9 +7,17 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
  * l'image qu'on met à l'échelle, c'est la fenêtre découpée dedans qui s'écarte.
  * Rien ne se déforme, et la mise en page n'est jamais recalculée.
  *
- * L'ouverture est ici confiée à une transition CSS plutôt qu'au défilement
- * image par image : neuf projets qui liraient chacun la position de la page à
- * chaque trame coûteraient bien plus cher que le geste ne rapporte.
+ * L'ouverture est confiée à une transition CSS plutôt qu'au défilement image
+ * par image : neuf projets qui liraient chacun la position de la page à chaque
+ * trame coûteraient bien plus cher que le geste ne rapporte.
+ *
+ * Le geste se rejoue à chaque passage. C'est ce qui distingue ce composant de
+ * `Reveal`, qui ne part qu'une fois : les titres de blocs relancés en boucle
+ * faisaient bégayer la page, alors qu'une image qui se déplie EST le contenu du
+ * bloc — la revoir en remontant, c'est la revoir tout court.
+ *
+ * L'observateur reste donc branché, et le seuil est bas : refermer une image
+ * encore à moitié visible se verrait comme un défaut.
  */
 export function Unfold({ children, className = '' }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement | null>(null)
@@ -24,12 +32,8 @@ export function Unfold({ children, className = '' }: { children: ReactNode; clas
       return
     }
     const watcher = new IntersectionObserver(
-      ([entry]) => {
-        // On ne referme jamais : une image qui se replie quand on remonte
-        // donne l'impression d'avoir perdu sa place.
-        if (entry.isIntersecting) setOpen(true)
-      },
-      { threshold: 0.25 },
+      ([entry]) => setOpen(entry.isIntersecting),
+      { threshold: 0.15 },
     )
     watcher.observe(node)
     return () => watcher.disconnect()

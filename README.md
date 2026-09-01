@@ -52,6 +52,10 @@ composant ne va rien chercher lui-même** (§ 5 et § 8).
 - `--color-ground` (#ffffff), `--color-ink` (#0a0a0a, le texte),
   `--color-muted` (#6E6E6E, le texte en retrait), `--color-rule` (#E2E2E2, les
   traits), `--color-accent` (#FFDE59, gardé pour ce qui n'a pas à être lu).
+- **Un seul rayon d'angle**, `--radius`, pour toute la page : deux rayons
+  différents à l'écran se lisent comme une erreur, pas comme une intention.
+  Attention, `RADIUS_OPEN` dans `Hero.tsx` doit lui répondre — le calcul de
+  l'arche se fait en JS et ne peut pas lire le token.
 - **Le retrait est une couleur, jamais une opacité.** Un noir à 60 % change de
   valeur selon ce qu'il y a derrière ; un gris nommé vaut la même chose partout
   et se vérifie. `--color-muted` donne 4,76:1 sur le fond, donc il se lit

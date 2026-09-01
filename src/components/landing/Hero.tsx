@@ -6,6 +6,15 @@ import { LiveTime } from '~/components/ui/LiveTime'
 /** La géométrie de l'arche au repos, en pourcentage de l'écran. */
 const ARCH = { top: 16, side: 36, bottom: 24 }
 
+/**
+ * Le rayon des angles une fois l'arche ouverte, en pixels.
+ *
+ * Doit valoir `--radius` (src/styles/app.css) : le calcul se fait ici en JS, il
+ * ne peut donc pas lire le token. Les deux se répondent, et l'un sans l'autre
+ * donnerait une page qui arrondit tout sauf son ouverture.
+ */
+const RADIUS_OPEN = 20
+
 
 export function Hero({ title, disciplines, media, aside, scrollCue }: HeroContent) {
   const track = useRef<HTMLDivElement | null>(null)
@@ -61,8 +70,10 @@ export function Hero({ title, disciplines, media, aside, scrollCue }: HeroConten
   const inset = (from: number) => (from * (1 - ease)).toFixed(2)
   // Le rayon est écrêté par le navigateur à la moitié de la largeur découpée :
   // une valeur volontairement énorme donne donc un demi-cercle parfait, quelle
-  // que soit la taille de la fenêtre au moment où on la regarde.
-  const radius = (999 * (1 - ease)).toFixed(0)
+  // que soit la taille de la fenêtre au moment où on la regarde. Il ne descend
+  // pas à zéro mais au rayon commun de la page, pour que l'ouverture ne soit pas
+  // la seule chose à angles vifs.
+  const radius = (RADIUS_OPEN + (999 - RADIUS_OPEN) * (1 - ease)).toFixed(0)
   const clip = `inset(${inset(ARCH.top)}% ${inset(ARCH.side)}% ${inset(ARCH.bottom)}% ${inset(ARCH.side)}% round ${radius}px ${radius}px 0 0)`
 
   // Le centre optique de l'arche : à mi-hauteur de sa propre boîte, pas de
